@@ -1,1 +1,1003 @@
-<!DOCTYPE html> <html lang="ko"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Witheun | Lesson 2 단어 시험 by. 은서쌤</title> <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet"> <style> :root { --bg: #f7f6f2; --surface: #ffffff; --ink: #0f0e0b; --ink2: #4a4840; --ink3: #9a9690; --accent: #e8400c; --accent2: #1a6b3c; --accent3: #1a3f8c; --correct: #1a6b3c; --wrong: #c0200a; --border: #d8d4cc; --mono: 'IBM Plex Mono', monospace; --sans: 'Noto Sans KR', sans-serif; } * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: var(--sans); background: var(--bg); color: var(--ink); min-height: 100vh; } /* ── BRAND HEADER ── */ .brand-header { background: var(--ink); color: #fff; text-align: center; padding: 18px 24px 14px; border-bottom: 3px solid var(--accent); } .brand-title { font-family: var(--mono); font-size: 28px; font-weight: 600; letter-spacing: 0.08em; color: #fff; display: block; margin-bottom: 4px; } .brand-title span { color: #f5a623; } .brand-sub { font-family: var(--sans); font-size: 13px; color: #aaa; letter-spacing: 0.05em; } /* ── TOP NAV ── */ .topnav { background: #1a1917; color: #fff; padding: 0 24px; height: 52px; display: flex; align-items: center; gap: 20px; position: sticky; top: 0; z-index: 200; } .topnav-logo { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.05em; color: #fff; flex-shrink: 0; } .topnav-logo span { color: #f5a623; } .topnav-sep { width: 1px; height: 20px; background: #333; flex-shrink: 0; } .type-toggles { display: flex; gap: 6px; } .tgl { font-family: var(--mono); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 3px; border: 1.5px solid #444; background: transparent; color: #666; cursor: pointer; transition: all 0.12s; letter-spacing: 0.03em; } .tgl.on { background: #fff; color: var(--ink); border-color: #fff; } .topnav-actions { display: flex; gap: 8px; margin-left: auto; } .nav-btn { font-family: var(--sans); font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 4px; border: none; cursor: pointer; transition: all 0.12s; white-space: nowrap; } .nav-btn.primary { background: var(--accent); color: #fff; } .nav-btn.primary:hover { background: #c73309; } .nav-btn.ghost { background: transparent; border: 1.5px solid #444; color: #aaa; } .nav-btn.ghost:hover { border-color: #aaa; color: #fff; } .nav-btn.green { background: var(--accent2); color: #fff; } .nav-btn.green:hover { background: #155c33; } /* ── MAIN LAYOUT ── */ .layout { display: grid; grid-template-columns: 1fr 300px; gap: 0; min-height: calc(100vh - 52px); } /* ── QUIZ PANEL ── */ .quiz-panel { padding: 28px 32px; max-width: 720px; } .quiz-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--ink); } .quiz-title { font-size: 18px; font-weight: 700; } .quiz-count { font-family: var(--mono); font-size: 12px; color: var(--ink3); background: var(--border); padding: 3px 8px; border-radius: 3px; } /* ── QUESTIONS ── */ .question { margin-bottom: 0; padding: 20px 0; border-bottom: 1px solid var(--border); animation: fadeIn 0.2s ease; } @keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform:none; } } .question:last-child { border-bottom: none; } .q-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; } .q-num { font-family: var(--mono); font-size: 11px; font-weight: 600; width: 24px; height: 24px; background: var(--ink); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .q-badge { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 2px; letter-spacing: 0.04em; } .b1 { background: #dde8ff; color: #1a3f8c; } .b2 { background: #d8f5e4; color: #1a6b3c; } .b3 { background: #fde8e0; color: #b83300; } .b4 { background: #ede0ff; color: #6b1aaa; } .q-label { font-size: 13px; color: var(--ink2); font-weight: 500; } .q-copyright { font-family: var(--mono); font-size: 9px; color: var(--ink3); margin-left: auto; letter-spacing: 0.03em; flex-shrink: 0; } /* 단어 타겟 */ .target-word { font-family: var(--mono); font-size: 20px; font-weight: 600; margin: 8px 0 14px 32px; letter-spacing: 0.02em; color: var(--ink); } /* 선택지 (유형1,2,3) */ .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-left: 32px; } .choice-btn { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 5px; background: var(--surface); cursor: pointer; font-family: var(--sans); font-size: 13.5px; color: var(--ink); transition: all 0.1s; text-align: left; width: 100%; } .choice-btn:hover:not(:disabled) { border-color: var(--ink); background: var(--bg); } .choice-btn .c-num { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--ink3); flex-shrink: 0; width: 18px; } .choice-btn.selected { border-color: var(--ink); background: #f0ede8; } .choice-btn.correct { border-color: var(--correct); background: #d8f5e4; color: var(--correct); } .choice-btn.correct .c-num { color: var(--correct); } .choice-btn.wrong { border-color: var(--wrong); background: #fde8e0; color: var(--wrong); } .choice-btn.wrong .c-num { color: var(--wrong); } .choice-btn:disabled { cursor: default; } /* 유형4 */ .type4-sentence { font-size: 14px; line-height: 1.9; margin: 6px 0 4px 32px; font-weight: 500; } .type4-korean { font-size: 12.5px; color: var(--ink2); margin: 0 0 12px 32px; line-height: 1.6; } .box-wrap { margin-left: 32px; margin-bottom: 10px; } .box-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: var(--ink3); margin-bottom: 5px; } .word-box { border: 1.5px solid var(--ink); padding: 8px 14px; font-size: 13.5px; border-radius: 4px; background: var(--surface); display: inline-block; } .type4-input-row { display: flex; align-items: center; gap: 10px; margin-left: 32px; margin-top: 4px; } .type4-input { font-family: var(--mono); font-size: 14px; padding: 7px 12px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--surface); color: var(--ink); width: 180px; outline: none; transition: border-color 0.1s; } .type4-input:focus { border-color: var(--ink); } .type4-input.correct-input { border-color: var(--correct); background: #d8f5e4; color: var(--correct); } .type4-input.wrong-input { border-color: var(--wrong); background: #fde8e0; color: var(--wrong); } .type4-input:disabled { cursor: default; } .answer-reveal { font-family: var(--mono); font-size: 12px; color: var(--correct); font-weight: 600; display: none; } .answer-reveal.show { display: inline; } /* 결과 피드백 */ .q-feedback { margin: 8px 0 0 32px; font-size: 12px; font-weight: 600; display: none; } .q-feedback.show { display: block; } .q-feedback.ok { color: var(--correct); } .q-feedback.ng { color: var(--wrong); } /* 제출 버튼 */ .submit-row { margin: 28px 0 8px; display: flex; gap: 10px; flex-wrap: wrap; } .big-btn { font-family: var(--sans); font-size: 14px; font-weight: 700; padding: 12px 28px; border-radius: 5px; border: none; cursor: pointer; transition: all 0.12s; } .big-btn.submit { background: var(--ink); color: #fff; } .big-btn.submit:hover { background: #333; } .big-btn.submit:disabled { background: #bbb; cursor: default; } .big-btn.regen { background: var(--accent); color: #fff; } .big-btn.regen:hover { background: #c73309; } .big-btn.wrong-only { background: var(--surface); color: var(--wrong); border: 2px solid var(--wrong); } .big-btn.wrong-only:hover { background: #fde8e0; } /* ── 하단 저작권 ── */ .footer-copyright { margin-top: 32px; padding: 20px 0 8px; border-top: 1px solid var(--border); text-align: center; } .footer-copyright .fc-brand { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: 0.06em; margin-bottom: 4px; } .footer-copyright .fc-brand span { color: var(--accent); } .footer-copyright .fc-text { font-size: 11px; color: var(--ink3); } /* ── SIDEBAR ── */ .sidebar { border-left: 1px solid var(--border); background: var(--surface); padding: 24px 20px; position: sticky; top: 52px; height: calc(100vh - 52px); overflow-y: auto; } .sidebar-section { margin-bottom: 28px; } .sidebar-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; color: var(--ink3); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); } /* 점수판 */ .score-board { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; } .score-card { background: var(--bg); border-radius: 5px; padding: 10px 12px; text-align: center; } .score-card .sc-num { font-family: var(--mono); font-size: 24px; font-weight: 600; display: block; line-height: 1; margin-bottom: 3px; } .score-card .sc-label { font-size: 11px; color: var(--ink3); } .score-card.total .sc-num { color: var(--ink); } .score-card.correct-card .sc-num { color: var(--correct); } .score-card.wrong-card .sc-num { color: var(--wrong); } .score-card.rate-card .sc-num { color: var(--accent3); } /* 진행 바 */ .progress-bar-wrap { background: var(--border); border-radius: 10px; height: 6px; margin-bottom: 6px; overflow: hidden; } .progress-bar { height: 100%; background: var(--correct); border-radius: 10px; transition: width 0.4s ease; } .progress-label { font-size: 11px; color: var(--ink3); text-align: right; } /* 오답 노트 */ .wrong-list { display: flex; flex-direction: column; gap: 6px; } .wrong-item { background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--wrong); border-radius: 4px; padding: 8px 10px; } .wrong-item .wi-word { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; } .wrong-item .wi-type { font-size: 10px; color: var(--ink3); margin-bottom: 3px; font-family: var(--mono); } .wrong-item .wi-detail { font-size: 12px; color: var(--ink2); } .wrong-item .wi-mine { color: var(--wrong); font-weight: 600; } .wrong-item .wi-ans { color: var(--correct); font-weight: 600; } .empty-wrong { font-size: 12px; color: var(--ink3); text-align: center; padding: 20px 0; } /* 번호 맵 */ .q-map { display: flex; flex-wrap: wrap; gap: 4px; } .q-dot { font-family: var(--mono); font-size: 10px; width: 24px; height: 24px; border-radius: 3px; border: 1.5px solid var(--border); background: var(--surface); display: flex; align-items: center; justify-content: center; color: var(--ink3); cursor: pointer; transition: all 0.1s; } .q-dot:hover { border-color: var(--ink); color: var(--ink); } .q-dot.answered { background: var(--bg); border-color: #bbb; color: var(--ink2); } .q-dot.ok { background: #d8f5e4; border-color: var(--correct); color: var(--correct); } .q-dot.ng { background: #fde8e0; border-color: var(--wrong); color: var(--wrong); } /* 인쇄 */ @media print { .topnav, .brand-header, .sidebar, .submit-row { display: none !important; } .layout { grid-template-columns: 1fr; } .quiz-panel { max-width: 100%; padding: 16px; } .choice-btn { border-color: #ccc !important; background: #fff !important; color: #000 !important; } .type4-input { border-color: #ccc !important; background: #fff !important; color: #000 !important; } .q-feedback { display: none !important; } .answer-reveal { display: none !important; } .footer-copyright { display: block !important; } } @media (max-width: 700px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } .choices { grid-template-columns: 1fr; } .brand-title { font-size: 22px; } } </style> </head> <body> <!-- BRAND HEADER --> <header class="brand-header"> <span class="brand-title">With<span>eun</span></span> <span class="brand-sub">by. 은서쌤</span> </header> <!-- TOP NAV --> <nav class="topnav"> <div class="topnav-logo">Lesson <span>2</span> QUIZ</div> <div class="topnav-sep"></div> <div class="type-toggles"> <button class="tgl on" data-t="1" onclick="toggleType(1)">유형1</button> <button class="tgl on" data-t="2" onclick="toggleType(2)">유형2</button> <button class="tgl on" data-t="3" onclick="toggleType(3)">유형3</button> <button class="tgl on" data-t="4" onclick="toggleType(4)">유형4</button> </div> <div class="topnav-actions"> <button class="nav-btn primary" onclick="generate()">🔀 새 문제</button> <button class="nav-btn ghost" onclick="window.print()">인쇄</button> </div> </nav> <div class="layout"> <!-- QUIZ PANEL --> <div class="quiz-panel"> <div class="quiz-header"> <div class="quiz-title">단어 시험지</div> <div class="quiz-count" id="quiz-count">70문제</div> </div> <div id="quiz-container"></div> <div class="submit-row" id="submit-row" style="display:none;"> <button class="big-btn submit" id="submit-btn" onclick="submitAll()">채점하기</button> <button class="big-btn regen" onclick="generate()">🔀 새 문제</button> <button class="big-btn wrong-only" id="wrong-only-btn" onclick="generateWrongOnly()" style="display:none;">오답만 다시 풀기</button> </div> <!-- 하단 저작권 --> <div class="footer-copyright"> <div class="fc-brand">With<span>eun</span> &nbsp;|&nbsp; Lesson 2 단어 시험</div> <div class="fc-text">© 2025 Witheun by. 은서쌤 &nbsp;·&nbsp; 무단 복제 및 배포를 금합니다.</div> </div> </div> <!-- SIDEBAR --> <div class="sidebar"> <!-- 점수 --> <div class="sidebar-section"> <div class="sidebar-title">채점 결과</div> <div class="score-board"> <div class="score-card total"><span class="sc-num" id="sc-total">—</span><span class="sc-label">전체</span></div> <div class="score-card rate-card"><span class="sc-num" id="sc-rate">—</span><span class="sc-label">정답률</span></div> <div class="score-card correct-card"><span class="sc-num" id="sc-correct">—</span><span class="sc-label">정답</span></div> <div class="score-card wrong-card"><span class="sc-num" id="sc-wrong">—</span><span class="sc-label">오답</span></div> </div> <div class="progress-bar-wrap"><div class="progress-bar" id="prog-bar" style="width:0%"></div></div> <div class="progress-label" id="prog-label">채점 전</div> </div> <!-- 문항 맵 --> <div class="sidebar-section"> <div class="sidebar-title">문항 현황</div> <div class="q-map" id="q-map"></div> </div> <!-- 오답 노트 --> <div class="sidebar-section"> <div class="sidebar-title">오답 노트</div> <div id="wrong-list"><div class="empty-wrong">채점 후 오답이 표시됩니다.</div></div> </div> </div> </div> <script> const DATA = { "type1": [ { "word": "certain", "meaning": "어떤, 확실한" }, { "word": "artist", "meaning": "예술가" }, { "word": "closely", "meaning": "밀접하게" }, { "word": "particular", "meaning": "특정한" }, { "word": "separate", "meaning": "분리하다" }, { "word": "locate", "meaning": "위치시키다" }, { "word": "southeast", "meaning": "남동쪽" }, { "word": "magical", "meaning": "마법 같은" }, { "word": "colorful", "meaning": "다채로운" }, { "word": "landscape", "meaning": "풍경" }, { "word": "famous", "meaning": "유명한" }, { "word": "resident", "meaning": "거주자" }, { "word": "arrive", "meaning": "도착하다" }, { "word": "inspire", "meaning": "영감을 주다" }, { "word": "explosion", "meaning": "폭발" }, { "word": "creativity", "meaning": "창의성" }, { "word": "claim", "meaning": "주장하다" }, { "word": "future", "meaning": "미래" }, { "word": "enthusiastically", "meaning": "열정적으로" }, { "word": "produce", "meaning": "생산하다" }, { "word": "ancient", "meaning": "고대의" }, { "word": "find", "meaning": "찾다" }, { "word": "visible", "meaning": "보이는" }, { "word": "below", "meaning": "아래에" }, { "word": "cheer", "meaning": "응원하다" }, { "word": "entire", "meaning": "전체의" }, { "word": "powerful", "meaning": "강력한" }, { "word": "unusual", "meaning": "특이한" }, { "word": "believe", "meaning": "믿다" }, { "word": "contain", "meaning": "포함하다" }, { "word": "diverse", "meaning": "다양한" }, { "word": "vibrant", "meaning": "생기 있는" }, { "word": "rich", "meaning": "풍부한" }, { "word": "harmony", "meaning": "조화" }, { "word": "single", "meaning": "하나의" }, { "word": "uncertain", "meaning": "불확실한" }, { "word": "show", "meaning": "보여주다" }, { "word": "send", "meaning": "보내다" }, { "word": "outdoor", "meaning": "야외의" }, { "word": "odd", "meaning": "이상한" }, { "word": "contrast", "meaning": "대비" }, { "word": "complex", "meaning": "복잡한" }, { "word": "difficult", "meaning": "어려운" }, { "word": "resemble", "meaning": "닮다" }, { "word": "exciting", "meaning": "흥미로운" }, { "word": "later", "meaning": "나중에" }, { "word": "unique", "meaning": "독특한" }, { "word": "rather", "meaning": "다소" }, { "word": "site", "meaning": "장소" }, { "word": "stability", "meaning": "안정" }, { "word": "improve", "meaning": "향상되다" }, { "word": "allow", "meaning": "허락하다" }, { "word": "freedom", "meaning": "자유" }, { "word": "illustrate", "meaning": "설명하다" }, { "word": "tone", "meaning": "색조" }, { "word": "bloom", "meaning": "꽃이 피다" }, { "word": "leafy", "meaning": "잎이 무성한" }, { "word": "season", "meaning": "계절" }, { "word": "reflect", "meaning": "반영하다" }, { "word": "feeling", "meaning": "감정" }, { "word": "combination", "meaning": "결합" }, { "word": "historic", "meaning": "역사적인" }, { "word": "mood", "meaning": "분위기" }, { "word": "energetic", "meaning": "활기찬" }, { "word": "inspiration", "meaning": "영감" }, { "word": "pay attention", "meaning": "주의를 기울이다" }, { "word": "light", "meaning": "빛" }, { "word": "colorless", "meaning": "무색의" } ], "type2": [ { "word": "particular", "syn": "specific", "wrong": [ "similar", "common", "visible", "enthusiastic" ] }, { "word": "separate", "syn": "divide", "wrong": [ "combine", "reach", "transfer", "display" ] }, { "word": "arrive", "syn": "reach", "wrong": [ "depart", "focus", "exclude", "ignore" ] }, { "word": "inspire", "syn": "motivate", "wrong": [ "discourage", "destroy", "conceal", "doubt" ] }, { "word": "enthusiastically", "syn": "eagerly", "wrong": [ "reluctantly", "distantly", "generally", "oddly" ] }, { "word": "produce", "syn": "create", "wrong": [ "destroy", "receive", "lose", "ignore" ] }, { "word": "ancient", "syn": "old", "wrong": [ "modern", "simple", "uniform", "partial" ] }, { "word": "find", "syn": "discover", "wrong": [ "lose", "conceal", "ignore", "doubt" ] }, { "word": "visible", "syn": "noticeable", "wrong": [ "invisible", "dull", "boring", "uniform" ] }, { "word": "below", "syn": "under", "wrong": [ "above", "inside", "outside", "beside" ] }, { "word": "pay attention", "syn": "focus", "wrong": [ "ignore", "receive", "conceal", "depart" ] }, { "word": "cheer", "syn": "support", "wrong": [ "discourage", "destroy", "conceal", "exclude" ] }, { "word": "entire", "syn": "whole", "wrong": [ "partial", "simple", "uniform", "single" ] }, { "word": "powerful", "syn": "strong", "wrong": [ "weak", "dull", "boring", "simple" ] }, { "word": "unusual", "syn": "uncommon", "wrong": [ "usual", "common", "normal", "general" ] }, { "word": "believe", "syn": "think", "wrong": [ "doubt", "ignore", "exclude", "conceal" ] }, { "word": "contain", "syn": "include", "wrong": [ "exclude", "conceal", "destroy", "receive" ] }, { "word": "diverse", "syn": "varied", "wrong": [ "uniform", "simple", "dull", "common" ] }, { "word": "vibrant", "syn": "lively", "wrong": [ "dull", "boring", "weak", "invisible" ] }, { "word": "rich", "syn": "abundant", "wrong": [ "poor", "simple", "weak", "dull" ] }, { "word": "harmony", "syn": "balance", "wrong": [ "conflict", "difference", "contrast", "doubt" ] }, { "word": "single", "syn": "one", "wrong": [ "multiple", "several", "various", "diverse" ] }, { "word": "uncertain", "syn": "unsure", "wrong": [ "certain", "confident", "sure", "strong" ] }, { "word": "show", "syn": "display", "wrong": [ "conceal", "ignore", "receive", "destroy" ] }, { "word": "send", "syn": "transfer", "wrong": [ "receive", "ignore", "conceal", "destroy" ] }, { "word": "outdoor", "syn": "outside", "wrong": [ "indoor", "inside", "below", "under" ] }, { "word": "odd", "syn": "strange", "wrong": [ "normal", "common", "usual", "general" ] }, { "word": "contrast", "syn": "difference", "wrong": [ "similarity", "balance", "harmony", "unity" ] }, { "word": "complex", "syn": "complicated", "wrong": [ "simple", "easy", "ordinary", "dull" ] }, { "word": "difficult", "syn": "hard", "wrong": [ "easy", "simple", "ordinary", "light" ] }, { "word": "resemble", "syn": "look like", "wrong": [ "differ", "ignore", "exclude", "contrast" ] }, { "word": "exciting", "syn": "thrilling", "wrong": [ "boring", "dull", "ordinary", "weak" ] }, { "word": "later", "syn": "afterward", "wrong": [ "earlier", "before", "previously", "formerly" ] }, { "word": "unique", "syn": "special", "wrong": [ "common", "ordinary", "usual", "general" ] }, { "word": "rather", "syn": "quite", "wrong": [ "hardly", "rarely", "barely", "slightly" ] }, { "word": "site", "syn": "location", "wrong": [ "time", "reason", "season", "mood" ] }, { "word": "closely", "syn": "nearly", "wrong": [ "distantly", "rarely", "barely", "oddly" ] }, { "word": "landscape", "syn": "scenery", "wrong": [ "mood", "tone", "feeling", "contrast" ] }, { "word": "famous", "syn": "well-known", "wrong": [ "unknown", "invisible", "ordinary", "dull" ] } ], "type3": [ { "word": "closely", "ant": "distantly", "wrong": [ "eagerly", "nearly", "strongly", "quietly" ] }, { "word": "particular", "ant": "general", "wrong": [ "specific", "unusual", "unique", "special" ] }, { "word": "separate", "ant": "combine", "wrong": [ "divide", "locate", "transfer", "display" ] }, { "word": "arrive", "ant": "depart", "wrong": [ "reach", "focus", "include", "support" ] }, { "word": "inspire", "ant": "discourage", "wrong": [ "motivate", "support", "focus", "create" ] }, { "word": "enthusiastically", "ant": "reluctantly", "wrong": [ "eagerly", "strongly", "clearly", "quietly" ] }, { "word": "produce", "ant": "destroy", "wrong": [ "create", "include", "support", "display" ] }, { "word": "ancient", "ant": "modern", "wrong": [ "old", "historic", "past", "original" ] }, { "word": "find", "ant": "lose", "wrong": [ "discover", "locate", "reach", "include" ] }, { "word": "visible", "ant": "invisible", "wrong": [ "noticeable", "clear", "obvious", "apparent" ] }, { "word": "below", "ant": "above", "wrong": [ "under", "beneath", "lower", "inside" ] }, { "word": "pay attention", "ant": "ignore", "wrong": [ "focus", "support", "include", "motivate" ] }, { "word": "cheer", "ant": "discourage", "wrong": [ "support", "motivate", "inspire", "encourage" ] }, { "word": "entire", "ant": "partial", "wrong": [ "whole", "complete", "total", "full" ] }, { "word": "powerful", "ant": "weak", "wrong": [ "strong", "capable", "effective", "energetic" ] }, { "word": "unusual", "ant": "usual", "wrong": [ "uncommon", "unique", "special", "rare" ] }, { "word": "believe", "ant": "doubt", "wrong": [ "think", "trust", "accept", "support" ] }, { "word": "contain", "ant": "exclude", "wrong": [ "include", "hold", "keep", "support" ] }, { "word": "diverse", "ant": "uniform", "wrong": [ "varied", "different", "various", "multiple" ] }, { "word": "vibrant", "ant": "dull", "wrong": [ "lively", "energetic", "colorful", "bright" ] }, { "word": "rich", "ant": "poor", "wrong": [ "abundant", "plentiful", "wealthy", "full" ] }, { "word": "harmony", "ant": "conflict", "wrong": [ "balance", "unity", "peace", "agreement" ] }, { "word": "single", "ant": "multiple", "wrong": [ "one", "sole", "only", "individual" ] }, { "word": "uncertain", "ant": "certain", "wrong": [ "unsure", "unclear", "unstable", "unknown" ] }, { "word": "show", "ant": "conceal", "wrong": [ "display", "reveal", "present", "demonstrate" ] }, { "word": "send", "ant": "receive", "wrong": [ "transfer", "deliver", "dispatch", "forward" ] }, { "word": "outdoor", "ant": "indoor", "wrong": [ "outside", "exterior", "open", "outer" ] }, { "word": "odd", "ant": "normal", "wrong": [ "strange", "unusual", "peculiar", "weird" ] }, { "word": "contrast", "ant": "similarity", "wrong": [ "difference", "variation", "distinction", "gap" ] }, { "word": "complex", "ant": "simple", "wrong": [ "complicated", "difficult", "advanced", "elaborate" ] }, { "word": "difficult", "ant": "easy", "wrong": [ "hard", "challenging", "demanding", "tough" ] }, { "word": "resemble", "ant": "differ", "wrong": [ "look like", "match", "mirror", "reflect" ] }, { "word": "exciting", "ant": "boring", "wrong": [ "thrilling", "interesting", "engaging", "lively" ] }, { "word": "unique", "ant": "common", "wrong": [ "special", "rare", "unusual", "distinctive" ] }, { "word": "leafy", "ant": "bare", "wrong": [ "green", "lush", "full", "dense" ] }, { "word": "light", "ant": "darkness", "wrong": [ "bright", "shine", "glow", "beam" ] }, { "word": "colorful", "ant": "colorless", "wrong": [ "vibrant", "vivid", "bright", "rich" ] }, { "word": "future", "ant": "past", "wrong": [ "upcoming", "coming", "next", "forward" ] }, { "word": "freedom", "ant": "restriction", "wrong": [ "liberty", "independence", "release", "escape" ] } ], "type4": [ { "sentence": "The [ ___ ] of Roman historic sites and Vincent's story creates a unique mood.", "korean": "로마의 역사적인 장소들과 빈센트의 이야기의 결합은 독특한 분위기를 만들어낸다.", "answer": "combination", "distractors": [ "exhibition", "feeling", "stability", "contrast", "harmony" ] }, { "sentence": "Artists are [ ___ ] by the vibrant colors of the landscape.", "korean": "예술가들은 풍경의 생동감 있는 색채에 의해 영감을 받는다.", "answer": "inspired", "distractors": [ "confused", "surprised", "disappointed", "troubled", "distracted" ] }, { "sentence": "The museum contains a [ ___ ] collection of ancient paintings.", "korean": "그 박물관은 고대 그림들의 다양한 컬렉션을 포함하고 있다.", "answer": "diverse", "distractors": [ "single", "simple", "ordinary", "uniform", "powerful" ] }, { "sentence": "The [ ___ ] of colors in the painting reflects the artist's emotion.", "korean": "그림 속 색조는 예술가의 감정을 반영한다.", "answer": "tone", "distractors": [ "mood", "scene", "image", "style", "contrast" ] }, { "sentence": "The city is [ ___ ] for its unique architecture and historic sites.", "korean": "그 도시는 독특한 건축물과 역사적 유적지로 유명하다.", "answer": "famous", "distractors": [ "certain", "unusual", "visible", "ancient", "particular" ] }, { "sentence": "Spring brings [ ___ ] energy as flowers bloom throughout the countryside.", "korean": "봄은 꽃들이 시골 곳곳에 피어나면서 활기찬 에너지를 가져온다.", "answer": "vibrant", "distractors": [ "quiet", "dark", "heavy", "dull", "single" ] }, { "sentence": "The leafy park provides a sense of [ ___ ] for busy city residents.", "korean": "잎이 무성한 공원은 바쁜 도시 거주자들에게 자유로움을 제공한다.", "answer": "freedom", "distractors": [ "stability", "harmony", "creativity", "contrast", "feeling" ] }, { "sentence": "The artist's [ ___ ] was reflected in her richly detailed paintings.", "korean": "예술가의 창의성은 그녀의 풍부하게 세밀한 그림들에 반영되었다.", "answer": "creativity", "distractors": [ "feeling", "mood", "inspiration", "energy", "stability" ] }, { "sentence": "The [ ___ ] of the old building was improved to attract more visitors.", "korean": "오래된 건물의 안정성이 더 많은 방문객을 유치하기 위해 향상되었다.", "answer": "stability", "distractors": [ "combination", "harmony", "contrast", "tone", "mood" ] }, { "sentence": "The painting uses [ ___ ] colors to create a magical atmosphere.", "korean": "그 그림은 마법 같은 분위기를 만들기 위해 다채로운 색상을 사용한다.", "answer": "colorful", "distractors": [ "ancient", "single", "uncertain", "outdoor", "complex" ] }, { "sentence": "The [ ___ ] between the old and new parts of the city is quite striking.", "korean": "도시의 오래된 부분과 새로운 부분 사이의 대비는 꽤 인상적이다.", "answer": "contrast", "distractors": [ "harmony", "combination", "feeling", "mood", "tone" ] }, { "sentence": "She [ ___ ] enthusiastically to learn more about the ancient site.", "korean": "그녀는 고대 유적지에 대해 더 알고자 열정적으로 찾아다녔다.", "answer": "searched", "distractors": [ "arrived", "claimed", "believed", "improved", "produced" ] } ] }; const COUNT = {1:20, 2:20, 3:20, 4:10}; const activeTypes = new Set([1,2,3,4]); const NUMS = ['①','②','③','④','⑤']; let questions = []; let submitted = false; let wrongOnly = false; let wrongWords = []; function toggleType(t) { if (activeTypes.has(t)) { if (activeTypes.size === 1) return; activeTypes.delete(t); } else { activeTypes.add(t); } document.querySelector(`[data-t="${t}"]`).classList.toggle('on', activeTypes.has(t)); } function shuffle(arr) { const a = [...arr]; for (let i = a.length-1; i>0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; } function pick(arr, n) { return shuffle(arr).slice(0,n); } function makeChoices(correct, wrongs, n=5) { const pool = shuffle(wrongs).slice(0, n-1); const all = shuffle([correct, ...pool]); return { choices: all, ansIdx: all.indexOf(correct) }; } function buildType1(n) { const selected = pick(DATA.type1, n); const allM = DATA.type1.map(v=>v.meaning); return selected.map(item => { const wrongs = allM.filter(m=>m!==item.meaning); const {choices, ansIdx} = makeChoices(item.meaning, wrongs); return {type:1, word:item.word, choices, ansIdx, userAns:null}; }); } function buildType2(n) { const selected = pick(DATA.type2, n); return selected.map(item => { const {choices, ansIdx} = makeChoices(item.syn, item.wrong); return {type:2, word:item.word, choices, ansIdx, userAns:null}; }); } function buildType3(n) { const selected = pick(DATA.type3, n); return selected.map(item => { const {choices, ansIdx} = makeChoices(item.ant, item.wrong); return {type:3, word:item.word, choices, ansIdx, userAns:null}; }); } function buildType4(n) { const selected = pick(DATA.type4, n); return selected.map(item => { const dists = shuffle(item.distractors).slice(0,3); const box = shuffle([item.answer, ...dists]); return {type:4, sentence:item.sentence, korean:item.korean, box, answer:item.answer, userText:'', word: item.answer}; }); } function generate(pool) { submitted = false; wrongOnly = false; let all = []; if (pool) { all = pool; } else { if (activeTypes.has(1)) all = all.concat(buildType1(COUNT[1])); if (activeTypes.has(2)) all = all.concat(buildType2(COUNT[2])); if (activeTypes.has(3)) all = all.concat(buildType3(COUNT[3])); if (activeTypes.has(4)) all = all.concat(buildType4(COUNT[4])); all = shuffle(all); } questions = all; render(); resetScore(); window.scrollTo({top:0, behavior:'smooth'}); } function generateWrongOnly() { wrongOnly = true; const pool = wrongWords.map(w => { if (w.type === 4) { const orig = DATA.type4.find(s => s.answer === w.word); if (!orig) return null; const dists = shuffle(orig.distractors).slice(0,3); const box = shuffle([orig.answer, ...dists]); return {type:4, sentence:orig.sentence, korean:orig.korean, box, answer:orig.answer, userText:'', word:orig.answer}; } else if (w.type === 1) { const item = DATA.type1.find(v=>v.word===w.word); if (!item) return null; const allM = DATA.type1.map(v=>v.meaning); const wrongs = allM.filter(m=>m!==item.meaning); const {choices, ansIdx} = makeChoices(item.meaning, wrongs); return {type:1, word:item.word, choices, ansIdx, userAns:null}; } else if (w.type === 2) { const item = DATA.type2.find(v=>v.word===w.word); if (!item) return null; const {choices, ansIdx} = makeChoices(item.syn, item.wrong); return {type:2, word:item.word, choices, ansIdx, userAns:null}; } else if (w.type === 3) { const item = DATA.type3.find(v=>v.word===w.word); if (!item) return null; const {choices, ansIdx} = makeChoices(item.ant, item.wrong); return {type:3, word:item.word, choices, ansIdx, userAns:null}; } return null; }).filter(Boolean); if (pool.length === 0) { alert('오답이 없습니다!'); return; } wrongWords = []; generate(shuffle(pool)); } function render() { const container = document.getElementById('quiz-container'); const total = questions.length; document.getElementById('quiz-count').textContent = `${total}문제`; const map = document.getElementById('q-map'); map.innerHTML = questions.map((q,i) => `<div class="q-dot" id="dot-${i}" onclick="scrollToQ(${i})">${i+1}</div>` ).join(''); const html = questions.map((q,i) => renderQ(q,i)).join(''); container.innerHTML = html; document.getElementById('submit-row').style.display = 'flex'; document.getElementById('submit-btn').disabled = false; document.getElementById('wrong-only-btn').style.display = 'none'; questions.forEach((q,i) => { if (q.type === 4) { const inp = document.getElementById(`inp-${i}`); if (inp) { inp.addEventListener('input', () => { q.userText = inp.value.trim(); updateDot(i, 'answered'); }); inp.addEventListener('keydown', e => { if (e.key === 'Enter') { const next = document.getElementById(`inp-${i+1}`); if (next) next.focus(); } }); } } }); } function renderQ(q, i) { const typeNames = ['','뜻맞히기','동의어','반의어','빈칸쓰기']; const badgeClass = ['','b1','b2','b3','b4'][q.type]; const qLabels = [ '','다음 단어의 뜻으로 가장 적절한 것은?', '다음 단어의 동의어로 가장 적절한 것은?', '다음 단어의 반의어로 가장 적절한 것은?', '다음 문장에 빈칸에 들어갈 단어를 보기에서 골라 쓰시오.' ]; let body = ''; if (q.type <= 3) { const choicesHtml = q.choices.map((c,ci) => ` <button class="choice-btn" id="cb-${i}-${ci}" onclick="selectChoice(${i},${ci})" data-ci="${ci}"> <span class="c-num">${NUMS[ci]}</span>${c} </button>`).join(''); body = ` <div class="target-word">${q.word}</div> <div class="choices">${choicesHtml}</div> <div class="q-feedback" id="fb-${i}"></div>`; } else { body = ` <div class="type4-sentence">${q.sentence}</div> <div class="type4-korean">${q.korean}</div> <div class="box-wrap"> <div class="box-label">WORD BOX</div> <div class="word-box">${q.box.join(' &nbsp;/&nbsp; ')}</div> </div> <div class="type4-input-row"> <input class="type4-input" id="inp-${i}" type="text" placeholder="정답 입력..." autocomplete="off" spellcheck="false"> <span class="answer-reveal" id="ar-${i}"></span> </div> <div class="q-feedback" id="fb-${i}"></div>`; } return ` <div class="question" id="q-${i}"> <div class="q-meta"> <div class="q-num">${i+1}</div> <span class="q-badge ${badgeClass}">유형${q.type} ${typeNames[q.type]}</span> <span class="q-label">${qLabels[q.type]}</span> <span class="q-copyright">© Witheun by.은서쌤</span> </div> ${body} </div>`; } function selectChoice(qi, ci) { if (submitted) return; const q = questions[qi]; q.userAns = ci; for (let k=0; k<q.choices.length; k++) { const btn = document.getElementById(`cb-${qi}-${k}`); if (btn) btn.classList.toggle('selected', k === ci); } updateDot(qi, 'answered'); } function submitAll() { submitted = true; document.getElementById('submit-btn').disabled = true; wrongWords = []; let correct = 0, total = questions.length, answered = 0; questions.forEach((q,i) => { const fb = document.getElementById(`fb-${i}`); if (q.type <= 3) { const isAnswered = q.userAns !== null; answered += isAnswered ? 1 : 0; const isCorrect = q.userAns === q.ansIdx; q.choices.forEach((_,ci) => { const b = document.getElementById(`cb-${i}-${ci}`); if (!b) return; b.disabled = true; if (ci === q.ansIdx) b.classList.add('correct'); else if (ci === q.userAns && !isCorrect) b.classList.add('wrong'); }); if (isCorrect) { correct++; updateDot(i, 'ok'); if (fb) { fb.textContent = '✓ 정답!'; fb.className = 'q-feedback show ok'; } } else { updateDot(i, 'ng'); const correctText = q.choices[q.ansIdx]; if (fb) { fb.textContent = isAnswered ? `✗ 오답 — 정답: ${NUMS[q.ansIdx]} ${correctText}` : `✗ 미응답 — 정답: ${NUMS[q.ansIdx]} ${correctText}`; fb.className = 'q-feedback show ng'; } wrongWords.push({ type: q.type, word: q.word, mine: isAnswered ? q.choices[q.userAns] : '(미응답)', answer: correctText, typeLabel: ['','뜻맞히기','동의어','반의어'][q.type] }); } } else { const inp = document.getElementById(`inp-${i}`); const ar = document.getElementById(`ar-${i}`); if (inp) inp.disabled = true; const userT = (inp ? inp.value.trim() : '').toLowerCase(); const ansT = q.answer.toLowerCase(); const isCorrect = userT === ansT; answered += userT.length > 0 ? 1 : 0; if (isCorrect) { correct++; if (inp) inp.classList.add('correct-input'); updateDot(i, 'ok'); if (fb) { fb.textContent = '✓ 정답!'; fb.className = 'q-feedback show ok'; } } else { if (inp) inp.classList.add('wrong-input'); updateDot(i, 'ng'); if (ar) { ar.textContent = `→ ${q.answer}`; ar.classList.add('show'); } if (fb) { fb.textContent = userT.length > 0 ? `✗ 오답` : `✗ 미응답`; fb.className = 'q-feedback show ng'; } wrongWords.push({ type: 4, word: q.answer, mine: userT.length > 0 ? userT : '(미응답)', answer: q.answer, typeLabel: '빈칸쓰기' }); } } }); updateScore(correct, total); renderWrongList(); if (wrongWords.length > 0) { document.getElementById('wrong-only-btn').style.display = 'inline-flex'; } } function updateScore(correct, total) { const wrong = total - correct; const rate = total > 0 ? Math.round(correct/total*100) : 0; document.getElementById('sc-total').textContent = total; document.getElementById('sc-correct').textContent = correct; document.getElementById('sc-wrong').textContent = wrong; document.getElementById('sc-rate').textContent = rate + '%'; document.getElementById('prog-bar').style.width = rate + '%'; document.getElementById('prog-label').textContent = `${correct} / ${total} 정답`; } function resetScore() { ['sc-total','sc-correct','sc-wrong','sc-rate'].forEach(id => { document.getElementById(id).textContent = '—'; }); document.getElementById('prog-bar').style.width = '0%'; document.getElementById('prog-label').textContent = '채점 전'; document.getElementById('wrong-list').innerHTML = '<div class="empty-wrong">채점 후 오답이 표시됩니다.</div>'; } function renderWrongList() { const el = document.getElementById('wrong-list'); if (wrongWords.length === 0) { el.innerHTML = '<div class="empty-wrong">🎉 오답이 없습니다!</div>'; return; } el.innerHTML = wrongWords.map(w => ` <div class="wrong-item"> <div class="wi-type">유형${w.type} ${w.typeLabel}</div> <div class="wi-word">${w.word}</div> <div class="wi-detail"> 내 답: <span class="wi-mine">${w.mine}</span> &nbsp;→&nbsp; 정답: <span class="wi-ans">${w.answer}</span> </div> </div>`).join(''); } function updateDot(i, cls) { const dot = document.getElementById(`dot-${i}`); if (!dot) return; dot.className = 'q-dot ' + cls; } function scrollToQ(i) { const el = document.getElementById(`q-${i}`); if (el) el.scrollIntoView({behavior:'smooth', block:'center'}); } generate(); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Witheun. | Lesson 2 단어 시험 by 은서쌤</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f2f4f6; --card:#fff; --ink:#191f28; --ink2:#4e5968; --ink3:#8b95a1;
+  --line:#e5e8eb; --line2:#f2f4f6;
+  --blue:#3182f6; --blue-d:#1b64da; --blue-bg:#e8f3ff;
+  --green:#15c47e; --green-bg:#e8f8f1;
+  --red:#f04452; --red-bg:#feecee;
+  --amber:#ff9500; --amber-bg:#fff5e6;
+  --purple:#8b5cf6; --purple-bg:#f3eeff;
+  --r:20px; --r2:14px; --r3:10px;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);
+  font-size:16px;line-height:1.5;letter-spacing:-0.01em;
+  padding-bottom:96px}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+
+/* ══ TOP BAR ══ */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1160px;margin:0 auto;padding:0 20px;height:60px;
+  display:flex;align-items:center;gap:14px}
+.brand{font-size:20px;font-weight:800;letter-spacing:-0.04em;color:var(--ink);flex-shrink:0}
+.brand i{font-style:normal;color:var(--blue)}
+.brand-by{font-size:12px;font-weight:600;color:var(--ink3);margin-left:6px;letter-spacing:-0.02em}
+.tabs{display:flex;gap:2px;margin-left:10px}
+.tab{padding:8px 14px;border-radius:var(--r3);font-size:15px;font-weight:700;
+  color:var(--ink3);transition:.15s;letter-spacing:-0.02em}
+.tab:hover{color:var(--ink2);background:var(--line2)}
+.tab.on{color:var(--ink);background:var(--line2)}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.timer{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;
+  color:var(--ink2);padding:7px 12px;border-radius:var(--r3);background:var(--line2);
+  display:none;align-items:center;gap:6px}
+.timer.on{display:flex}
+.timer.warn{color:var(--red);background:var(--red-bg)}
+
+/* ══ BUTTONS ══ */
+.btn{padding:10px 16px;border-radius:var(--r3);font-size:15px;font-weight:700;
+  letter-spacing:-0.02em;transition:.15s;white-space:nowrap;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px}
+.btn.pri{background:var(--blue);color:#fff}
+.btn.pri:hover{background:var(--blue-d)}
+.btn.sec{background:var(--line2);color:var(--ink2)}
+.btn.sec:hover{background:var(--line)}
+.btn.gho{background:transparent;color:var(--ink3);border:1px solid var(--line)}
+.btn.gho:hover{color:var(--ink2);border-color:var(--ink3)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.lg{padding:16px 24px;font-size:17px;border-radius:var(--r2);flex:1}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:8px}
+
+/* ══ LAYOUT ══ */
+.wrap{max-width:1160px;margin:0 auto;padding:24px 20px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
+.side{position:sticky;top:84px;display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.card+.card{margin-top:16px}
+.card-t{font-size:17px;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card-t small{font-size:13px;font-weight:600;color:var(--ink3)}
+
+/* ══ PAGE HEAD ══ */
+.phead{margin-bottom:20px}
+.phead h1{font-size:28px;font-weight:800;letter-spacing:-0.04em;line-height:1.3}
+.phead p{font-size:15px;color:var(--ink3);margin-top:6px;font-weight:500}
+
+/* ══ SETUP ══ */
+.setup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.cnt{background:var(--line2);border-radius:var(--r2);padding:14px 12px;text-align:center}
+.cnt-l{font-size:12px;font-weight:700;color:var(--ink3);margin-bottom:8px;letter-spacing:-0.02em}
+.cnt-r{display:flex;align-items:center;justify-content:center;gap:6px}
+.cnt-b{width:26px;height:26px;border-radius:8px;background:#fff;color:var(--ink2);
+  font-size:16px;font-weight:800;line-height:1;display:flex;align-items:center;justify-content:center}
+.cnt-b:hover{background:var(--blue);color:#fff}
+.cnt-v{width:34px;text-align:center;font-size:18px;font-weight:800;
+  font-variant-numeric:tabular-nums;border:none;background:transparent;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{padding:9px 14px;border-radius:999px;font-size:14px;font-weight:700;
+  background:var(--line2);color:var(--ink3);transition:.15s;letter-spacing:-0.02em;
+  display:inline-flex;align-items:center;gap:6px}
+.chip.on{background:var(--blue-bg);color:var(--blue-d)}
+.chip input{display:none}
+.tlimit{width:52px;border:1px solid var(--line);border-radius:8px;padding:4px 6px;
+  text-align:center;font-weight:700;font-size:14px}
+
+/* ══ 빠른 시작 ══ */
+.qbig{width:100%;background:var(--blue);color:#fff;border-radius:var(--r2);
+  padding:18px 20px;text-align:left;transition:.15s;margin-bottom:10px}
+.qbig:hover{background:var(--blue-d)}
+.qbig b{display:block;font-size:18px;font-weight:800;letter-spacing:-0.03em}
+.qbig span{display:block;font-size:13px;font-weight:600;opacity:.85;margin-top:3px}
+.qrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.qbtn{background:var(--line2);border-radius:var(--r2);padding:14px 16px;text-align:left;transition:.15s}
+.qbtn:hover{background:var(--blue-bg)}
+.qbtn b{display:block;font-size:16px;font-weight:800;letter-spacing:-0.03em;color:var(--ink)}
+.qbtn span{display:block;font-size:12.5px;font-weight:600;color:var(--ink3);margin-top:2px}
+.qrow4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.qmini{background:var(--line2);border-radius:var(--r3);padding:12px 6px;font-size:13.5px;
+  font-weight:700;color:var(--ink2);transition:.15s;letter-spacing:-0.02em;line-height:1.35}
+.qmini:hover{background:var(--blue-bg);color:var(--blue-d)}
+.qmini i{display:block;font-style:normal;font-size:11px;font-weight:800;color:var(--ink3);margin-top:2px}
+.more-row{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:16px;
+  border-top:1px solid var(--line2);flex-wrap:wrap}
+.more-t{font-size:14px;font-weight:700;color:var(--ink3);padding:6px 0}
+.more-t i{font-style:normal;display:inline-block;transition:.2s}
+.more-t.open i{transform:rotate(180deg)}
+.more-t:hover{color:var(--ink2)}
+.more-print{margin-left:auto;display:flex;gap:6px}
+#more{padding-top:16px}
+
+/* ══ PROGRESS ══ */
+.prog-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.prog-n{font-size:26px;font-weight:800;letter-spacing:-0.04em;font-variant-numeric:tabular-nums}
+.prog-n small{font-size:15px;color:var(--ink3);font-weight:700}
+.prog-p{font-size:14px;font-weight:700;color:var(--ink3)}
+.bar{height:8px;border-radius:999px;background:var(--line2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:999px;
+  transition:width .4s cubic-bezier(.4,0,.2,1);width:0}
+.bar.done i{background:var(--green)}
+
+/* ══ QUESTION ══ */
+.q{background:var(--card);border-radius:var(--r);padding:24px;margin-bottom:14px;
+  box-shadow:var(--shadow);scroll-margin-top:80px}
+.q-top{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.q-n{width:26px;height:26px;border-radius:8px;background:var(--ink);color:#fff;
+  font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-variant-numeric:tabular-nums}
+.tag{font-size:12px;font-weight:800;padding:4px 9px;border-radius:7px;letter-spacing:-0.02em}
+.tag.t1{background:var(--blue-bg);color:var(--blue-d)}
+.tag.t2{background:var(--green-bg);color:#0a9e63}
+.tag.t3{background:var(--amber-bg);color:#c26a00}
+.tag.t4{background:var(--purple-bg);color:#6d3ee0}
+.q-ask{font-size:13px;font-weight:600;color:var(--ink3);letter-spacing:-0.02em}
+.q-word{font-size:34px;font-weight:800;letter-spacing:-0.04em;line-height:1.25;
+  margin:4px 0 6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.q-word .spk{width:32px;height:32px;border-radius:50%;background:var(--line2);
+  display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.q-word .spk:hover{background:var(--blue-bg)}
+.q-hint{font-size:14px;color:var(--ink3);font-weight:600;margin-bottom:16px}
+.choices{display:flex;flex-direction:column;gap:8px}
+.ch{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  padding:15px 16px;border-radius:var(--r2);background:var(--line2);
+  font-size:16px;font-weight:600;color:var(--ink);transition:.12s;letter-spacing:-0.02em}
+.ch:hover:not(:disabled){background:#e8ebed}
+.ch-n{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink3);
+  color:var(--ink3);font-size:12px;font-weight:800;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;transition:.12s}
+.ch.sel{background:var(--blue-bg);color:var(--blue-d)}
+.ch.sel .ch-n{background:var(--blue);border-color:var(--blue);color:#fff}
+.ch.ok{background:var(--green-bg);color:#0a9e63}
+.ch.ok .ch-n{background:var(--green);border-color:var(--green);color:#fff}
+.ch.ng{background:var(--red-bg);color:var(--red)}
+.ch.ng .ch-n{background:var(--red);border-color:var(--red);color:#fff}
+.ch:disabled{cursor:default}
+
+/* ══ TYPE 4 ══ */
+.t4-sent{font-size:19px;font-weight:600;line-height:1.7;letter-spacing:-0.02em;margin-bottom:10px}
+.blank{display:inline-block;min-width:104px;height:1.2em;border-bottom:2.5px solid var(--purple);
+  text-align:center;color:var(--purple);font-weight:800;vertical-align:-0.22em;margin:0 2px}
+.t4-ko{font-size:14px;color:var(--ink3);line-height:1.65;margin-bottom:16px;font-weight:500}
+.wbox{background:var(--purple-bg);border-radius:var(--r2);padding:13px 16px;margin-bottom:14px}
+.wbox-l{font-size:11px;font-weight:800;color:#6d3ee0;letter-spacing:.06em;margin-bottom:7px}
+.wbox-w{display:flex;flex-wrap:wrap;gap:8px}
+.wbox-w span{background:#fff;border-radius:8px;padding:6px 12px;font-size:15px;
+  font-weight:700;color:var(--ink)}
+.t4-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.t4-in{flex:1;min-width:180px;padding:14px 16px;border:2px solid var(--line);
+  border-radius:var(--r2);font-size:17px;font-weight:700;letter-spacing:-0.01em;
+  background:#fff;transition:.15s}
+.t4-in:focus{outline:none;border-color:var(--blue);background:#fff}
+.t4-in.ok{border-color:var(--green);background:var(--green-bg);color:#0a9e63}
+.t4-in.ng{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+.t4-in:disabled{opacity:1}
+.src-link{font-size:13px;font-weight:700;color:var(--blue);padding:8px 10px;border-radius:8px}
+.src-link:hover{background:var(--blue-bg)}
+
+/* ══ FEEDBACK ══ */
+.fb{display:none;margin-top:13px;padding:12px 15px;border-radius:var(--r2);
+  font-size:14.5px;font-weight:700;letter-spacing:-0.02em;line-height:1.55}
+.fb.show{display:block}
+.fb.ok{background:var(--green-bg);color:#0a9e63}
+.fb.ng{background:var(--red-bg);color:var(--red)}
+.fb b{font-weight:800}
+
+/* ══ SUBMIT ══ */
+.submit-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+
+/* ══ RESULT ══ */
+.res{background:linear-gradient(135deg,#3182f6,#1b64da);color:#fff}
+.res .card-t{color:#fff}
+.res-big{font-size:52px;font-weight:800;letter-spacing:-0.05em;line-height:1;
+  font-variant-numeric:tabular-nums}
+.res-big small{font-size:20px;opacity:.7;font-weight:700}
+.res-sub{font-size:15px;font-weight:600;opacity:.85;margin-top:8px}
+.res-by{display:flex;flex-direction:column;gap:9px;margin-top:20px;
+  padding-top:18px;border-top:1px solid rgba(255,255,255,.22)}
+.res-row{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+.res-row span:first-child{width:74px;opacity:.85;flex-shrink:0}
+.res-bar{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.25);overflow:hidden}
+.res-bar i{display:block;height:100%;background:#fff;border-radius:999px;transition:width .5s}
+.res-row span:last-child{width:52px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* ══ SIDEBAR ══ */
+.score-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sc{background:var(--line2);border-radius:var(--r2);padding:14px;text-align:center}
+.sc-n{font-size:24px;font-weight:800;letter-spacing:-0.04em;font-variant-numeric:tabular-nums;
+  display:block;line-height:1.2}
+.sc-l{font-size:12px;font-weight:700;color:var(--ink3);margin-top:2px;display:block}
+.sc.ok{background:var(--green-bg)} .sc.ok .sc-n{color:#0a9e63}
+.sc.ng{background:var(--red-bg)} .sc.ng .sc-n{color:var(--red)}
+.sc.rate{background:var(--blue-bg)} .sc.rate .sc-n{color:var(--blue-d)}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(30px,1fr));gap:5px}
+.dot{aspect-ratio:1;border-radius:8px;background:var(--line2);color:var(--ink3);
+  font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  transition:.12s;font-variant-numeric:tabular-nums}
+.dot:hover{transform:scale(1.1)}
+.dot.did{background:var(--blue-bg);color:var(--blue-d)}
+.dot.ok{background:var(--green);color:#fff}
+.dot.ng{background:var(--red);color:#fff}
+.wlist{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto}
+.wi{background:var(--line2);border-radius:var(--r2);padding:12px 14px}
+.wi-t{font-size:11px;font-weight:800;color:var(--ink3);margin-bottom:3px}
+.wi-w{font-size:16px;font-weight:800;letter-spacing:-0.03em;margin-bottom:5px;
+  display:flex;align-items:center;gap:6px}
+.wi-w .spk{width:22px;height:22px;border-radius:50%;background:#fff;font-size:11px;
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.wi-d{font-size:13px;color:var(--ink2);font-weight:600;line-height:1.5}
+.wi-d .mine{color:var(--red);text-decoration:line-through}
+.wi-d .ans{color:var(--green);font-weight:800}
+.empty{font-size:14px;color:var(--ink3);text-align:center;padding:26px 12px;font-weight:600}
+
+/* ══ 본문 TAB ══ */
+.psg h2{font-size:26px;font-weight:800;letter-spacing:-0.04em;margin-bottom:4px}
+.psg .psg-ko{font-size:15px;color:var(--ink3);font-weight:600;margin-bottom:22px}
+.para{margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line2)}
+.para:last-child{border:none;margin-bottom:0;padding-bottom:0}
+.sent{display:inline;font-size:17px;line-height:1.85;letter-spacing:-0.01em;
+  border-radius:4px;transition:background .3s;scroll-margin-top:100px}
+.sent.hl{background:#fff3bf;box-shadow:0 0 0 4px #fff3bf}
+.sent-ko{display:block;font-size:14px;color:var(--ink3);line-height:1.7;
+  margin-top:10px;font-weight:500;padding-left:12px;border-left:3px solid var(--line)}
+body.hide-ko .sent-ko{display:none}
+.psg-mark{background:var(--purple-bg);color:#6d3ee0;font-weight:800;
+  padding:1px 4px;border-radius:4px}
+
+/* ══ 하단 고정 바 ══ */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:12px 20px;
+  display:none}
+.dock.on{display:block}
+body[data-tab="psg"] .dock{display:none}
+.dock-in{max-width:1160px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.dock-txt{font-size:14px;font-weight:700;color:var(--ink2);flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.foot{text-align:center;padding:32px 20px;font-size:13px;color:var(--ink3);font-weight:600}
+.foot b{color:var(--ink2);font-weight:800}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(12px);
+  background:var(--ink);color:#fff;padding:13px 20px;border-radius:999px;font-size:14px;
+  font-weight:700;z-index:300;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ══ 모바일 ══ */
+@media(max-width:960px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static}
+}
+@media(max-width:640px){
+  body{font-size:15px;padding-bottom:88px}
+  .topbar-in{padding:0 14px;height:56px;gap:8px}
+  .brand{font-size:17px} .brand-by{display:none}
+  .tabs{margin-left:4px} .tab{padding:7px 10px;font-size:14px}
+  .wrap{padding:16px 14px}
+  .card,.q{padding:18px 16px;border-radius:16px}
+  .phead h1{font-size:23px}
+  .setup-grid{grid-template-columns:repeat(2,1fr)}
+  .qbig{padding:16px 18px} .qbig b{font-size:17px}
+  .qrow4{grid-template-columns:repeat(2,1fr)}
+  .qmini{padding:13px 8px;font-size:14px}
+  .more-print{margin-left:0;width:100%}
+  .more-print .btn{flex:1}
+  .dock-txt{font-size:13px}
+  .q-word{font-size:27px}
+  .t4-sent{font-size:17px}
+  .blank{min-width:76px}
+  .t4-row{flex-direction:column;align-items:stretch}
+  .t4-in{min-width:0;width:100%}
+  .src-link{align-self:flex-start;padding:6px 0}
+  .sent{font-size:16px}
+  .res-big{font-size:44px}
+  .btn.lg{padding:15px 18px;font-size:16px}
+  .map{grid-template-columns:repeat(auto-fill,minmax(28px,1fr))}
+}
+
+/* ══ 인쇄 ══ */
+@media print{
+  @page{size:A4;margin:12mm 10mm}
+  body{background:#fff;padding:0;font-size:11pt}
+  .topbar,.side,.dock,.noprint,.submit-row,.toast,.setup-card{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .layout{display:block}
+  .card,.q{box-shadow:none;border:1px solid #ddd;border-radius:8px;padding:10px 12px;
+    margin-bottom:8px;break-inside:avoid;page-break-inside:avoid}
+  .q-word{font-size:19pt;margin:2px 0 4px}
+  .q-word .spk{display:none}
+  .ch{padding:6px 10px;font-size:10.5pt;background:#fff;border:1px solid #e5e8eb}
+  .choices{gap:4px}
+  .t4-in{border:none;border-bottom:1.5px solid #999;border-radius:0;padding:6px 2px;
+    background:#fff!important;color:#000!important}
+  .wbox{background:#f7f7f8;padding:8px 10px}
+  .t4-ko{font-size:9.5pt}
+  .fb{display:none!important}
+  .print-head{display:block!important}
+  /* 학생용: 정답 흔적 모두 제거 */
+  body[data-print="student"] .ch.ok,body[data-print="student"] .ch.ng,
+  body[data-print="student"] .ch.sel{background:#fff!important;color:#191f28!important}
+  body[data-print="student"] .ch.ok .ch-n,body[data-print="student"] .ch.ng .ch-n,
+  body[data-print="student"] .ch.sel .ch-n{background:#fff!important;color:#8b95a1!important;
+    border-color:#8b95a1!important}
+  body[data-print="student"] .t4-in{color:#fff!important}
+  body[data-print="student"] .ans-key{display:none!important}
+  /* 교사용: 정답 표시 */
+  body[data-print="teacher"] .ans-key{display:inline-block!important}
+}
+.print-head{display:none;border-bottom:2px solid #191f28;padding-bottom:8px;margin-bottom:12px}
+.print-head .ph-t{font-size:15pt;font-weight:800;letter-spacing:-0.03em}
+.print-head .ph-m{font-size:10pt;color:#4e5968;margin-top:4px;display:flex;
+  justify-content:space-between;font-weight:600}
+.ans-key{display:none;background:#191f28;color:#fff;font-size:9pt;font-weight:800;
+  padding:1px 6px;border-radius:4px;margin-left:6px}
+</style>
+</head>
+<body>
+
+<header class="topbar noprint">
+  <div class="topbar-in">
+    <div class="brand">Witheun<i>.</i><span class="brand-by">by 은서쌤</span></div>
+    <nav class="tabs">
+      <button class="tab on" id="tab-quiz" onclick="showTab('quiz')">시험</button>
+      <button class="tab" id="tab-psg" onclick="showTab('psg')">본문</button>
+    </nav>
+    <div class="topbar-right">
+      <div class="timer" id="timer">⏱ <span id="timer-v">00:00</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══════════ 시험 탭 ══════════ -->
+<section id="view-quiz">
+  <div class="print-head">
+    <div class="ph-t">2학기 Lesson 2 단어 시험 · 송우고등학교</div>
+    <div class="ph-m"><span>학번 __________ 이름 __________</span><span id="ph-date"></span></div>
+  </div>
+
+  <div class="phead noprint">
+    <h1>Lesson 2 단어 시험</h1>
+    <p>2학기 · YBM(김은형) 공통영어2 · K-Delivery, Speedy and Reliable</p>
+  </div>
+
+  <div class="layout">
+    <div>
+      <!-- 설정 -->
+      <div class="card setup-card noprint" id="setup">
+        <div class="card-t">
+          시험지 만들기
+          <small id="setup-sum"></small>
+        </div>
+
+        <button class="qbig" onclick="quickStart('full')">
+          <b>전체 시험지 · 80문항</b>
+          <span>단어 뜻 20 · 유의어 20 · 반의어 20 · 본문 빈칸 20</span>
+        </button>
+
+        <div class="qrow">
+          <button class="qbtn" onclick="quickStart('fast')"><b>빠른 12문항</b><span>유형별 3개씩</span></button>
+          <button class="qbtn" onclick="quickStart('weak')"><b>약점 집중</b><span>틀렸던 단어 20개</span></button>
+        </div>
+        <div class="qrow4">
+          <button class="qmini" onclick="quickStart(1)">단어 뜻<i>20</i></button>
+          <button class="qmini" onclick="quickStart(2)">유의어<i>20</i></button>
+          <button class="qmini" onclick="quickStart(3)">반의어<i>20</i></button>
+          <button class="qmini" onclick="quickStart(4)">본문 빈칸<i>20</i></button>
+        </div>
+
+        <div class="more-row">
+          <button class="more-t" id="more-t" onclick="toggleMore()">직접 설정 <i>▾</i></button>
+          <div class="more-print">
+            <button class="btn gho sm" onclick="doPrint('student')">학생용 인쇄</button>
+            <button class="btn gho sm" onclick="doPrint('teacher')">교사용 인쇄</button>
+          </div>
+        </div>
+
+        <div id="more" style="display:none">
+        <div class="setup-grid">
+          <div class="cnt">
+            <div class="cnt-l">단어 뜻</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(1,-1)">−</button>
+            <input class="cnt-v" id="n1" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(1,1)">+</button></div>
+          </div>
+          <div class="cnt">
+            <div class="cnt-l">유의어</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(2,-1)">−</button>
+            <input class="cnt-v" id="n2" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(2,1)">+</button></div>
+          </div>
+          <div class="cnt">
+            <div class="cnt-l">반의어</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(3,-1)">−</button>
+            <input class="cnt-v" id="n3" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(3,1)">+</button></div>
+          </div>
+          <div class="cnt">
+            <div class="cnt-l">본문 빈칸</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(4,-1)">−</button>
+            <input class="cnt-v" id="n4" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(4,1)">+</button></div>
+          </div>
+        </div>
+        <div class="opts">
+          <label class="chip on" id="chip-weak"><input type="checkbox" id="opt-weak" checked onchange="toggleChip(this)">🎯 틀렸던 단어 먼저</label>
+          <label class="chip" id="chip-timer"><input type="checkbox" id="opt-timer" onchange="toggleChip(this)">⏱ 제한시간
+            <input class="tlimit" id="opt-min" type="text" inputmode="numeric" value="15" onclick="event.stopPropagation()">분</label>
+          <label class="chip on" id="chip-shuffle"><input type="checkbox" id="opt-shuffle" checked onchange="toggleChip(this)">🔀 유형 섞기</label>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn pri lg" onclick="generate()">이 설정으로 만들기</button>
+        </div>
+        </div>
+      </div>
+
+      <!-- 진행 -->
+      <div class="card noprint" id="progcard" style="display:none">
+        <div class="prog-top">
+          <div class="prog-n"><span id="pg-done">0</span><small> / <span id="pg-tot">0</span>문항</small></div>
+          <div class="prog-p" id="pg-label">풀이 중</div>
+        </div>
+        <div class="bar" id="pg-bar"><i></i></div>
+      </div>
+
+      <!-- 결과 -->
+      <div class="card res noprint" id="rescard" style="display:none">
+        <div class="card-t">채점 결과</div>
+        <div class="res-big"><span id="rs-c">0</span><small> / <span id="rs-t">0</span></small></div>
+        <div class="res-sub" id="rs-msg"></div>
+        <div class="res-by" id="rs-by"></div>
+        <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
+          <button class="btn sm" style="background:#fff;color:#1b64da" onclick="copyResult()">결과 복사</button>
+          <button class="btn sm" style="background:rgba(255,255,255,.2);color:#fff" id="again-btn" onclick="retryWrong()">틀린 것만 다시</button>
+          <button class="btn sm" style="background:rgba(255,255,255,.2);color:#fff" onclick="generate()">새 시험지</button>
+        </div>
+      </div>
+
+      <div id="qbox"></div>
+
+      <div class="submit-row noprint" id="submit-row" style="display:none">
+        <button class="btn pri lg" id="submit-btn" onclick="grade()">채점하기</button>
+        <button class="btn sec lg" style="flex:0 0 auto" onclick="generate()">새 시험지</button>
+      </div>
+    </div>
+
+    <!-- 사이드 -->
+    <aside class="side noprint">
+      <div class="card">
+        <div class="card-t">점수</div>
+        <div class="score-g">
+          <div class="sc rate"><span class="sc-n" id="sc-rate">—</span><span class="sc-l">정답률</span></div>
+          <div class="sc"><span class="sc-n" id="sc-tot">—</span><span class="sc-l">전체</span></div>
+          <div class="sc ok"><span class="sc-n" id="sc-ok">—</span><span class="sc-l">정답</span></div>
+          <div class="sc ng"><span class="sc-n" id="sc-ng">—</span><span class="sc-l">오답</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-t">문항 현황</div>
+        <div class="map" id="map"></div>
+      </div>
+      <div class="card">
+        <div class="card-t">오답 노트 <small id="wn-cnt"></small></div>
+        <div class="wlist" id="wlist"><div class="empty">채점하면 여기에 모입니다</div></div>
+      </div>
+      <div class="card">
+        <div class="card-t">누적 약점 <small>이 기기에 저장</small></div>
+        <div class="wlist" id="weaklist"><div class="empty">아직 기록이 없습니다</div></div>
+        <button class="btn gho sm" style="width:100%;margin-top:12px" onclick="clearStats()">기록 지우기</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ══════════ 본문 탭 ══════════ -->
+<section id="view-psg" style="display:none">
+  <div class="phead">
+    <h1 id="psg-t"></h1>
+    <p id="psg-tko"></p>
+  </div>
+  <div class="opts noprint" style="margin-bottom:16px">
+    <label class="chip on" id="chip-ko"><input type="checkbox" id="opt-ko" checked onchange="toggleChip(this);toggleKo()">해석 보기</label>
+    <label class="chip" id="chip-mark"><input type="checkbox" id="opt-mark" onchange="toggleChip(this);renderPassage()">시험 출제 단어 표시</label>
+  </div>
+  <div class="card psg" id="psg"></div>
+</section>
+
+</div>
+
+<div class="foot noprint">
+  <b>Witheun.</b> Lesson 2 단어 시험 · by 은서쌤<br>
+  © 2026 Witheun · 무단 복제 및 배포를 금합니다
+</div>
+
+<div class="dock noprint" id="dock">
+  <div class="dock-in">
+    <div class="dock-txt" id="dock-txt"></div>
+    <button class="btn sec" onclick="scrollTop()">↑ 설정</button>
+    <button class="btn pri" id="dock-btn" onclick="grade()">채점하기</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const D = {"lesson":{"id":"lesson2","title":"Lesson 2 단어 시험","sub":"2학기 · YBM(김은형) 공통영어2 · K-Delivery","school":"송우고등학교"},"words":[{"w":"more and more","m":"점점 더 많은","p":"phr","s":[62,55,52,103,92,6,3,39,65,8,69,70,80,106,116,97,14,74,115,117]},{"w":"specific","m":"구체적인, 특정한","p":"adj","s":[47,127,48,9,24,86,61,110,121,128,12,22,35,41,58,59,63,93,102,16]},{"w":"foot-powered","m":"발로 작동하는","p":"adj","s":[9,22,48,86,24,41,47,93,127,12,16,21,30,35,54,58,102,110,128,1]},{"w":"by leaps and bounds","m":"비약적으로, 급격하게","p":"phr","s":[39,62,0,6,52,55,80,89,97,69,103,106,8,14,65,70,74,92,116,109]},{"w":"advancement","m":"발전, 승진","p":"n","s":[85,13,87,43,71,28,5,49,66,95,104,10,11,26,32,125,17,27,31,45]},{"w":"technology","m":"과학 기술","p":"n","s":[26,100,108,11,72,13,17,27,32,49,68,87,95,113,122,125,4,71,81,10]},{"w":"be likely to","m":"~할 것 같다, ~할 개연성이 있다","p":"phr","s":[103,62,39,69,0,52,8,55,70,74,89,65,3,97,80,106,14,92,109,115]},{"w":"further","m":"더 멀리에, 더 나아가","p":"adv","s":[29,129,34,38,107,57,128,64,114,17,115,117,33,92,31,50,56,63,75,98]},{"w":"due to","m":"~때문에","p":"phr","s":[74,14,106,80,89,115,116,117,6,109,52,65,0,103,55,62,3,97,92,39]},{"w":"autonomous","m":"자율적인, 자주적인","p":"adj","s":[48,47,1,12,22,102,2,59,86,128,24,41,61,121,58,63,30,35,75,93]},{"w":"logistics","m":"실행 계획, 물류 관리","p":"n","s":[53,101,66,11,84,17,27,37,73,95,113,43,125,26,13,15,32,87,90,94]},{"w":"possibility","m":"가능성, 기회","p":"n","s":[26,125,104,10,5,13,95,71,32,43,66,28,4,49,72,85,37,84,15,19]},{"w":"advanced","m":"선진의, 상급의, 후기의","p":"adj","s":[110,128,9,22,41,47,58,59,61,93,102,121,127,24,48,86,1,35,63,21]},{"w":"equipment","m":"장비, 설비","p":"n","s":[72,87,4,49,15,95,108,11,26,10,17,27,31,37,53,68,73,94,101,111]},{"w":"such as","m":"~와 같은","p":"phr","s":[80,8,74,89,106,109,70,92,115,116,117,55,69,65,3,0,52,97,39,62]},{"w":"vehicle","m":"탈것","p":"n","s":[98,100,95,46,56,91,123,108,13,25,45,53,64,81,82,83,90,111,124,68]},{"w":"fair","m":"공평한, 타당한, 상당한","p":"adj","s":[21,30,54,61,93,63,75,96,127,121,22,2,35,110,1,12,102,128,24,41]},{"w":"function","m":"기능; 작동하다","p":"n","s":[27,43,66,37,94,56,64,90,91,111,10,125,19,25,42,53,87,123,13,5]},{"w":"maintain","m":"유지하다, 지속하다","p":"v","s":[105,20,99,40,36,118,77,33,112,67,88,60,114,120,50,78,17,53,109,24]},{"w":"trust","m":"신뢰; 신뢰하다","p":"n","s":[94,79,42,98,25,91,31,53,90,111,17,113,15,37,45,46,51,56,64,76]},{"w":"prioritize","m":"우선시하다","p":"v","s":[99,18,36,88,114,118,105,40,44,50,60,67,112,33,78,120,17,71,10,22]},{"w":"rapid","m":"빠른","p":"adj","s":[16,54,110,121,30,35,58,61,63,75,93,96,128,12,22,41,47,2,1,59]},{"w":"affordable","m":"감당할 수 있는, 알맞은","p":"adj","s":[41,47,59,102,9,12,86,2,48,128,1,24,54,96,16,21,30,63,75,93]},{"w":"transportation","m":"교통 수단, 운송","p":"n","s":[71,85,43,104,27,66,28,84,17,19,91,10,25,37,42,45,53,76,79,98]},{"w":"persistent","m":"끈질긴, 오래 지속되는","p":"adj","s":[128,1,47,48,59,12,41,2,9,22,86,102,110,30,35,54,58,61,75,121]},{"w":"effort","m":"노력","p":"n","s":[76,83,124,90,108,19,42,82,91,15,31,81,111,17,27,73,87,113,122,37]},{"w":"reliability","m":"신뢰도","p":"n","s":[11,5,95,125,10,13,66,71,28,104,32,43,49,72,85,108,4,15,37,76]},{"w":"adoption","m":"입양, 채택","p":"n","s":[43,17,66,37,42,87,91,94,10,125,25,53,73,90,101,111,113,123,13,32]},{"w":"driving force","m":"원동력","p":"n","s":[84,4,26,71,72,11,85,104,23,45,95,98,101,25,49,64,82,108,113,123]},{"w":"forward","m":"앞쪽으로","p":"adv","s":[7,107,129,34,38,57,92,114,122,128,21,75,82,91,93,96,105,74,39,19]},{"w":"late","m":"늦은; 늦게","p":"adj","s":[54,16,21,96,58,61,63,93,127,110,59,75,12,128,22,24,41,47,2,35]},{"w":"caterer","m":"음식 공급자, 출장 연회 업체","p":"n","s":[111,45,46,64,76,83,90,94,124,73,108,32,19,25,53,56,81,82,91,98]},{"w":"cloth bag","m":"보자기","p":"n","s":[31,81,90,111,10,15,27,53,68,73,87,101,122,5,43,49,11,26,72,4]},{"w":"return","m":"돌아가다, 돌려주다; 돌아감","p":"v","s":[60,18,44,114,120,105,112,118,99,40,50,67,78,88,36,20,77,90,111,7]},{"w":"rapidly","m":"빨리","p":"adv","s":[38,107,129,57,7,29,95,15,45,56,67,82,121,123,100,108,31,33,40,46]},{"w":"express","m":"신속한","p":"adj","s":[58,21,75,93,121,59,128,1,12,61,63,96,102,110,54,24,41,48,2,16]},{"w":"introduce","m":"내놓다, 소개하다","p":"v","s":[77,20,99,105,18,118,112,114,40,60,44,33,50,67,78,120,17,94,100,101]},{"w":"million","m":"100만","p":"n","s":[17,27,53,76,91,10,46,82,98,111,123,87,101,108,13,95,66,15,19,25]},{"w":"daily","m":"매일, 나날이; 매일의","p":"adv","s":[34,107,57,7,29,129,16,50,82,40,67,15,112,118,121,21,30,45,46,54]},{"w":"on average","m":"평균적으로, 대체로","p":"phr","s":[89,92,62,3,115,116,117,6,69,70,80,106,74,0,55,65,97,103,8,14]},{"w":"enable","m":"~할 수 있게 하다","p":"v","s":[118,105,112,18,44,114,77,60,88,50,67,120,36,99,20,33,78,22,46,15]},{"w":"remarkable","m":"주목할 만한, 놀랄 만한","p":"adj","s":[47,22,59,12,102,24,48,86,128,2,1,9,63,21,30,35,75,96,121,16]},{"w":"growth","m":"성장, 증대","p":"n","s":[19,27,25,45,79,98,124,81,17,113,15,31,37,46,51,53,56,64,68,76]},{"w":"automation","m":"자동화","p":"n","s":[27,17,66,71,10,49,68,125,4,23,13,32,73,87,101,113,122,11,26,72]},{"w":"extend","m":"확대하다, 연장하다, (손을) 뻗다","p":"v","s":[114,118,40,105,112,99,33,120,60,77,36,50,67,78,88,20,35,30,51,83]},{"w":"range","m":"범위; (범위가) ~에서 …사이이다","p":"n","s":[64,56,123,31,46,51,76,79,98,119,124,126,42,15,53,90,94,111,101,19]},{"w":"scale","m":"규모, 등급, 저울, 비늘","p":"n","s":[124,53,81,56,15,31,111,45,79,82,98,119,126,64,100,123,37,94,101,19]},{"w":"reasonable","m":"합리적인, 적정한","p":"adj","s":[41,1,48,22,9,102,12,24,59,86,128,2,54,96,21,30,58,61,63,75]},{"w":"phenomenal","m":"경이적인, 자연 현상의","p":"adj","s":[9,47,1,86,102,24,2,12,22,41,128,59,58,96,35,63,93,127,30,75]},{"w":"e-commerce","m":"전자 상거래의","p":"n","s":[13,87,95,72,43,73,100,101,108,5,10,27,32,113,122,4,26,124,11,17]},{"w":"drive","m":"이끌다","p":"v","s":[118,67,60,112,114,120,40,99,33,44,78,105,20,88,36,77,18,98,38,54]},{"w":"need","m":"필요, 요구","p":"n","s":[126,64,91,123,45,83,56,19,25,42,46,76,79,82,98,119,124,31,4,100]},{"w":"rule of thumb","m":"원칙","p":"phr","s":[0,62,6,103,55,8,3,74,106,97,65,14,69,70,89,92,109,39,80,115]},{"w":"mistake","m":"실수","p":"n","s":[101,46,10,37,82,111,124,95,15,19,31,45,56,83,90,98,17,27,68,100]},{"w":"rare","m":"드문","p":"adj","s":[30,21,16,75,58,93,127,59,63,96,128,22,47,35,121,12,24,2,110,86]},{"w":"be charged with","m":"~을 담당하다, 책임을 맡다","p":"phr","s":[103,62,0,65,6,52,70,3,8,14,39,74,89,106,115,117,97,69,80,92]},{"w":"bundle","m":"묶음","p":"n","s":[100,45,46,64,15,111,17,122,51,83,98,124,31,53,81,90,94,73,87,101]},{"w":"unfailingly","m":"변함없이","p":"adv","s":[129,34,38,107,7,29,104,11,26,39,71,5,22,41,47,48,69,86,95,99]},{"w":"honest","m":"정직한, 솔직한","p":"adj","s":[93,35,102,30,54,96,127,12,1,21,61,63,75,110,121,48,9,24,47,86]},{"w":"accurate","m":"정확한","p":"adj","s":[22,41,63,128,24,47,12,35,61,93,110,9,86,30,54,1,48,102,121,127]},{"w":"receive","m":"받다","p":"v","s":[99,50,118,33,40,67,112,44,114,88,36,18,78,105,20,77,120,95,123,108]},{"w":"unique","m":"독특한, 유일한","p":"adj","s":[121,16,30,75,110,1,12,59,102,21,35,58,63,93,96,127,9,128,24,47]},{"w":"be based on","m":"~에 기초하다, 근거하다","p":"phr","s":[6,55,0,39,70,52,103,92,3,80,69,106,65,97,8,89,115,14,74,109]},{"w":"mutual","m":"상호 간의, 공동의","p":"adj","s":[75,96,59,102,30,93,110,1,12,16,21,35,54,58,61,121,127,41,86,128]},{"w":"hunger","m":"배고픔, 열망","p":"n","s":[45,51,56,31,90,111,17,73,108,122,46,76,83,98,123,124,15,81,94,68]},{"w":"pave the way for","m":"~의 토대를 닦다","p":"phr","s":[55,103,6,97,0,8,62,70,89,92,14,39,52,69,80,106,115,116,117,3]},{"w":"liberation","m":"해방, 석방","p":"n","s":[43,71,17,27,10,68,101,108,113,125,26,72,73,100,122,23,4,11,37,91]},{"w":"divide","m":"나누다","p":"v","s":[50,118,88,60,112,40,114,18,33,44,78,99,105,120,20,36,77,110,101,108]},{"w":"upheaval","m":"격변","p":"n","s":[81,91,100,43,66,125,15,31,53,64,101,123,13,32,5,10,17,25,27,37]},{"w":"fall apart","m":"무너지다, 산산조각나다","p":"phr","s":[89,92,74,6,39,80,106,115,116,117,62,70,103,0,3,14,65,52,55,97]},{"w":"thanks to","m":"~의 덕분에, ~때문에","p":"phr","s":[74,80,89,115,116,62,14,106,117,39,6,69,92,55,65,0,97,3,52,103]},{"w":"urbanization","m":"도시화","p":"n","s":[23,66,43,4,11,26,125,28,85,104,84,5,17,27,37,49,72,10,45,122]},{"w":"development","m":"발달, 성장, 개발","p":"n","s":[13,49,5,66,95,28,87,26,32,43,125,85,104,108,10,11,71,15,25,123]},{"w":"progress","m":"진전; 진행되다","p":"n","s":[94,31,64,91,123,10,49,125,25,27,56,87,108,111,13,32,95,43,66,104]},{"w":"flock to","m":"모이다","p":"phr","s":[106,70,8,80,14,92,69,6,39,89,109,115,116,117,103,52,55,3,97,0]},{"w":"urban","m":"도시의","p":"adj","s":[63,54,96,61,93,35,121,16,21,30,58,110,127,128,12,59,22,24,41,47]},{"w":"labor","m":"노동","p":"n","s":[25,31,37,81,45,119,124,64,91,90,94,111,15,19,42,46,51,53,56,79]},{"w":"concentrate","m":"집중하다","p":"v","s":[36,99,105,114,40,118,18,112,44,88,60,33,50,78,120,67,39,17,62,19]},{"w":"boost","m":"신장시키다, 북돋우다","p":"v","s":[105,33,40,44,50,60,67,112,114,118,120,88,20,77,18,36,99,58,19,25]},{"w":"tray","m":"쟁반, 얕은 상자","p":"n","s":[19,82,83,45,46,98,42,91,25,51,56,64,76,119,123,124,126,31,90,113]},{"w":"stack on","m":"쌓다","p":"phr","s":[14,74,70,106,8,89,109,115,92,39,69,62,116,117,3,0,97,65,6,55]},{"w":"scholar","m":"학자","p":"n","s":[46,124,100,122,76,68,32,15,25,31,42,56,64,82,90,111,87,108,113,95]},{"w":"diary","m":"일기","p":"n","s":[79,83,53,90,46,119,124,25,108,15,31,37,81,94,111,101,113,19,42,45]},{"w":"entry","m":"기록","p":"n","s":[90,79,82,25,31,111,51,124,56,64,91,113,123,15,53,94,108,19,37,42]},{"w":"public service","m":"공무, 관리","p":"n","s":[28,10,71,104,23,85,98,49,66,91,95,101,108,111,11,15,17,26,31,53]},{"w":"entrance exam","m":"채용시험","p":"n","s":[4,23,71,26,28,72,84,11,104,45,83,101,31,51,79,95,98,122,13,15]},{"w":"historical","m":"역사적, 역사학의","p":"adj","s":[102,48,1,22,2,9,12,41,47,59,96,24,128,63,58,75,110,121,16,21]},{"w":"document","m":"서류","p":"n","s":[13,49,125,27,108,95,4,17,25,31,37,56,64,73,81,90,94,101,111,113]},{"w":"indicate","m":"나타내다, 가리키다","p":"v","s":[67,20,40,105,18,60,118,99,77,33,44,112,78,50,114,120,15,59,61,113]},{"w":"at least","m":"적어도, 최소한","p":"phr","s":[69,39,14,70,8,80,115,116,117,92,6,74,106,109,103,3,65,55,62,97]},{"w":"century","m":"1세기","p":"n","s":[83,111,108,113,25,31,64,82,17,100,122,32,15,19,45,53,56,76,81,91]},{"w":"period","m":"기간, 시대","p":"n","s":[98,51,123,15,37,17,27,68,73,108,19,25,76,79,83,31,90,94,100,122]},{"w":"for a fee","m":"돈을 지불하여","p":"phr","s":[39,69,74,0,14,80,89,106,115,116,117,62,70,65,97,3,52,103,55,8]},{"w":"modern","m":"현대의, 최신의","p":"adj","s":[102,58,16,30,54,63,75,96,127,35,110,12,59,1,21,61,121,2,22,48]},{"w":"address","m":"주소, 연설; 연설하다","p":"n","s":[19,73,31,124,17,27,45,46,56,64,76,82,83,91,98,123,87,108,113,122]},{"w":"residence","m":"주택, 거주","p":"n","s":[101,15,108,49,26,10,13,53,87,100,11,72,31,37,73,81,90,94,111,122]},{"w":"local","m":"지역의","p":"adj","s":[63,30,75,58,93,102,110,86,16,21,35,54,61,121,127,22,47,48,59,128]},{"w":"know like the back of one's hand","m":"~를 손바닥 보듯 잘 알다","p":"phr","s":[65,3,0,6,52,62,80,55,70,92,39,74,89,103,109,116,8,14,69,115]},{"w":"price","m":"가격","p":"n","s":[91,15,19,45,46,79,124,126,42,56,64,123,31,37,53,94,111,73,84,25]},{"w":"determine","m":"결정하다, 결심하다","p":"v","s":[118,20,112,77,18,36,60,105,114,44,40,88,33,50,67,120,78,72,62,17]},{"w":"schedule","m":"일정","p":"n","s":[15,56,81,111,68,90,122,95,5,49,46,31,53,64,91,101,123,66,124,10]},{"w":"distance","m":"거리","p":"n","s":[53,95,10,111,122,49,66,15,27,31,37,56,64,68,87,90,100,108,113,13]},{"w":"colonial","m":"식민지의, 식민지 시대의","p":"adj","s":[86,93,22,47,48,58,63,9,41,96,12,61,110,1,24,35,59,121,127,128]},{"w":"be filled with","m":"~로 가득차다","p":"phr","s":[55,6,0,65,62,52,69,74,89,8,106,3,97,39,70,92,109,14,80,115]},{"w":"professionals","m":"전문인, 전문가","p":"n","s":[11,26,71,23,84,4,28,72,73,85,10,27,91,95,15,17,37,43,46,66]},{"w":"contact","m":"연락하다; 접촉, 연락","p":"v","s":[18,36,77,114,40,118,44,78,88,99,112,20,33,50,60,67,120,17,19,58]},{"w":"speed up","m":"속도를 높이다","p":"phr","s":[74,8,14,80,116,117,70,92,39,69,89,109,115,62,0,52,103,3,55,65]},{"w":"nearly","m":"거의","p":"adv","s":[38,34,29,129,57,7,82,40,46,51,54,79,83,15,90,112,68,100,108,113]},{"w":"delivery","m":"배달, 배송","p":"n","s":[90,123,95,15,25,31,64,87,91,111,113,13,5,49,66,125,82,37,56,73]},{"w":"within","m":"~이내에","p":"phr","s":[115,14,80,116,117,8,74,89,106,97,52,103,55,65,70,62,6,0,3,39]},{"w":"limited","m":"제한된","p":"adj","s":[21,12,128,61,63,93,96,121,127,1,59,102,30,35,58,75,24,86,2,16]},{"w":"culture","m":"문화","p":"n","s":[90,31,100,46,53,56,64,83,124,17,101,108,113,32,15,19,25,37,45,76]},{"w":"develop","m":"발달하다, 발전하다","p":"v","s":[118,99,114,40,44,50,60,67,18,36,105,33,77,78,88,20,120,17,94,108]},{"w":"industry","m":"산업","p":"n","s":[90,125,108,111,10,66,83,25,27,31,42,53,56,64,81,87,94,101,122,5]},{"w":"order","m":"주문하다; 주문","p":"v","s":[118,105,112,77,44,40,20,50,120,36,99,33,67,60,78,18,88,94,19,93]},{"w":"whatever","m":"무엇이든","p":"phr","s":[116,117,109,70,39,8,80,89,92,69,14,74,106,55,65,62,0,97,6,52]},{"w":"whenever","m":"언제든지","p":"phr","s":[117,115,70,39,8,89,106,109,92,69,14,74,80,0,65,97,55,3,62,6]},{"w":"wherever","m":"어디든지","p":"phr","s":[116,115,39,8,89,106,109,70,92,69,14,74,80,55,65,0,97,62,6,52]},{"w":"deliver","m":"배달하다","p":"v","s":[112,114,99,50,40,60,67,44,18,36,105,77,20,33,88,78,120,116,117,19]},{"w":"app","m":"애플리케이션, 앱","p":"n","s":[45,46,76,82,19,51,79,83,98,124,126,27,23,31,53,94,68,101,122,13]},{"w":"rank","m":"순위를 매기다","p":"v","s":[50,114,33,40,44,67,78,18,99,77,60,105,88,36,20,112,118,45,54,21]},{"w":"various","m":"다양한","p":"adj","s":[21,61,128,35,75,110,1,12,58,59,63,93,96,102,127,9,16,54,24,41]},{"w":"standard","m":"기준","p":"n","s":[81,56,64,90,100,101,125,25,31,53,91,94,108,111,113,32,95,5,43,49]},{"w":"review","m":"후기, 리뷰","p":"n","s":[108,45,51,91,15,73,46,64,83,98,124,31,37,90,94,17,27,68,87,100]},{"w":"score","m":"점수","p":"n","s":[46,81,25,31,53,94,111,45,76,82,83,98,126,42,56,64,123,15,90,49]},{"w":"popularity","m":"인기","p":"n","s":[11,87,113,26,10,17,27,43,66,68,73,108,122,71,5,13,101,72,4,32]},{"w":"fee","m":"요금","p":"n","s":[51,45,46,98,124,19,76,79,82,83,119,123,15,31,100,108,95,49,4,72]},{"w":"speedy","m":"빠른, 신속한","p":"adj","s":[1,30,54,58,93,110,12,16,59,61,63,75,96,102,121,2,24,48,128,22]},{"w":"purchased","m":"구매한","p":"adj","s":[24,12,59,110,121,1,35,9,22,41,47,48,21,54,75,86,102,30,61,63]},{"w":"literally","m":"말 그대로","p":"adv","s":[34,57,7,29,107,38,66,31,99,108,22,41,86,26,15,53,59,68,90,100]}],"syn":[{"w":"specific","wm":"구체적인","a":"precise","am":"분명한, 정밀한","g":"PRECISE"},{"w":"advancement","wm":"발전","a":"progress","am":"진보","g":"GROW"},{"w":"autonomous","wm":"자율적인","a":"independent","am":"독립적인","g":"INDEP"},{"w":"possibility","wm":"가능성","a":"likelihood","am":"가능성","g":"POSS"},{"w":"indicate","wm":"나타내다, 가리키다","a":"demonstrate","am":"나타내다, 보여주다","g":"SHOW"},{"w":"fair","wm":"공평한","a":"impartial","am":"공정한","g":"FAIRHON"},{"w":"maintain","wm":"유지하다","a":"sustain","am":"지속시키다","g":"KEEP"},{"w":"document","wm":"문서","a":"record","am":"기록","g":"RECORD"},{"w":"limited","wm":"제한된","a":"restricted","am":"한정된","g":"LIMIT"},{"w":"rapid","wm":"빠른","a":"fast","am":"빠른","g":"SPEED"},{"w":"persistent","wm":"끈질긴","a":"tenacious","am":"완강한","g":"PERSIST"},{"w":"effort","wm":"노력","a":"endeavor","am":"노력","g":"EFFORT"},{"w":"deliver","wm":"배달하다","a":"transport","am":"수송하다","g":"CARRY"},{"w":"adoption","wm":"채택","a":"acceptance","am":"수락, 승인","g":"ACCEPT"},{"w":"late","wm":"늦은","a":"delayed","am":"지연된","g":"LATE"},{"w":"various","wm":"다양한","a":"diverse","am":"다양한","g":"VARIED"},{"w":"rapidly","wm":"빨리","a":"quickly","am":"신속히","g":"SPEED"},{"w":"introduce","wm":"내놓다, 소개하다","a":"present","am":"제시하다","g":"SHOW"},{"w":"enable","wm":"~할 수 있게 하다","a":"allow","am":"허용하다","g":"ALLOW"},{"w":"growth","wm":"성장","a":"development","am":"발달, 성장","g":"GROW"},{"w":"extend","wm":"연장하다","a":"prolong","am":"연장하다","g":"KEEP"},{"w":"reasonable","wm":"합리적인","a":"sensible","am":"분별 있는","g":"SENSE"},{"w":"phenomenal","wm":"경이적인","a":"extraordinary","am":"놀라운, 비범한","g":"SPECIAL"},{"w":"mistake","wm":"실수","a":"blunder","am":"실수","g":"ERROR"},{"w":"rare","wm":"드문","a":"scarce","am":"희귀한","g":"SPECIAL"},{"w":"honest","wm":"정직한","a":"truthful","am":"진실한","g":"FAIRHON"},{"w":"stack on","wm":"쌓다","a":"pile","am":"쌓다, 포개다","g":"PILE"},{"w":"entry","wm":"기록","a":"log","am":"일지, 기록","g":"RECORD"},{"w":"unique","wm":"독특한","a":"distinctive","am":"독특한","g":"SPECIAL"},{"w":"mutual","wm":"상호 간의","a":"reciprocal","am":"상호 간의","g":"MUTUAL"},{"w":"liberation","wm":"해방","a":"freedom","am":"자유","g":"INDEP"},{"w":"standard","wm":"기준","a":"criterion","am":"기준","g":"STANDARD"},{"w":"upheaval","wm":"격변","a":"disruption","am":"붕괴, 혼란","g":"CHAOS"},{"w":"fall apart","wm":"무너지다, 부서지다","a":"collapse","am":"붕괴하다","g":"CHAOS"},{"w":"speedy","wm":"빠른","a":"swift","am":"신속한","g":"SPEED"},{"w":"development","wm":"발달","a":"progress","am":"발전","g":"GROW"},{"w":"urban","wm":"도시의","a":"metropolitan","am":"대도시의","g":"URBAN"},{"w":"concentrate","wm":"집중하다","a":"focus","am":"초점을 맞추다","g":"FOCUS"},{"w":"boost","wm":"신장시키다","a":"enhance","am":"향상시키다","g":"GROW"},{"w":"determine","wm":"결정하다","a":"decide","am":"결정하다","g":"DECIDE"},{"w":"modern","wm":"현대의","a":"contemporary","am":"현대의","g":"MODERN"},{"w":"speed up","wm":"속도를 높이다","a":"accelerate","am":"가속하다","g":"SPEED"}],"ant":[{"w":"forward","wm":"앞쪽으로","a":"backward","am":"뒤쪽으로","g":"DIR"},{"w":"express","wm":"신속한","a":"slow","am":"느린","g":"SPEED"},{"w":"local","wm":"지역의","a":"global","am":"세계적인","g":"SCOPE"},{"w":"colonial","wm":"식민지의","a":"independent","am":"독립적인","g":"FREE"},{"w":"flock to","wm":"모이다","a":"scatter","am":"흩어지다","g":"DIVIDE"},{"w":"unfailingly","wm":"변함없이","a":"variably","am":"가변적으로","g":"CONST"},{"w":"hunger","wm":"배고픔","a":"fullness","am":"배부름, 포만감","g":"HUNGER"},{"w":"labor","wm":"노동","a":"leisure","am":"여가","g":"WORK"},{"w":"specific","wm":"구체적인","a":"vague","am":"모호한","g":"CLEAR"},{"w":"advancement","wm":"발전","a":"decline","am":"퇴보","g":"GROW"},{"w":"further","wm":"더 나아간","a":"nearer","am":"더 가까운","g":"LENGTH"},{"w":"be likely to","wm":"~할 가능성이 있다","a":"be unlikely to","am":"~할 것 같지 않다","g":"POSS"},{"w":"possibility","wm":"가능성","a":"impossibility","am":"불가능","g":"POSS"},{"w":"advanced","wm":"선진의","a":"primitive","am":"원시적인","g":"GROW"},{"w":"fair","wm":"공평한","a":"unfair","am":"불공정한","g":"FAIRHON"},{"w":"function","wm":"기능하다","a":"malfunction","am":"제대로 작동하지 않다","g":"FUNC"},{"w":"trust","wm":"신뢰하다","a":"distrust","am":"불신하다","g":"TRUST"},{"w":"prioritize","wm":"우선시하다","a":"neglect","am":"소홀히 하다","g":"FOCUS"},{"w":"limited","wm":"제한된","a":"unlimited","am":"제한되지 않은","g":"LIMIT"},{"w":"affordable","wm":"가격이 적당한","a":"expensive","am":"비싼","g":"PRICE"},{"w":"by leaps and bounds","wm":"비약적으로","a":"gradually","am":"서서히","g":"SPEED"},{"w":"automation","wm":"자동화","a":"manualization","am":"수동화","g":"AUTO"},{"w":"reliability","wm":"신뢰도","a":"unreliability","am":"비신뢰성","g":"TRUST"},{"w":"adoption","wm":"채택","a":"rejection","am":"거부","g":"ACCEPT"},{"w":"urban","wm":"도시의","a":"rural","am":"시골의","g":"URBAN"},{"w":"rapidly","wm":"빨리","a":"slowly","am":"천천히","g":"SPEED"},{"w":"historical","wm":"역사적인","a":"contemporary","am":"현대의","g":"TIME"},{"w":"remarkable","wm":"주목할 만한","a":"ordinary","am":"평범한","g":"SPECIAL"},{"w":"extend","wm":"연장하다","a":"shorten","am":"단축하다","g":"LENGTH"},{"w":"reasonable","wm":"합리적인","a":"unreasonable","am":"비합리적인","g":"REASON"},{"w":"professionals","wm":"전문가","a":"amateurs","am":"비전문가","g":"PRO"},{"w":"at least","wm":"적어도","a":"at most","am":"최대","g":"AMOUNT"},{"w":"rare","wm":"드문","a":"common","am":"흔한","g":"SPECIAL"},{"w":"honest","wm":"정직한","a":"dishonest","am":"부정직한","g":"FAIRHON"},{"w":"accurate","wm":"정확한","a":"inaccurate","am":"부정확한","g":"FAIRHON"},{"w":"unique","wm":"독특한","a":"common","am":"흔한","g":"SPECIAL"},{"w":"mutual","wm":"상호 간의","a":"individual","am":"개별적인","g":"MUTUAL"},{"w":"liberation","wm":"해방","a":"oppression","am":"억압","g":"FREE"},{"w":"divide","wm":"나누다","a":"unite","am":"결합하다","g":"DIVIDE"},{"w":"concentrate","wm":"집중하다","a":"distract","am":"산만하게 하다","g":"FOCUS"}],"passage":{"titleEn":"K-Delivery, Speedy and Reliable","titleKo":"K-배달, 신속하고 믿음직하다","paras":[[{"id":"s1","en":"In Korea, nearly anything can be delivered within twenty-four hours.","ko":"한국에서는, 거의 모든 것이 24시간 이내에 배달될 수 있다."},{"id":"s2","en":"Delivery is not limited to Korea; however, a unique culture has developed around the Korean delivery industry.","ko":"배달은 한국에만 국한된 것은 아니다. 그러나, 독특한 문화가 한국 배달 산업을 중심으로 발달하였다."},{"id":"s3","en":"People in Korea can order whatever they want whenever they want and have it delivered wherever they want.","ko":"한국에 있는 사람들은 그들이 원하는 때라면 언제든지 그들이 원하는 것이 무엇이든 주문할 수 있고, 그들이 원하는 곳이라면 어디든지 그것을 배달 받을 수 있다."},{"id":"s4","en":"Delivery apps rank stores by various standards: review scores, popularity, price, delivery fee, and distance, to name a few.","ko":"배달 애플리케이션은 다양한 기준으로 상점들의 순위를 매긴다. 예를 들자면, 후기 점수, 인기, 가격, 배달료, 그리고 거리 등."},{"id":"s5","en":"The speedy delivery of purchased items to your house is literally at the tips of your fingers.","ko":"구매한 물건이 당신의 집으로 빠르게 배달되는 것은 말 그대로 당신 손가락 끝에 달려 있다."},{"id":"s6","en":"What is the history behind this culture?","ko":"이 문화 이면의 역사는 무엇일까?"}],[{"id":"s7","en":"In 1768, Hwang Yun-seok, a scholar, made a diary entry after taking the gwageo, a public service entrance exam.","ko":"1768년에 학자인 황윤석은 관리 채용 시험인 과거에 응시한 후 일기 기록을 남겼다."},{"id":"s8","en":"He wrote that he and his friends had ordered a delivery of naengmyeon for lunch.","ko":"그는 그와 그의 친구들이 점심 식사로 냉면 배달을 시켰다고 썼다."},{"id":"s9","en":"Hwang's diary is the first historical document indicating Koreans have been delivering food for at least two and a half centuries.","ko":"황윤석의 일기는 한국인들이 최소한 두 세기 반 동안 음식을 배달해 왔음을 보여 주는 최초의 역사적 기록물이다."}],[{"id":"s10","en":"During the Joseon period, specialized people called jeonin delivered letters for a fee.","ko":"조선 시대 동안, 전인이라고 불리는 전문화된 사람들이 돈을 받고 편지를 배달했다."},{"id":"s11","en":"In the days before the modern address systems, letters were delivered by name and place of residence, so a jeonin had to know the local areas like the back of his hand.","ko":"현대 주소 시스템이 있기 이전 시대에 편지는 이름과 거주지에 따라 배달되었으므로 전인은 해당 지역을 매우 잘 알고 있어야만 했다."},{"id":"s12","en":"Service prices were determined by schedule and distance.","ko":"서비스 가격은 일정과 거리에 따라 결정되었다."}],[{"id":"s13","en":"During the Japanese colonial period, Seoul's streets were filled with delivery professionals called “messengers,” most working for a company named Yongdalsa.","ko":"일제 강점기 동안, 서울의 거리는 '메신저'라고 불리는 배달 전문인들로 가득 차 있었는데, 그들 대부분은 용달사라는 이름의 회사에서 일하고 있었다."},{"id":"s14","en":"Many used bikes to speed up delivery.","ko":"많은 이들이 배달 속도를 높이기 위해서 자전거를 사용했다."},{"id":"s15","en":"When customers contacted Yongdalsa, a messenger went to pick up the item and then delivered it.","ko":"고객들이 용달사에 연락을 취하면, 메신저가 물건을 가지러 와서는 그것을 배달했다."}],[{"id":"s16","en":"Delivery mistakes were rare.","ko":"배달 실수는 드물었다."},{"id":"s17","en":"Messengers were sometimes charged with carrying large bundles of cash, but they were unfailingly honest and accurate.","ko":"메신저들은 때때로 다량의 현금 배달을 담당하기도 했는데, 그들은 변함없이 정직하고 정확했다."},{"id":"s18","en":"Customers trusted the messengers so much that they often did not check the items they received.","ko":"고객들은 메신저를 매우 믿었기에 종종 그들이 받은 물품을 확인하지도 않았다."},{"id":"s19","en":"This messenger service was unique to Korea and was based on a culture of mutual trust and a hunger for speed.","ko":"이러한 메신저 서비스는 한국만의 독특한 것이었으며, 상호 간의 신뢰 문화와 속도에 대한 갈망에 기반한 것이었다."},{"id":"s20","en":"It is possible that this paved the way for modern motorcycle delivery.","ko":"이것이 현대의 오토바이 배달의 토대를 닦았을 가능성이 있다."}],[{"id":"s21","en":"After Korea's liberation from colonial rule, it was divided into two.","ko":"식민지 지배에서 한국이 해방된 후, 한국은 둘로 나뉘었다."},{"id":"s22","en":"Then came the Korean War (1950-1953).","ko":"그리고는 한국 전쟁(1950-1953)이 발발했다."},{"id":"s23","en":"During this series of upheavals, Korea's delivery system fell apart.","ko":"이 일련의 격변 동안, 한국의 배달 시스템은 무너졌다."},{"id":"s24","en":"It was during the 1960s that delivery services grew again thanks to urbanization.","ko":"도시화 덕분에 배달 산업이 다시 성장한 것은 1960년대 동안이었다."},{"id":"s25","en":"As economic development progressed, people flocked to urban areas, where labor became concentrated.","ko":"경제 발전이 진행됨에 따라, 사람들은 노동력이 집중되는 도시 지역으로 모여들었다."},{"id":"s26","en":"This boosted the demand for delivery services.","ko":"이것이 배달 서비스에 대한 수요를 촉진시켰다."},{"id":"s27","en":"Deliveries of newspapers and milk quickly became popular.","ko":"신문과 우유 배달이 빠르게 인기를 얻었다."},{"id":"s28","en":"During lunchtime, city centers were filled with restaurant workers delivering trays full of food, stacked on top of each other.","ko":"점심시간 동안, 도시 중심부는 음식이 가득 찬 차곡차곡 쌓아 올려진 쟁반을 배달하는 식당 직원들로 가득 찼다."},{"id":"s29","en":"In the late 1980s and 1990s, caterers delivered homemade lunches in cloth bags to urban offices and returned later to collect empty dishes.","ko":"1980년대 후반과 1990년대에는, 음식 공급자들이 보자기에 싼 집에서 만든 점심을 도시의 사무실로 배달하였고 나중에 빈 그릇을 가져가기 위해 돌아왔다."},{"id":"s30","en":"The delivery area grew rapidly.","ko":"배달 영역은 빠르게 성장했다."}],[{"id":"s31","en":"In 1992, taekbae service, an express home delivery service through which a person receives an ordered item in at least a day or two, was introduced.","ko":"1992년에는 주문한 물건을 최소 하루 또는 이틀 만에 받을 수 있는 신속 가정배달 서비스인 택배 서비스가 도입되었다."},{"id":"s32","en":"On the first day, there were just two deliveries.","ko":"첫날에는 고작 두 건의 배달이 있었다."},{"id":"s33","en":"Now, millions of items are delivered daily.","ko":"이제 매일 수백만 개의 물건들이 배달된다."},{"id":"s34","en":"On average, a South Korean uses taekbae sixty-five times per year.","ko":"평균적으로 한국인 한 명은 택배를 연간 65번 이용한다."},{"id":"s35","en":"It was the development of digital and information technology that enabled the remarkable growth of taekbae.","ko":"택배의 놀랄 만한 성장을 가능하게 해 준 것은 바로 디지털과 정보 기술의 발전이었다."},{"id":"s36","en":"Logistics automation, GPS maps, and mobile applications have extended the range and scale of delivery services while keeping prices reasonable.","ko":"물류 자동화, GPS 지도, 그리고 모바일 애플리케이션은 가격을 적절하게 유지하면서도 배달의 범위와 규모를 넓혀 주었다."},{"id":"s37","en":"The phenomenal growth of e-commerce has driven the need for delivery services.","ko":"전자 상거래의 놀랄 만한 성장이 배달 서비스의 필요를 이끌어 왔다."},{"id":"s38","en":"A rule of thumb for taekbae is next-day delivery; if a person orders something today, it should arrive tomorrow.","ko":"택배의 원칙은 익일 배송이다. 누군가 오늘 무언가를 주문하면 내일 도착해야 한다."},{"id":"s39","en":"Taekbae is changing so rapidly that now more and more items are delivered on the same day they are ordered.","ko":"택배는 매우 빠르게 변화하고 있어 이제는 점점 더 많은 물품들이 그것들이 주문된 당일에 배달되고 있다."},{"id":"s40","en":"It is also possible to choose a specific date and time for delivery.","ko":"또한, 배송을 위한 특정 날짜와 시간을 선택할 수도 있다."}],[{"id":"s41","en":"Taekbae services, beginning from foot-powered delivery, have grown by leaps and bounds thanks to advancements in technology.","ko":"발로 움직이는 배달에서 시작한 이래로, 택배 서비스는 기술의 발전 덕분에 비약적으로 성장했다."},{"id":"s42","en":"Moreover, the services will likely be developed further due to continuing technological upheavals.","ko":"게다가 계속되는 기술적 격변으로 인해 이 서비스는 더 발달할 것 같다."},{"id":"s43","en":"Drones and autonomous robots are being used to deliver items by logistics companies in foreign countries.","ko":"외국에서는 드론과 자동화 로봇들이 물류 회사에 의해 물건을 배달하기 위해 사용되고 있다."},{"id":"s44","en":"In Korea, companies are testing the possibility of using advanced equipment such as autonomous vehicles, delivery robots, and drones for deliveries.","ko":"한국에서는 기업들이 자율 주행차, 배달 로봇, 그리고 드론과 같은 진보한 장비를 배달에 사용할 수 있는 가능성을 시험해 보고 있다."}],[{"id":"s45","en":"It is fair to say that modern Korean life cannot function as it does without its delivery services.","ko":"현대 한국의 삶은 배달 서비스 없이는 지금처럼 기능할 수 없다고 말해도 과언이 아니다."},{"id":"s46","en":"To maintain trust with customers, the Korean delivery industry prioritizes rapid, safe, and affordable transportation.","ko":"고객들과의 신뢰를 유지하기 위해, 한국 배달 산업은 빠르고, 안전하고, 적절한 가격의 운송을 최우선으로 삼고 있다."},{"id":"s47","en":"These persistent efforts for reliability and the adoption of advanced delivery technology will continue being the driving forces that will move Korean delivery forward well into the future.","ko":"이러한 신뢰를 위한 꾸준한 노력과 진보한 배달 기술의 도입은 한국 배달을 미래로 훨씬 나아가게 할 원동력이 될 것이다."}]]},"blanks":[{"sid":"s1","ans":"within","g":"PREP","pre":"In Korea, nearly anything can be delivered ","post":" twenty-four hours.","ko":"한국에서는, 거의 모든 것이 24시간 이내에 배달될 수 있다."},{"sid":"s2","ans":"limited","g":"LIMIT","pre":"Delivery is not ","post":" to Korea; however, a unique culture has developed around the Korean delivery industry.","ko":"배달은 한국에만 국한된 것은 아니다. 그러나, 독특한 문화가 한국 배달 산업을 중심으로 발달하였다."},{"sid":"s4","ans":"various","g":"VARIED","pre":"Delivery apps rank stores by ","post":" standards: review scores, popularity, price, delivery fee, and distance, to name a few.","ko":"배달 애플리케이션은 다양한 기준으로 상점들의 순위를 매긴다. 예를 들자면, 후기 점수, 인기, 가격, 배달료, 그리고 거리 등."},{"sid":"s5","ans":"speedy","g":"SPEED","pre":"The ","post":" delivery of purchased items to your house is literally at the tips of your fingers.","ko":"구매한 물건이 당신의 집으로 빠르게 배달되는 것은 말 그대로 당신 손가락 끝에 달려 있다."},{"sid":"s5","ans":"purchased","g":"BUY","pre":"The speedy delivery of ","post":" items to your house is literally at the tips of your fingers.","ko":"구매한 물건이 당신의 집으로 빠르게 배달되는 것은 말 그대로 당신 손가락 끝에 달려 있다."},{"sid":"s7","ans":"scholar","g":"PERSON","pre":"In 1768, Hwang Yun-seok, a ","post":", made a diary entry after taking the gwageo, a public service entrance exam.","ko":"1768년에 학자인 황윤석은 관리 채용 시험인 과거에 응시한 후 일기 기록을 남겼다."},{"sid":"s7","ans":"entry","g":"RECORD","pre":"In 1768, Hwang Yun-seok, a scholar, made a diary ","post":" after taking the gwageo, a public service entrance exam.","ko":"1768년에 학자인 황윤석은 관리 채용 시험인 과거에 응시한 후 일기 기록을 남겼다."},{"sid":"s9","ans":"historical","g":"TIME","pre":"Hwang's diary is the first ","post":" document indicating Koreans have been delivering food for at least two and a half centuries.","ko":"황윤석의 일기는 한국인들이 최소한 두 세기 반 동안 음식을 배달해 왔음을 보여 주는 최초의 역사적 기록물이다."},{"sid":"s9","ans":"indicating","g":"SHOW","pre":"Hwang's diary is the first historical document ","post":" Koreans have been delivering food for at least two and a half centuries.","ko":"황윤석의 일기는 한국인들이 최소한 두 세기 반 동안 음식을 배달해 왔음을 보여 주는 최초의 역사적 기록물이다."},{"sid":"s11","ans":"residence","g":"PLACE","pre":"In the days before the modern address systems, letters were delivered by name and place of ","post":", so a jeonin had to know the local areas like the back of his hand.","ko":"현대 주소 시스템이 있기 이전 시대에 편지는 이름과 거주지에 따라 배달되었으므로 전인은 해당 지역을 매우 잘 알고 있어야만 했다."},{"sid":"s11","ans":"local","g":"PLACE","pre":"In the days before the modern address systems, letters were delivered by name and place of residence, so a jeonin had to know the ","post":" areas like the back of his hand.","ko":"현대 주소 시스템이 있기 이전 시대에 편지는 이름과 거주지에 따라 배달되었으므로 전인은 해당 지역을 매우 잘 알고 있어야만 했다."},{"sid":"s12","ans":"determined","g":"DECIDE","pre":"Service prices were ","post":" by schedule and distance.","ko":"서비스 가격은 일정과 거리에 따라 결정되었다."},{"sid":"s13","ans":"colonial","g":"TIME","pre":"During the Japanese ","post":" period, Seoul's streets were filled with delivery professionals called “messengers,” most working for a company named Yongdalsa.","ko":"일제 강점기 동안, 서울의 거리는 '메신저'라고 불리는 배달 전문인들로 가득 차 있었는데, 그들 대부분은 용달사라는 이름의 회사에서 일하고 있었다."},{"sid":"s13","ans":"professionals","g":"PERSON","pre":"During the Japanese colonial period, Seoul's streets were filled with delivery ","post":" called “messengers,” most working for a company named Yongdalsa.","ko":"일제 강점기 동안, 서울의 거리는 '메신저'라고 불리는 배달 전문인들로 가득 차 있었는데, 그들 대부분은 용달사라는 이름의 회사에서 일하고 있었다."},{"sid":"s14","ans":"speed","g":"SPEED","pre":"Many used bikes to ","post":" up delivery.","ko":"많은 이들이 배달 속도를 높이기 위해서 자전거를 사용했다."},{"sid":"s16","ans":"rare","g":"SPECIAL","pre":"Delivery mistakes were ","post":".","ko":"배달 실수는 드물었다."},{"sid":"s17","ans":"bundles","g":"THING","pre":"Messengers were sometimes charged with carrying large ","post":" of cash, but they were unfailingly honest and accurate.","ko":"메신저들은 때때로 다량의 현금 배달을 담당하기도 했는데, 그들은 변함없이 정직하고 정확했다."},{"sid":"s17","ans":"unfailingly","g":"MANNER","pre":"Messengers were sometimes charged with carrying large bundles of cash, but they were ","post":" honest and accurate.","ko":"메신저들은 때때로 다량의 현금 배달을 담당하기도 했는데, 그들은 변함없이 정직하고 정확했다."},{"sid":"s17","ans":"accurate","g":"HONEST","pre":"Messengers were sometimes charged with carrying large bundles of cash, but they were unfailingly honest and ","post":".","ko":"메신저들은 때때로 다량의 현금 배달을 담당하기도 했는데, 그들은 변함없이 정직하고 정확했다."},{"sid":"s18","ans":"received","g":"GET","pre":"Customers trusted the messengers so much that they often did not check the items they ","post":".","ko":"고객들은 메신저를 매우 믿었기에 종종 그들이 받은 물품을 확인하지도 않았다."},{"sid":"s19","ans":"mutual","g":"MUTUAL","pre":"This messenger service was unique to Korea and was based on a culture of ","post":" trust and a hunger for speed.","ko":"이러한 메신저 서비스는 한국만의 독특한 것이었으며, 상호 간의 신뢰 문화와 속도에 대한 갈망에 기반한 것이었다."},{"sid":"s20","ans":"paved","g":"FOUND","pre":"It is possible that this ","post":" the way for modern motorcycle delivery.","ko":"이것이 현대의 오토바이 배달의 토대를 닦았을 가능성이 있다."},{"sid":"s21","ans":"liberation","g":"FREE","pre":"After Korea's ","post":" from colonial rule, it was divided into two.","ko":"식민지 지배에서 한국이 해방된 후, 한국은 둘로 나뉘었다."},{"sid":"s23","ans":"upheavals","g":"CHAOS","pre":"During this series of ","post":", Korea's delivery system fell apart.","ko":"이 일련의 격변 동안, 한국의 배달 시스템은 무너졌다."},{"sid":"s24","ans":"urbanization","g":"URBAN","pre":"It was during the 1960s that delivery services grew again thanks to ","post":".","ko":"도시화 덕분에 배달 산업이 다시 성장한 것은 1960년대 동안이었다."},{"sid":"s25","ans":"flocked","g":"GATHER","pre":"As economic development progressed, people ","post":" to urban areas, where labor became concentrated.","ko":"경제 발전이 진행됨에 따라, 사람들은 노동력이 집중되는 도시 지역으로 모여들었다."},{"sid":"s25","ans":"labor","g":"WORK","pre":"As economic development progressed, people flocked to urban areas, where ","post":" became concentrated.","ko":"경제 발전이 진행됨에 따라, 사람들은 노동력이 집중되는 도시 지역으로 모여들었다."},{"sid":"s26","ans":"boosted","g":"GROW","pre":"This ","post":" the demand for delivery services.","ko":"이것이 배달 서비스에 대한 수요를 촉진시켰다."},{"sid":"s28","ans":"trays","g":"THING","pre":"During lunchtime, city centers were filled with restaurant workers delivering ","post":" full of food, stacked on top of each other.","ko":"점심시간 동안, 도시 중심부는 음식이 가득 찬 차곡차곡 쌓아 올려진 쟁반을 배달하는 식당 직원들로 가득 찼다."},{"sid":"s29","ans":"caterers","g":"PERSON","pre":"In the late 1980s and 1990s, ","post":" delivered homemade lunches in cloth bags to urban offices and returned later to collect empty dishes.","ko":"1980년대 후반과 1990년대에는, 음식 공급자들이 보자기에 싼 집에서 만든 점심을 도시의 사무실로 배달하였고 나중에 빈 그릇을 가져가기 위해 돌아왔다."},{"sid":"s31","ans":"express","g":"SPEED","pre":"In 1992, taekbae service, an ","post":" home delivery service through which a person receives an ordered item in at least a day or two, was introduced.","ko":"1992년에는 주문한 물건을 최소 하루 또는 이틀 만에 받을 수 있는 신속 가정배달 서비스인 택배 서비스가 도입되었다."},{"sid":"s33","ans":"daily","g":"TIMEADV","pre":"Now, millions of items are delivered ","post":".","ko":"이제 매일 수백만 개의 물건들이 배달된다."},{"sid":"s35","ans":"enabled","g":"ALLOW","pre":"It was the development of digital and information technology that ","post":" the remarkable growth of taekbae.","ko":"택배의 놀랄 만한 성장을 가능하게 해 준 것은 바로 디지털과 정보 기술의 발전이었다."},{"sid":"s35","ans":"remarkable","g":"SPECIAL","pre":"It was the development of digital and information technology that enabled the ","post":" growth of taekbae.","ko":"택배의 놀랄 만한 성장을 가능하게 해 준 것은 바로 디지털과 정보 기술의 발전이었다."},{"sid":"s36","ans":"automation","g":"AUTO","pre":"Logistics ","post":", GPS maps, and mobile applications have extended the range and scale of delivery services while keeping prices reasonable.","ko":"물류 자동화, GPS 지도, 그리고 모바일 애플리케이션은 가격을 적절하게 유지하면서도 배달의 범위와 규모를 넓혀 주었다."},{"sid":"s36","ans":"scale","g":"SIZE","pre":"Logistics automation, GPS maps, and mobile applications have extended the range and ","post":" of delivery services while keeping prices reasonable.","ko":"물류 자동화, GPS 지도, 그리고 모바일 애플리케이션은 가격을 적절하게 유지하면서도 배달의 범위와 규모를 넓혀 주었다."},{"sid":"s36","ans":"reasonable","g":"SENSE","pre":"Logistics automation, GPS maps, and mobile applications have extended the range and scale of delivery services while keeping prices ","post":".","ko":"물류 자동화, GPS 지도, 그리고 모바일 애플리케이션은 가격을 적절하게 유지하면서도 배달의 범위와 규모를 넓혀 주었다."},{"sid":"s37","ans":"phenomenal","g":"SPECIAL","pre":"The ","post":" growth of e-commerce has driven the need for delivery services.","ko":"전자 상거래의 놀랄 만한 성장이 배달 서비스의 필요를 이끌어 왔다."},{"sid":"s38","ans":"rule of thumb","g":"RULE","pre":"A ","post":" for taekbae is next-day delivery; if a person orders something today, it should arrive tomorrow.","ko":"택배의 원칙은 익일 배송이다. 누군가 오늘 무언가를 주문하면 내일 도착해야 한다."},{"sid":"s39","ans":"rapidly","g":"SPEED","pre":"Taekbae is changing so ","post":" that now more and more items are delivered on the same day they are ordered.","ko":"택배는 매우 빠르게 변화하고 있어 이제는 점점 더 많은 물품들이 그것들이 주문된 당일에 배달되고 있다."},{"sid":"s40","ans":"specific","g":"CLEAR","pre":"It is also possible to choose a ","post":" date and time for delivery.","ko":"또한, 배송을 위한 특정 날짜와 시간을 선택할 수도 있다."},{"sid":"s41","ans":"foot-powered","g":"MANNER","pre":"Taekbae services, beginning from ","post":" delivery, have grown by leaps and bounds thanks to advancements in technology.","ko":"발로 움직이는 배달에서 시작한 이래로, 택배 서비스는 기술의 발전 덕분에 비약적으로 성장했다."},{"sid":"s41","ans":"advancements","g":"GROW","pre":"Taekbae services, beginning from foot-powered delivery, have grown by leaps and bounds thanks to ","post":" in technology.","ko":"발로 움직이는 배달에서 시작한 이래로, 택배 서비스는 기술의 발전 덕분에 비약적으로 성장했다."},{"sid":"s42","ans":"further","g":"DIST","pre":"Moreover, the services will likely be developed ","post":" due to continuing technological upheavals.","ko":"게다가 계속되는 기술적 격변으로 인해 이 서비스는 더 발달할 것 같다."},{"sid":"s43","ans":"autonomous","g":"AUTO","pre":"Drones and ","post":" robots are being used to deliver items by logistics companies in foreign countries.","ko":"외국에서는 드론과 자동화 로봇들이 물류 회사에 의해 물건을 배달하기 위해 사용되고 있다."},{"sid":"s44","ans":"possibility","g":"POSS","pre":"In Korea, companies are testing the ","post":" of using advanced equipment such as autonomous vehicles, delivery robots, and drones for deliveries.","ko":"한국에서는 기업들이 자율 주행차, 배달 로봇, 그리고 드론과 같은 진보한 장비를 배달에 사용할 수 있는 가능성을 시험해 보고 있다."},{"sid":"s44","ans":"advanced","g":"GROW","pre":"In Korea, companies are testing the possibility of using ","post":" equipment such as autonomous vehicles, delivery robots, and drones for deliveries.","ko":"한국에서는 기업들이 자율 주행차, 배달 로봇, 그리고 드론과 같은 진보한 장비를 배달에 사용할 수 있는 가능성을 시험해 보고 있다."},{"sid":"s45","ans":"fair","g":"FAIRHON","pre":"It is ","post":" to say that modern Korean life cannot function as it does without its delivery services.","ko":"현대 한국의 삶은 배달 서비스 없이는 지금처럼 기능할 수 없다고 말해도 과언이 아니다."},{"sid":"s45","ans":"function","g":"FUNC","pre":"It is fair to say that modern Korean life cannot ","post":" as it does without its delivery services.","ko":"현대 한국의 삶은 배달 서비스 없이는 지금처럼 기능할 수 없다고 말해도 과언이 아니다."},{"sid":"s46","ans":"maintain","g":"KEEP","pre":"To ","post":" trust with customers, the Korean delivery industry prioritizes rapid, safe, and affordable transportation.","ko":"고객들과의 신뢰를 유지하기 위해, 한국 배달 산업은 빠르고, 안전하고, 적절한 가격의 운송을 최우선으로 삼고 있다."},{"sid":"s46","ans":"prioritizes","g":"FOCUS","pre":"To maintain trust with customers, the Korean delivery industry ","post":" rapid, safe, and affordable transportation.","ko":"고객들과의 신뢰를 유지하기 위해, 한국 배달 산업은 빠르고, 안전하고, 적절한 가격의 운송을 최우선으로 삼고 있다."},{"sid":"s46","ans":"affordable","g":"PRICE","pre":"To maintain trust with customers, the Korean delivery industry prioritizes rapid, safe, and ","post":" transportation.","ko":"고객들과의 신뢰를 유지하기 위해, 한국 배달 산업은 빠르고, 안전하고, 적절한 가격의 운송을 최우선으로 삼고 있다."},{"sid":"s47","ans":"persistent","g":"PERSIST","pre":"These ","post":" efforts for reliability and the adoption of advanced delivery technology will continue being the driving forces that will move Korean delivery forward well into the future.","ko":"이러한 신뢰를 위한 꾸준한 노력과 진보한 배달 기술의 도입은 한국 배달을 미래로 훨씬 나아가게 할 원동력이 될 것이다."},{"sid":"s47","ans":"reliability","g":"TRUST","pre":"These persistent efforts for ","post":" and the adoption of advanced delivery technology will continue being the driving forces that will move Korean delivery forward well into the future.","ko":"이러한 신뢰를 위한 꾸준한 노력과 진보한 배달 기술의 도입은 한국 배달을 미래로 훨씬 나아가게 할 원동력이 될 것이다."},{"sid":"s47","ans":"adoption","g":"ACCEPT","pre":"These persistent efforts for reliability and the ","post":" of advanced delivery technology will continue being the driving forces that will move Korean delivery forward well into the future.","ko":"이러한 신뢰를 위한 꾸준한 노력과 진보한 배달 기술의 도입은 한국 배달을 미래로 훨씬 나아가게 할 원동력이 될 것이다."},{"sid":"s47","ans":"driving","g":"FORCE","pre":"These persistent efforts for reliability and the adoption of advanced delivery technology will continue being the ","post":" forces that will move Korean delivery forward well into the future.","ko":"이러한 신뢰를 위한 꾸준한 노력과 진보한 배달 기술의 도입은 한국 배달을 미래로 훨씬 나아가게 할 원동력이 될 것이다."}]};
+
+/* ══════════ 상태 ══════════ */
+const NUM = ['①','②','③','④','⑤'];
+const TYPE_NAME = {1:'단어 뜻', 2:'유의어', 3:'반의어', 4:'본문 빈칸'};
+const TYPE_ASK = {
+  1:'다음 단어의 뜻으로 알맞은 것은?',
+  2:'다음 단어와 뜻이 가장 가까운 것은?',
+  3:'다음 단어와 뜻이 반대인 것은?',
+  4:'본문의 빈칸에 들어갈 단어를 보기에서 골라 정확히 쓰시오.'
+};
+const SKEY = 'witheun.lesson2.stats.v1';
+const MAXN = [0, D.words.length, D.syn.length, D.ant.length, new Set(D.blanks.map(b => b.sid)).size];
+let QS = [], submitted = false, stats = loadStats(), timerId = null, tStart = 0, tLimit = 0;
+
+/* ══════════ 유틸 ══════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1900);}
+
+function loadStats(){ try{ return JSON.parse(localStorage.getItem(SKEY)) || {}; }catch(e){ return {}; } }
+function saveStats(){ try{ localStorage.setItem(SKEY, JSON.stringify(stats)); }catch(e){} }
+function rec(type, word, ok){
+  const k = type + '|' + word;
+  const s = stats[k] || (stats[k] = {r:0, w:0});
+  ok ? s.r++ : s.w++;
+}
+function weightOf(type, word){
+  const s = stats[type + '|' + word];
+  if(!s) return 1;
+  return Math.max(0.35, 1 + s.w * 2.5 - s.r * 0.7);
+}
+/* 가중치 기반 비복원 추출 */
+function pickW(list, n, keyFn, typeNo){
+  const useW = $('opt-weak').checked;
+  const pool = list.map(it => ({it, w: useW ? weightOf(typeNo, keyFn(it)) : 1}));
+  const out = [];
+  n = Math.min(n, pool.length);
+  for(let k=0; k<n; k++){
+    let tot = 0; for(const p of pool) tot += p.w;
+    let r = Math.random() * tot, i = 0;
+    for(; i<pool.length; i++){ r -= pool[i].w; if(r <= 0) break; }
+    out.push(pool.splice(Math.min(i, pool.length-1), 1)[0].it);
+  }
+  return out;
+}
+function makeChoices(correct, wrongPool, n){
+  const picks = shuffle([...new Set(wrongPool)].filter(x => x !== correct)).slice(0, n-1);
+  const all = shuffle([correct, ...picks]);
+  return {choices: all, ans: all.indexOf(correct)};
+}
+
+/* ══════════ 문항 생성 ══════════ */
+function buildMeaning(n){
+  return pickW(D.words, n, x => x.w, 1).map(buildMeaningOne);
+}
+/* 오답 선지 = 철자·의미가 헷갈리는 단어의 뜻 (뜻이 겹치는 후보는 빌드 단계에서 제외됨) */
+function buildMeaningOne(it){
+  const sim = it.s || [];
+  let picks = shuffle(sim.slice(0,5)).slice(0,2)
+    .concat(shuffle(sim.slice(5)).slice(0,2));
+  picks = [...new Set(picks)];
+  for(const j of shuffle(sim)){ if(picks.length >= 4) break; if(!picks.includes(j)) picks.push(j); }
+  const c = makeChoices(it.m, picks.map(j => D.words[j].m), 5);
+  return {type:1, word:it.w, choices:c.choices, ans:c.ans, pick:null, key:it.w};
+}
+function buildPair(src, typeNo, n){
+  return pickW(src, n, x => x.w, typeNo).map(it => {
+    const pool = src.filter(x => x.g !== it.g).map(x => x.a);
+    const c = makeChoices(it.a, pool, 5);
+    return {type:typeNo, word:it.w, hint:it.wm, ansM:it.am, choices:c.choices, ans:c.ans, pick:null, key:it.w};
+  });
+}
+function buildBlank(n){
+  const seenS = new Set(), seenA = new Set(), out = [];
+  for(const it of pickW(D.blanks, D.blanks.length, x => x.ans, 4)){
+    if(out.length >= n) break;
+    if(seenS.has(it.sid) || seenA.has(it.ans)) continue;
+    seenS.add(it.sid); seenA.add(it.ans);
+    const pool = D.blanks.filter(x => x.g !== it.g).map(x => x.ans);
+    const box = shuffle([it.ans, ...shuffle([...new Set(pool)]).slice(0,3)]);
+    out.push({type:4, sid:it.sid, pre:it.pre, post:it.post, ko:it.ko,
+              answer:it.ans, box, text:'', key:it.ans});
+  }
+  return out;
+}
+
+function bump(t, d){
+  const el = $('n'+t), max = MAXN[t];
+  el.value = Math.max(0, Math.min(max, (parseInt(el.value,10)||0) + d));
+  syncCnt();
+}
+function syncCnt(){
+  const max = MAXN;
+  let tot = 0;
+  for(let t=1; t<=4; t++){
+    const el = $('n'+t);
+    let v = parseInt(el.value, 10); if(isNaN(v) || v < 0) v = 0;
+    v = Math.min(v, max[t]); el.value = v; tot += v;
+  }
+  $('setup-sum').textContent = tot > 0 ? '총 ' + tot + '문항' : '문항 수를 정해주세요';
+  return tot;
+}
+function toggleChip(inp){ inp.closest('.chip').classList.toggle('on', inp.checked); }
+function toggleMore(){
+  const m = $('more'), open = m.style.display === 'none';
+  m.style.display = open ? 'block' : 'none';
+  $('more-t').classList.toggle('open', open);
+}
+function scrollTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+/* 빠른 시작 — 'full' | 'fast' | 'weak' | 1~4 */
+function quickStart(mode){
+  const set = (a,b,c,d) => { $('n1').value=a; $('n2').value=b; $('n3').value=c; $('n4').value=d; syncCnt(); };
+  if(mode === 'full'){ set(20,20,20,20); generate(); return; }
+  if(mode === 'fast'){ set(3,3,3,3); generate(); return; }
+  if(mode === 'weak'){ startWeak(); return; }
+  const v = [0,0,0,0]; v[mode-1] = 20; set(...v); generate();
+}
+function startWeak(){
+  const rows = Object.entries(stats)
+    .map(([k,v]) => ({t:+k.slice(0,1), word:k.slice(2), r:v.r, w:v.w}))
+    .filter(r => r.w > 0)
+    .sort((a,b) => (b.w - b.r) - (a.w - a.r)).slice(0, 20);
+  if(rows.length < 5){
+    $('opt-weak').checked = true; toggleChip($('opt-weak'));
+    $('n1').value=5; $('n2').value=5; $('n3').value=5; $('n4').value=5; syncCnt();
+    generate();
+    toast(rows.length ? '기록이 적어 일반 20문항으로 출제했어요' : '아직 오답 기록이 없어 일반 20문항으로 출제했어요');
+    return;
+  }
+  const pool = [];
+  for(const r of rows){
+    const q = rebuild(r.t, r.word);
+    if(q) pool.push(q);
+  }
+  if(!pool.length){ toast('다시 낼 문항을 찾지 못했습니다'); return; }
+  generate(shuffle(pool));
+  toast('약점 ' + pool.length + '문항으로 출제했어요');
+}
+/* 유형+단어로 문항 1개 복원 */
+function rebuild(type, word){
+  if(type === 1){
+    const x = D.words.find(v => v.w === word); return x ? buildMeaningOne(x) : null;
+  }
+  if(type === 2 || type === 3){
+    const src = type === 2 ? D.syn : D.ant;
+    const x = src.find(v => v.w === word); if(!x) return null;
+    const c = makeChoices(x.a, src.filter(v => v.g !== x.g).map(v => v.a), 5);
+    return {type, word:x.w, hint:x.wm, ansM:x.am, choices:c.choices, ans:c.ans, pick:null, key:x.w};
+  }
+  const x = D.blanks.find(v => v.ans === word); if(!x) return null;
+  const p = D.blanks.filter(v => v.g !== x.g).map(v => v.ans);
+  return {type:4, sid:x.sid, pre:x.pre, post:x.post, ko:x.ko, answer:x.ans,
+          box: shuffle([x.ans, ...shuffle([...new Set(p)]).slice(0,3)]), text:'', key:x.ans};
+}
+
+function generate(pool){
+  if(!pool){
+    if(syncCnt() === 0){ toast('문항 수를 1개 이상으로 정해주세요'); return; }
+    let all = [];
+    const n = t => parseInt($('n'+t).value,10) || 0;
+    if(n(1)) all = all.concat(buildMeaning(n(1)));
+    if(n(2)) all = all.concat(buildPair(D.syn, 2, n(2)));
+    if(n(3)) all = all.concat(buildPair(D.ant, 3, n(3)));
+    if(n(4)) all = all.concat(buildBlank(n(4)));
+    QS = $('opt-shuffle').checked ? shuffle(all) : all;
+  } else QS = pool;
+  submitted = false;
+  $('rescard').style.display = 'none';
+  $('progcard').style.display = 'block';
+  $('submit-row').style.display = 'flex';
+  $('submit-btn').disabled = false;
+  ['sc-rate','sc-tot','sc-ok','sc-ng'].forEach(i => $(i).textContent = '—');
+  $('wlist').innerHTML = '<div class="empty">채점하면 여기에 모입니다</div>';
+  $('wn-cnt').textContent = '';
+  $('pg-bar').classList.remove('done');
+  render(); startTimer(); showTab('quiz');
+  const first = $('q0');
+  if(first) first.scrollIntoView({behavior:'smooth', block:'start'});
+  else window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ══════════ 렌더 ══════════ */
+function render(){
+  $('pg-tot').textContent = QS.length;
+  $('map').innerHTML = QS.map((q,i) => `<button class="dot" id="d${i}" onclick="jump(${i})">${i+1}</button>`).join('');
+  $('qbox').innerHTML = QS.map((q,i) => qHTML(q,i)).join('');
+  QS.forEach((q,i) => {
+    if(q.type !== 4) return;
+    const inp = $('in'+i); if(!inp) return;
+    inp.addEventListener('input', () => { q.text = inp.value; mark(i); });
+    inp.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); const nx = $('in'+(i+1)); nx ? nx.focus() : $('submit-btn').focus(); }
+    });
+  });
+  progress();
+}
+function qHTML(q, i){
+  const head = `<div class="q-top"><div class="q-n">${i+1}</div>
+    <span class="tag t${q.type}">${TYPE_NAME[q.type]}</span>
+    <span class="q-ask">${TYPE_ASK[q.type]}</span></div>`;
+  if(q.type === 4){
+    return `<div class="q" id="q${i}">${head}
+      <div class="t4-sent">${esc(q.pre)}<span class="blank">&nbsp;</span>${esc(q.post)}<span class="ans-key">${esc(q.answer)}</span></div>
+      <div class="t4-ko">${esc(q.ko)}</div>
+      <div class="wbox"><div class="wbox-l">WORD BOX</div>
+        <div class="wbox-w">${q.box.map(w => `<span>${esc(w)}</span>`).join('')}</div></div>
+      <div class="t4-row">
+        <input class="t4-in" id="in${i}" type="text" placeholder="정답을 정확히 입력하세요" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button class="src-link noprint" onclick="gotoSource('${q.sid}')">본문에서 보기 →</button>
+      </div>
+      <div class="fb" id="fb${i}"></div></div>`;
+  }
+  return `<div class="q" id="q${i}">${head}
+    <div class="q-word">${esc(q.word)}
+      <button class="spk noprint" onclick="speak('${esc(q.word).replace(/'/g,"\\'")}')" title="발음 듣기">🔊</button>
+      <span class="ans-key">정답 ${NUM[q.ans]}</span></div>
+    <div class="q-hint" id="h${i}" style="display:none"></div>
+    <div class="choices">${q.choices.map((c,ci) =>
+      `<button class="ch" id="c${i}_${ci}" onclick="choose(${i},${ci})">
+        <span class="ch-n">${NUM[ci]}</span>${esc(c)}</button>`).join('')}</div>
+    <div class="fb" id="fb${i}"></div></div>`;
+}
+function choose(i, ci){
+  if(submitted) return;
+  QS[i].pick = ci;
+  QS[i].choices.forEach((_,k) => $(`c${i}_${k}`).classList.toggle('sel', k === ci));
+  mark(i);
+}
+function mark(i){
+  const q = QS[i], did = q.type === 4 ? q.text.trim().length > 0 : q.pick !== null;
+  $('d'+i).classList.toggle('did', did);
+  progress();
+}
+function progress(){
+  if(submitted) return;
+  const done = QS.filter(q => q.type === 4 ? q.text.trim().length > 0 : q.pick !== null).length;
+  $('pg-done').textContent = done;
+  $('pg-bar').firstElementChild.style.width = (QS.length ? done/QS.length*100 : 0) + '%';
+  $('pg-label').textContent = done === QS.length && QS.length ? '모두 풀었어요' : '풀이 중';
+  $('dock').classList.toggle('on', QS.length > 0);
+  $('dock-txt').textContent = `${done} / ${QS.length}문항 작성`;
+}
+function jump(i){ showTab('quiz'); $('q'+i)?.scrollIntoView({behavior:'smooth', block:'center'}); }
+
+/* ══════════ 채점 ══════════ */
+function grade(){
+  if(!QS.length){ toast('먼저 시험지를 만들어주세요'); return; }
+  submitted = true; stopTimer();
+  $('submit-btn').disabled = true;
+  $('dock').classList.remove('on');
+  const wrong = [], by = {1:[0,0],2:[0,0],3:[0,0],4:[0,0]};
+  let ok = 0;
+
+  QS.forEach((q,i) => {
+    const fb = $('fb'+i);
+    let good = false, mine = '(미응답)';
+    if(q.type === 4){
+      const inp = $('in'+i);
+      const user = (inp.value || '').trim();
+      /* 수행평가 기준: 철자 완전 일치만 정답 (앞뒤 공백·대소문자만 허용) */
+      good = user.toLowerCase() === q.answer.toLowerCase();
+      if(user) mine = user;
+      inp.disabled = true;
+      inp.classList.add(good ? 'ok' : 'ng');
+      fb.className = 'fb show ' + (good ? 'ok' : 'ng');
+      fb.innerHTML = good ? '정답입니다' : `정답 <b>${esc(q.answer)}</b>${user ? ` · 내 답 ${esc(user)}` : ' · 미응답'}`;
+    } else {
+      good = q.pick === q.ans;
+      if(q.pick !== null) mine = q.choices[q.pick];
+      q.choices.forEach((_,ci) => {
+        const b = $(`c${i}_${ci}`); b.disabled = true; b.classList.remove('sel');
+        if(ci === q.ans) b.classList.add('ok');
+        else if(ci === q.pick) b.classList.add('ng');
+      });
+      const h = $('h'+i);
+      if(h && q.hint){ h.textContent = q.word + ' : ' + q.hint; h.style.display = 'block'; }
+      const am = q.ansM ? ` <span style="opacity:.75">${esc(q.ansM)}</span>` : '';
+      fb.className = 'fb show ' + (good ? 'ok' : 'ng');
+      fb.innerHTML = good
+        ? `정답입니다 · <b>${esc(q.choices[q.ans])}</b>${am}`
+        : `정답 <b>${NUM[q.ans]} ${esc(q.choices[q.ans])}</b>${am}`;
+    }
+    by[q.type][1]++; if(good){ ok++; by[q.type][0]++; }
+    $('d'+i).className = 'dot ' + (good ? 'ok' : 'ng');
+    rec(q.type, q.key, good);
+    if(!good) wrong.push({type:q.type, word:q.key, disp:q.type===4?q.answer:q.word, mine, ans:q.type===4?q.answer:q.choices[q.ans]});
+  });
+
+  saveStats();
+  const rate = Math.round(ok / QS.length * 100);
+  $('sc-rate').textContent = rate + '%';
+  $('sc-tot').textContent = QS.length;
+  $('sc-ok').textContent = ok;
+  $('sc-ng').textContent = QS.length - ok;
+  $('pg-done').textContent = QS.length;
+  $('pg-bar').firstElementChild.style.width = '100%';
+  $('pg-bar').classList.add('done');
+  $('pg-label').textContent = '채점 완료';
+
+  $('rs-c').textContent = ok; $('rs-t').textContent = QS.length;
+  $('rs-msg').textContent = rate === 100 ? '전부 맞았습니다. 완벽해요!' :
+    rate >= 90 ? '아주 좋아요. 틀린 것만 한 번 더!' :
+    rate >= 70 ? '조금만 더 다듬으면 됩니다.' : '틀린 단어부터 다시 외워봅시다.';
+  $('rs-by').innerHTML = [1,2,3,4].filter(t => by[t][1]).map(t => {
+    const p = Math.round(by[t][0]/by[t][1]*100);
+    return `<div class="res-row"><span>${TYPE_NAME[t]}</span>
+      <span class="res-bar"><i style="width:${p}%"></i></span>
+      <span>${by[t][0]}/${by[t][1]}</span></div>`;
+  }).join('');
+  $('rescard').style.display = 'block';
+  $('again-btn').style.display = wrong.length ? 'inline-flex' : 'none';
+
+  $('wn-cnt').textContent = wrong.length ? wrong.length + '개' : '';
+  $('wlist').innerHTML = wrong.length ? wrong.map(w => `
+    <div class="wi"><div class="wi-t">${TYPE_NAME[w.type]}</div>
+      <div class="wi-w">${esc(w.disp)}
+        <button class="spk noprint" onclick="speak('${esc(w.disp).replace(/'/g,"\\'")}')">🔊</button></div>
+      <div class="wi-d"><span class="mine">${esc(w.mine)}</span> → <span class="ans">${esc(w.ans)}</span></div>
+    </div>`).join('') : '<div class="empty">틀린 문항이 없습니다</div>';
+
+  window._wrong = wrong; window._rate = rate; window._ok = ok; window._by = by;
+  renderWeak();
+  $('rescard').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function retryWrong(){
+  const w = window._wrong || [];
+  if(!w.length){ toast('틀린 문항이 없습니다'); return; }
+  const pool = w.map(it => rebuild(it.type, it.word)).filter(Boolean);
+  if(!pool.length){ toast('다시 낼 문항을 찾지 못했습니다'); return; }
+  generate(shuffle(pool));
+  toast('틀린 ' + pool.length + '문항으로 다시 출제했어요');
+}
+
+/* ══════════ 누적 약점 ══════════ */
+function renderWeak(){
+  const rows = Object.entries(stats)
+    .map(([k,v]) => ({t:+k.slice(0,1), word:k.slice(2), r:v.r, w:v.w}))
+    .filter(r => r.w > 0 && r.w > r.r * 0.5)
+    .sort((a,b) => (b.w - b.r) - (a.w - a.r)).slice(0, 12);
+  $('weaklist').innerHTML = rows.length ? rows.map(r => `
+    <div class="wi"><div class="wi-t">${TYPE_NAME[r.t]} · 틀림 ${r.w} / 맞음 ${r.r}</div>
+      <div class="wi-w">${esc(r.word)}
+        <button class="spk noprint" onclick="speak('${esc(r.word).replace(/'/g,"\\'")}')">🔊</button></div>
+    </div>`).join('')
+    : '<div class="empty">아직 기록이 없습니다</div>';
+}
+function clearStats(){
+  if(!confirm('이 기기에 저장된 오답 기록을 모두 지울까요?')) return;
+  stats = {}; saveStats(); renderWeak(); toast('기록을 지웠습니다');
+}
+
+/* ══════════ 결과 복사 ══════════ */
+function copyResult(){
+  if(!submitted){ toast('먼저 채점해주세요'); return; }
+  const by = window._by, w = window._wrong || [];
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  let txt = `Witheun. Lesson 2 단어 시험\n`;
+  txt += `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}\n`;
+  txt += `점수 ${window._ok} / ${QS.length} (${window._rate}%)\n`;
+  txt += [1,2,3,4].filter(t => by[t][1]).map(t => `· ${TYPE_NAME[t]} ${by[t][0]}/${by[t][1]}`).join('\n') + '\n';
+  if(w.length) txt += `\n틀린 단어 (${w.length})\n` + w.map(x => `- [${TYPE_NAME[x.type]}] ${x.disp} → ${x.ans}`).join('\n');
+  const done = () => toast('결과를 복사했습니다');
+  if(navigator.clipboard?.writeText) navigator.clipboard.writeText(txt).then(done).catch(() => fallbackCopy(txt, done));
+  else fallbackCopy(txt, done);
+}
+function fallbackCopy(txt, cb){
+  const ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); cb(); }catch(e){ toast('복사에 실패했습니다'); }
+  document.body.removeChild(ta);
+}
+
+/* ══════════ 타이머 ══════════ */
+function startTimer(){
+  stopTimer();
+  const on = $('opt-timer').checked;
+  $('timer').classList.toggle('on', on);
+  if(!on) return;
+  tLimit = (parseInt($('opt-min').value,10) || 15) * 60;
+  tStart = Date.now();
+  tick(); timerId = setInterval(tick, 250);
+}
+function stopTimer(){ if(timerId){ clearInterval(timerId); timerId = null; } }
+function tick(){
+  const left = tLimit - Math.floor((Date.now() - tStart)/1000);
+  const s = Math.max(0, left);
+  $('timer-v').textContent = String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+  $('timer').classList.toggle('warn', s <= 60);
+  if(left <= 0){ stopTimer(); toast('시간이 종료되어 자동 채점합니다'); grade(); }
+}
+
+/* ══════════ 본문 ══════════ */
+function renderPassage(){
+  $('psg-t').textContent = D.passage.titleEn;
+  $('psg-tko').textContent = D.passage.titleKo;
+  const marks = $('opt-mark').checked;
+  const bySid = {};
+  if(marks) for(const b of D.blanks) (bySid[b.sid] = bySid[b.sid] || []).push(b.ans);
+  $('psg').innerHTML = D.passage.paras.map(p => `<div class="para">` + p.map(s => {
+    let en = esc(s.en);
+    if(marks && bySid[s.id]) for(const w of bySid[s.id]){
+      en = en.replace(new RegExp('(^|[^A-Za-z-])(' + w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')(?![A-Za-z-])'),
+        '$1<span class="psg-mark">$2</span>');
+    }
+    return `<span class="sent" id="p-${s.id}">${en} </span>`;
+  }).join('') + `<span class="sent-ko">` + p.map(s => esc(s.ko)).join(' ') + `</span></div>`).join('');
+}
+function gotoSource(sid){
+  showTab('psg');
+  const el = $('p-' + sid);
+  if(!el) return;
+  document.querySelectorAll('.sent.hl').forEach(e => e.classList.remove('hl'));
+  setTimeout(() => {
+    el.scrollIntoView({behavior:'smooth', block:'center'});
+    el.classList.add('hl');
+    setTimeout(() => el.classList.remove('hl'), 3000);
+  }, 60);
+}
+function toggleKo(){ document.body.classList.toggle('hide-ko', !$('opt-ko').checked); }
+
+/* ══════════ 탭 / 인쇄 / TTS ══════════ */
+function showTab(v){
+  document.body.dataset.tab = v;
+  $('view-quiz').style.display = v === 'quiz' ? 'block' : 'none';
+  $('view-psg').style.display  = v === 'psg'  ? 'block' : 'none';
+  $('tab-quiz').classList.toggle('on', v === 'quiz');
+  $('tab-psg').classList.toggle('on', v === 'psg');
+}
+function doPrint(mode){
+  if(!QS.length){ toast('먼저 시험지를 만들어주세요'); return; }
+  showTab('quiz');
+  document.body.dataset.print = mode;
+  const d = new Date();
+  $('ph-date').textContent = `${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}. · ${QS.length}문항`;
+  setTimeout(() => { window.print(); setTimeout(() => delete document.body.dataset.print, 400); }, 120);
+}
+function speak(w){
+  if(!window.speechSynthesis){ toast('이 브라우저는 발음 듣기를 지원하지 않습니다'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(w);
+  u.lang = 'en-US'; u.rate = 0.9;
+  speechSynthesis.speak(u);
+}
+
+/* ══════════ 시작 ══════════ */
+document.addEventListener('keydown', e => {
+  if(submitted || e.target.tagName === 'INPUT') return;
+  if(e.key >= '1' && e.key <= '5'){
+    const vis = [...document.querySelectorAll('.q')].find(q => {
+      const r = q.getBoundingClientRect();
+      return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.2;
+    });
+    if(!vis) return;
+    const i = +vis.id.slice(1);
+    if(QS[i] && QS[i].type !== 4) choose(i, +e.key - 1);
+  }
+});
+renderPassage();
+renderWeak();
+syncCnt();
+generate();
+</script>
+</body>
+</html>
