@@ -228,19 +228,24 @@ button{cursor:pointer;border:none;background:none}
 .submit-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
 
 /* ══ RESULT ══ */
-.res{background:linear-gradient(135deg,#3182f6,#1b64da);color:#fff}
-.res .card-t{color:#fff}
+.res{background:#fff;color:#000}
+.res .card-t{color:#000}
 .res-big{font-size:52px;font-weight:800;letter-spacing:-0.05em;line-height:1;
-  font-variant-numeric:tabular-nums}
-.res-big small{font-size:20px;opacity:.7;font-weight:700}
-.res-sub{font-size:15px;font-weight:600;opacity:.85;margin-top:8px}
+  font-variant-numeric:tabular-nums;color:var(--blue-d)}
+.res-big small{font-size:20px;color:var(--ink3);font-weight:700}
+.res-sub{font-size:15px;font-weight:700;color:#000;margin-top:8px}
 .res-by{display:flex;flex-direction:column;gap:9px;margin-top:20px;
-  padding-top:18px;border-top:1px solid rgba(255,255,255,.22)}
-.res-row{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
-.res-row span:first-child{width:74px;opacity:.85;flex-shrink:0}
-.res-bar{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.25);overflow:hidden}
-.res-bar i{display:block;height:100%;background:#fff;border-radius:999px;transition:width .5s}
-.res-row span:last-child{width:52px;text-align:right;font-variant-numeric:tabular-nums}
+  padding-top:18px;border-top:1px solid var(--line)}
+.res-row{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#000}
+.res-row span:first-child{width:74px;color:#000;flex-shrink:0}
+.res-bar{flex:1;height:6px;border-radius:999px;background:var(--line2);overflow:hidden}
+.res-bar i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .5s}
+.res-row span:last-child{width:52px;text-align:right;font-variant-numeric:tabular-nums;
+  color:var(--blue-d)}
+.res .waves{height:70px}
+.res .waves svg:nth-child(1) path{fill:rgba(135,206,250,.30)}
+.res .waves svg:nth-child(2) path{fill:rgba(100,180,255,.18)}
+.res-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
 
 /* ══ SIDEBAR ══ */
 .score-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -438,9 +443,9 @@ body:not([data-tab="test"]) .dock{display:none}
     <div class="res-big"><span id="dd-tot">0</span><small> 단어</small></div>
     <div class="res-sub" id="dd-msg"></div>
     <div class="res-by" id="dd-by"></div>
-    <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
-      <button class="btn sm" style="background:#fff;color:#1b64da" onclick="drillStart(false)">한 번 더</button>
-      <button class="btn sm" style="background:rgba(255,255,255,.2);color:#fff" onclick="showTab('test')">실전 테스트 풀기</button>
+    <div class="res-actions">
+      <button class="btn pri sm" onclick="drillStart(false)">한 번 더</button>
+      <button class="btn sec sm" onclick="showTab('test')">실전 테스트 풀기</button>
     </div>
   </div>
 </section>
@@ -546,10 +551,10 @@ body:not([data-tab="test"]) .dock{display:none}
         <div class="res-big"><span id="rs-c">0</span><small> / <span id="rs-t">0</span></small></div>
         <div class="res-sub" id="rs-msg"></div>
         <div class="res-by" id="rs-by"></div>
-        <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
-          <button class="btn sm" style="background:#fff;color:#1b64da" onclick="copyResult()">결과 복사</button>
-          <button class="btn sm" style="background:rgba(255,255,255,.2);color:#fff" id="again-btn" onclick="retryWrong()">틀린 것만 다시</button>
-          <button class="btn sm" style="background:rgba(255,255,255,.2);color:#fff" onclick="generate()">새 시험지</button>
+        <div class="res-actions">
+          <button class="btn pri sm" onclick="copyResult()">결과 복사</button>
+          <button class="btn sec sm" id="again-btn" onclick="retryWrong()">틀린 것만 다시</button>
+          <button class="btn sec sm" onclick="generate()">새 시험지</button>
         </div>
       </div>
 
