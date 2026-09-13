@@ -104,6 +104,9 @@ button{cursor:pointer;border:none;background:none}
 .waves svg:nth-child(2){animation:waveShift 6s linear infinite}
 .waves svg:nth-child(1) path{fill:rgba(255,255,255,.22)}
 .waves svg:nth-child(2) path{fill:rgba(255,255,255,.14)}
+.qbig .waves{height:70px}
+.qbig .waves svg:nth-child(1) path{fill:rgba(135,206,250,.30)}
+.qbig .waves svg:nth-child(2) path{fill:rgba(100,180,255,.18)}
 .qbig,.res{position:relative;overflow:hidden}
 .qbig>*:not(.waves),.res>*:not(.waves){position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){.waves svg{animation:none}}
@@ -118,11 +121,13 @@ button{cursor:pointer;border:none;background:none}
 .chip i{font-style:normal;font-size:11px;font-weight:800;opacity:.6;margin-left:2px}
 
 /* ══ 빠른 시작 ══ */
-.qbig{width:100%;background:var(--blue);color:#fff;border-radius:var(--r2);
-  padding:18px 20px;text-align:left;transition:.15s;margin-bottom:10px}
-.qbig:hover{background:var(--blue-d)}
-.qbig b{display:block;font-size:18px;font-weight:800;letter-spacing:-0.03em}
-.qbig span{display:block;font-size:13px;font-weight:600;opacity:.85;margin-top:3px}
+.qbig{width:100%;background:#fff;color:var(--ink);border-radius:var(--r2);
+  padding:22px 20px;text-align:left;transition:.18s;margin-bottom:10px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04)}
+.qbig:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.10),0 0 0 1px rgba(0,0,0,.04)}
+.qbig b{display:block;font-size:18px;font-weight:800;letter-spacing:-0.03em;color:var(--ink)}
+.qbig b em{font-style:normal;color:var(--blue-d)}
+.qbig span{display:block;font-size:13px;font-weight:600;color:var(--ink3);margin-top:3px}
 .qrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .qbtn{background:var(--line2);border-radius:var(--r2);padding:14px 16px;text-align:left;transition:.15s}
 .qbtn:hover{background:var(--blue-bg)}
@@ -167,9 +172,6 @@ button{cursor:pointer;border:none;background:none}
 .q-ask{font-size:13px;font-weight:600;color:var(--ink3);letter-spacing:-0.02em}
 .q-word{font-size:34px;font-weight:800;letter-spacing:-0.04em;line-height:1.25;
   margin:4px 0 6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.q-word .spk{width:32px;height:32px;border-radius:50%;background:var(--line2);
-  display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
-.q-word .spk:hover{background:var(--blue-bg)}
 .q-hint{font-size:14px;color:var(--ink3);font-weight:600;margin-bottom:16px}
 .choices{display:flex;flex-direction:column;gap:8px}
 .ch{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
@@ -257,8 +259,6 @@ button{cursor:pointer;border:none;background:none}
 .wi-t{font-size:11px;font-weight:800;color:var(--ink3);margin-bottom:3px}
 .wi-w{font-size:16px;font-weight:800;letter-spacing:-0.03em;margin-bottom:5px;
   display:flex;align-items:center;gap:6px}
-.wi-w .spk{width:22px;height:22px;border-radius:50%;background:#fff;font-size:11px;
-  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .wi-d{font-size:13px;color:var(--ink2);font-weight:600;line-height:1.5}
 .wi-d .mine{color:var(--red);text-decoration:line-through}
 .wi-d .ans{color:var(--green);font-weight:800}
@@ -336,7 +336,6 @@ body:not([data-tab="test"]) .dock{display:none}
   .card,.q{box-shadow:none;border:1px solid #ddd;border-radius:8px;padding:10px 12px;
     margin-bottom:8px;break-inside:avoid;page-break-inside:avoid}
   .q-word{font-size:19pt;margin:2px 0 4px}
-  .q-word .spk{display:none}
   .ch{padding:6px 10px;font-size:10.5pt;background:#fff;border:1px solid #e5e8eb}
   .choices{gap:4px}
   .t4-in{border:none;border-bottom:1.5px solid #999;border-radius:0;padding:6px 2px;
@@ -458,7 +457,7 @@ body:not([data-tab="test"]) .dock{display:none}
 
         <button class="qbig" onclick="quickStart('full')">
           <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
-          <b>전체 시험지 · 80문항</b>
+          <b>전체 시험지 · <em>80문항</em></b>
           <span>단어 뜻 20 · 유의어 20 · 반의어 20 · 본문 빈칸 20</span>
         </button>
 
@@ -877,7 +876,6 @@ function qHTML(q, i, opt){
   }
   return `<div class="q" id="q${i}">${head}
     <div class="q-word">${esc(q.word)}
-      <button class="spk noprint" onclick="speak('${esc(q.word).replace(/'/g,"\\'")}')" title="발음 듣기">🔊</button>
       <span class="ans-key">정답 ${NUM[q.ans]}</span></div>
     <div class="q-hint" id="h${i}" style="display:none"></div>
     <div class="choices">${q.choices.map((c,ci) =>
@@ -981,8 +979,7 @@ function grade(){
   $('wn-cnt').textContent = wrong.length ? wrong.length + '개' : '';
   $('wlist').innerHTML = wrong.length ? wrong.map(w => `
     <div class="wi"><div class="wi-t">${TYPE_NAME[w.type]}</div>
-      <div class="wi-w">${esc(w.disp)}
-        <button class="spk noprint" onclick="speak('${esc(w.disp).replace(/'/g,"\\'")}')">🔊</button></div>
+      <div class="wi-w">${esc(w.disp)}</div>
       <div class="wi-d"><span class="mine">${esc(w.mine)}</span> → <span class="ans">${esc(w.ans)}</span></div>
     </div>`).join('') : '<div class="empty">틀린 문항이 없습니다</div>';
 
@@ -1008,8 +1005,7 @@ function renderWeak(){
     .sort((a,b) => (b.w - b.r) - (a.w - a.r)).slice(0, 12);
   $('weaklist').innerHTML = rows.length ? rows.map(r => `
     <div class="wi"><div class="wi-t">${TYPE_NAME[r.t]} · 틀림 ${r.w} / 맞음 ${r.r}</div>
-      <div class="wi-w">${esc(r.word)}
-        <button class="spk noprint" onclick="speak('${esc(r.word).replace(/'/g,"\\'")}')">🔊</button></div>
+      <div class="wi-w">${esc(r.word)}</div>
     </div>`).join('')
     : '<div class="empty">아직 기록이 없습니다</div>';
 }
@@ -1275,13 +1271,6 @@ function doPrint(mode){
   const d = new Date();
   $('ph-date').textContent = `${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}. · ${QS.length}문항`;
   setTimeout(() => { window.print(); setTimeout(() => delete document.body.dataset.print, 400); }, 120);
-}
-function speak(w){
-  if(!window.speechSynthesis){ toast('이 브라우저는 발음 듣기를 지원하지 않습니다'); return; }
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(w);
-  u.lang = 'en-US'; u.rate = 0.9;
-  speechSynthesis.speak(u);
 }
 
 /* ══════════ 시작 ══════════ */
