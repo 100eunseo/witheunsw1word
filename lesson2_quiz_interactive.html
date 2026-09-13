@@ -602,7 +602,7 @@ const TYPE_ASK = {
   1:'다음 단어의 뜻으로 알맞은 것은?',
   2:'다음 단어와 뜻이 가장 가까운 것은?',
   3:'다음 단어와 뜻이 반대인 것은?',
-  4:'본문의 빈칸에 들어갈 단어를 보기에서 골라 정확히 쓰시오.'
+  4:'본문의 빈칸에 들어갈 단어를 보기에서 골라 쓰시오. 본문에 쓰인 그대로여야 정답입니다.'
 };
 const SKEY = 'witheun.lesson2.stats.v1';
 const HKEY = 'witheun.lesson2.hard.v1';
@@ -696,14 +696,18 @@ function buildPair(src, typeNo, n){
 }
 /* WORD BOX 오답: 정답과 첫 글자가 다르고 의미 묶음도 겹치지 않는 단어만.
    빈칸에 첫 글자를 보여주므로, 박스 안에서 답이 하나로 확정된다. */
-function blankQ(i){
+function blankQ(i, hint){
   const b = D.blanks[i], f = first1(b.ans);
+  /* 힌트를 주는 드릴에서는 첫 글자가 다른 단어만 보기로 (힌트가 힌트 구실을 하게).
+     힌트 없는 실전에서는 품사가 다른 단어를 우선해 엉뚱한 자리에 안 들어가게 한다. */
   const pool = [...new Set(D.blanks
-    .filter(x => first1(x.ans) !== f && !clash(x.g, b.g))
+    .filter(x => x.ans.toLowerCase() !== b.ans.toLowerCase() && !clash(x.g, b.g)
+                 && (hint ? first1(x.ans) !== f : x.p !== b.p))
     .map(x => x.ans))];
-  return {type:4, bi:i, sid:b.sid, pre:b.pre, post:b.post, ko:b.ko, answer:b.ans,
-          lead:b.ans.charAt(0), mask:maskOf(b.ans),
-          box: shuffle([b.ans, ...shuffle(pool).slice(0,3)]), text:'', key:b.ans};
+  const q = {type:4, bi:i, sid:b.sid, pre:b.pre, post:b.post, ko:b.ko, answer:b.ans,
+             box: shuffle([b.ans, ...shuffle(pool).slice(0,3)]), text:'', key:b.ans};
+  if(hint){ q.lead = b.ans.charAt(0); q.mask = maskOf(b.ans); }
+  return q;
 }
 function buildBlank(n){
   const seenS = new Set(), seenA = new Set(), out = [];
@@ -712,7 +716,7 @@ function buildBlank(n){
     if(out.length >= n) break;
     if(seenS.has(o.b.sid) || seenA.has(o.b.ans.toLowerCase())) continue;
     seenS.add(o.b.sid); seenA.add(o.b.ans.toLowerCase());
-    out.push(blankQ(o.i));
+    out.push(blankQ(o.i, false));
   }
   return out;
 }
@@ -778,21 +782,21 @@ function startWeak(){
 }
 /* 유형 + 원본 배열 인덱스로 문항 1개 생성 */
 function srcOf(t){ return t === 1 ? D.words : t === 2 ? D.syn : t === 3 ? D.ant : D.blanks; }
-function makeQ(t, i){
+function makeQ(t, i, hint){
   if(t === 1) return buildMeaningOne(D.words[i]);
   if(t === 2 || t === 3){
     const src = srcOf(t), x = src[i];
     const c = makeChoices(x.a, pairPool(src, x), 5);
     return {type:t, word:x.w, hint:x.wm, ansM:x.am, choices:c.choices, ans:c.ans, pick:null, key:x.w};
   }
-  return blankQ(i);
+  return blankQ(i, !!hint);
 }
 /* 유형+단어로 문항 1개 복원 */
-function rebuild(type, word){
+function rebuild(type, word, hint){
   const src = srcOf(type);
   const i = type === 4 ? src.findIndex(v => v.ans.toLowerCase() === String(word).toLowerCase())
                        : src.findIndex(v => v.w === word);
-  return i < 0 ? null : makeQ(type, i);
+  return i < 0 ? null : makeQ(type, i, hint);
 }
 
 function generate(pool){
@@ -844,12 +848,12 @@ function qHTML(q, i, opt){
     <span class="q-ask">${TYPE_ASK[q.type]}</span></div>`;
   if(q.type === 4){
     return `<div class="q" id="q${i}">${head}
-      <div class="t4-sent">${esc(q.pre)}<span class="blank"><b>${esc(q.lead)}</b>${esc(q.mask)}</span>${esc(q.post)}<span class="ans-key">${esc(q.answer)}</span></div>
+      <div class="t4-sent">${esc(q.pre)}<span class="blank">${q.lead ? `<b>${esc(q.lead)}</b>${esc(q.mask)}` : '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'}</span>${esc(q.post)}<span class="ans-key">${esc(q.answer)}</span></div>
       <div class="t4-ko">${esc(q.ko)}</div>
       <div class="wbox"><div class="wbox-l">WORD BOX</div>
         <div class="wbox-w">${q.box.map(w => `<span>${esc(w)}</span>`).join('')}</div></div>
       <div class="t4-row">
-        <input class="t4-in" id="in${i}" type="text" placeholder="${esc(q.lead)}로 시작하는 단어" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <input class="t4-in" id="in${i}" type="text" placeholder="${q.lead ? esc(q.lead) + '로 시작하는 단어' : '본문에 쓰인 그대로 입력'}" autocomplete="off" autocapitalize="off" spellcheck="false">
         <button class="src-link noprint" onclick="gotoSource('${q.sid}')">본문에서 보기 →</button>
       </div>
       <div class="fb" id="fb${i}"></div></div>`;
@@ -860,7 +864,7 @@ function qHTML(q, i, opt){
       <span class="ans-key">정답 ${NUM[q.ans]}</span></div>
     <div class="q-hint" id="h${i}" style="display:none"></div>
     <div class="choices">${q.choices.map((c,ci) =>
-      `<button class="ch" id="c${i}_${ci}" onclick="choose(${i},${ci})">
+      `<button class="ch" id="c${i}_${ci}" onclick="choose(${typeof i === 'string' ? "'" + i + "'" : i},${ci})">
         <span class="ch-n">${NUM[ci]}</span>${esc(c)}</button>`).join('')}</div>
     <div class="fb" id="fb${i}"></div></div>`;
 }
@@ -1033,14 +1037,13 @@ function drillStart(resume){
     if(!items.length){ toast('연습할 유형을 하나 이상 골라주세요'); return; }
     let q = shuffle(items);
     if($('opt-dweak').checked){
-      q.sort((a, b) => {
-        const wa = stats[a.split(':')[0] + '|' + dKey(a)]?.w || 0;
-        const wb = stats[b.split(':')[0] + '|' + dKey(b)]?.w || 0;
-        return wb - wa;
-      });
-      /* 앞쪽 약점 구간만 남기고 나머지는 다시 섞어 단조로움 방지 */
-      const head = q.slice(0, 12), tail = shuffle(q.slice(12));
-      q = head.concat(tail);
+      /* 틀렸던 단어일수록 앞쪽에 오되, 한 유형이 통째로 몰리지 않게
+         '무작위 키 ÷ 가중치'로 흩뿌린다. */
+      q = q.map(r => {
+        const st = stats[r.split(':')[0] + '|' + dKey(r)];
+        const w = 1 + (st ? st.w * 2 : 0) - (st ? Math.min(st.r, 2) * 0.3 : 0);
+        return {r, k: Math.random() / Math.max(0.5, w)};
+      }).sort((a, b) => a.k - b.k).map(o => o.r);
     }
     DR.q = q; DR.i = 0; DR.total = items.length; DR.seen = 0;
     DR.mastered = new Set(); DR.missed = new Set();
@@ -1056,7 +1059,7 @@ function drillStart(resume){
 function drillShow(){
   if(DR.i >= DR.q.length){ drillFinish(); return; }
   const ref = DR.q[DR.i], [t, i] = ref.split(':');
-  DR.cur = makeQ(+t, +i); DR.cur.ref = ref;
+  DR.cur = makeQ(+t, +i, true); DR.cur.ref = ref;
   DR.locked = false;
   $('drill-card').innerHTML = qHTML(DR.cur, 'd', {again: DR.missed.has(ref)});
   $('dr-next').style.display = 'none';
