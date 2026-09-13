@@ -95,6 +95,20 @@ button{cursor:pointer;border:none;background:none}
   text-align:center;font-weight:700;font-size:14px}
 
 .diff-note{font-size:12.5px;font-weight:600;color:var(--ink3);margin-top:12px;line-height:1.5}
+/* ══ 물결 (witheun-review 히어로와 동일) ══ */
+@keyframes waveShift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.waves{position:absolute;left:0;right:0;bottom:0;height:64px;overflow:hidden;
+  pointer-events:none;border-radius:inherit}
+.waves svg{position:absolute;bottom:0;width:200%;height:100%;display:block}
+.waves svg:nth-child(1){animation:waveShift 8s linear infinite}
+.waves svg:nth-child(2){animation:waveShift 6s linear infinite}
+.waves svg:nth-child(1) path{fill:rgba(255,255,255,.22)}
+.waves svg:nth-child(2) path{fill:rgba(255,255,255,.14)}
+.qbig,.res{position:relative;overflow:hidden}
+.qbig>*:not(.waves),.res>*:not(.waves){position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.waves svg{animation:none}}
+@media print{.waves{display:none!important}}
+
 /* ══ 드릴 ══ */
 .dr-badge{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;
   background:var(--amber-bg);color:#c26a00}
@@ -409,6 +423,7 @@ body:not([data-tab="test"]) .dock{display:none}
   </div>
 
   <div class="card res noprint" id="drill-done" style="display:none">
+    <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
     <div class="card-t">드릴 완료</div>
     <div class="res-big"><span id="dd-tot">0</span><small> 단어</small></div>
     <div class="res-sub" id="dd-msg"></div>
@@ -442,6 +457,7 @@ body:not([data-tab="test"]) .dock{display:none}
         </div>
 
         <button class="qbig" onclick="quickStart('full')">
+          <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
           <b>전체 시험지 · 80문항</b>
           <span>단어 뜻 20 · 유의어 20 · 반의어 20 · 본문 빈칸 20</span>
         </button>
@@ -515,6 +531,7 @@ body:not([data-tab="test"]) .dock{display:none}
 
       <!-- 결과 -->
       <div class="card res noprint" id="rescard" style="display:none">
+        <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
         <div class="card-t">채점 결과</div>
         <div class="res-big"><span id="rs-c">0</span><small> / <span id="rs-t">0</span></small></div>
         <div class="res-sub" id="rs-msg"></div>
