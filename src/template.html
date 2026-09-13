@@ -125,9 +125,9 @@ button{cursor:pointer;border:none;background:none}
   padding:22px 20px;text-align:left;transition:.18s;margin-bottom:10px;
   box-shadow:0 2px 12px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04)}
 .qbig:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.10),0 0 0 1px rgba(0,0,0,.04)}
-.qbig b{display:block;font-size:18px;font-weight:800;letter-spacing:-0.03em;color:var(--ink)}
-.qbig b em{font-style:normal;color:var(--blue-d)}
-.qbig span{display:block;font-size:13px;font-weight:600;color:var(--ink3);margin-top:3px}
+.qbig b{display:block;font-size:18px;font-weight:800;letter-spacing:-0.03em;color:#000}
+.qbig span{display:block;font-size:13px;font-weight:700;color:#000;margin-top:4px}
+.qbig em{font-style:normal;color:var(--blue-d);font-weight:800}
 .qrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .qbtn{background:var(--line2);border-radius:var(--r2);padding:14px 16px;text-align:left;transition:.15s}
 .qbtn:hover{background:var(--blue-bg)}
@@ -173,6 +173,11 @@ button{cursor:pointer;border:none;background:none}
 .q-word{font-size:34px;font-weight:800;letter-spacing:-0.04em;line-height:1.25;
   margin:4px 0 6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .q-hint{font-size:14px;color:var(--ink3);font-weight:600;margin-bottom:16px}
+.q-hint b{color:var(--ink);font-weight:800}
+.wordnote{margin:12px 0 0;background:var(--line2);border-radius:10px;
+  padding:11px 14px;color:var(--ink2);font-size:14.5px}
+.wordnote i{font-style:normal;font-size:11.5px;font-weight:800;color:var(--purple);
+  background:var(--purple-bg);padding:2px 7px;border-radius:6px;margin:0 4px}
 .choices{display:flex;flex-direction:column;gap:8px}
 .ch{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
   padding:15px 16px;border-radius:var(--r2);background:var(--line2);
@@ -267,14 +272,19 @@ button{cursor:pointer;border:none;background:none}
 /* ══ 본문 TAB ══ */
 .psg h2{font-size:26px;font-weight:800;letter-spacing:-0.04em;margin-bottom:4px}
 .psg .psg-ko{font-size:15px;color:var(--ink3);font-weight:600;margin-bottom:22px}
-.para{margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line2)}
+.para{margin-bottom:20px;padding-bottom:20px;border-bottom:2px solid var(--line)}
 .para:last-child{border:none;margin-bottom:0;padding-bottom:0}
-.sent{display:inline;font-size:17px;line-height:1.85;letter-spacing:-0.01em;
-  border-radius:4px;transition:background .3s;scroll-margin-top:100px}
-.sent.hl{background:#fff3bf;box-shadow:0 0 0 4px #fff3bf}
-.sent-ko{display:block;font-size:14px;color:var(--ink3);line-height:1.7;
-  margin-top:10px;font-weight:500;padding-left:12px;border-left:3px solid var(--line)}
+.sline{padding:12px 0;border-bottom:1px dashed var(--line2);scroll-margin-top:90px;
+  border-radius:6px;transition:background .3s}
+.sline:last-child{border-bottom:none}
+.sline.hl{background:#fff8db;box-shadow:0 0 0 8px #fff8db}
+.sent{display:block;font-size:17px;line-height:1.75;letter-spacing:-0.01em;font-weight:500}
+.sno{font-style:normal;display:inline-block;min-width:24px;font-size:12px;font-weight:800;
+  color:var(--ink3);vertical-align:2px}
+.sent-ko{display:block;font-size:14.5px;color:var(--ink2);line-height:1.65;
+  margin-top:7px;font-weight:500;padding-left:24px}
 body.hide-ko .sent-ko{display:none}
+body.hide-ko .sline{padding:7px 0}
 .psg-mark{background:var(--purple-bg);color:#6d3ee0;font-weight:800;
   padding:1px 4px;border-radius:4px}
 
@@ -321,6 +331,7 @@ body:not([data-tab="test"]) .dock{display:none}
   .t4-in{min-width:0;width:100%}
   .src-link{align-self:flex-start;padding:6px 0}
   .sent{font-size:16px}
+  .sent-ko{font-size:13.5px;padding-left:24px}
   .res-big{font-size:44px}
   .btn.lg{padding:15px 18px;font-size:16px}
   .map{grid-template-columns:repeat(auto-fill,minmax(28px,1fr))}
@@ -457,8 +468,8 @@ body:not([data-tab="test"]) .dock{display:none}
 
         <button class="qbig" onclick="quickStart('full')">
           <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
-          <b>전체 시험지 · <em>80문항</em></b>
-          <span>단어 뜻 20 · 유의어 20 · 반의어 20 · 본문 빈칸 20</span>
+          <b>전체 시험지 · <em>80</em>문항</b>
+          <span>단어 뜻 <em>20</em> · 유의어 <em>20</em> · 반의어 <em>20</em> · 본문 빈칸 <em>20</em></span>
         </button>
 
         <div class="qrow">
@@ -721,6 +732,7 @@ function blankQ(i, hint){
                  && (hint ? first1(x.ans) !== f : x.p !== b.p))
     .map(x => x.ans))];
   const q = {type:4, bi:i, sid:b.sid, pre:b.pre, post:b.post, ko:b.ko, answer:b.ans,
+             head:b.head, pk:b.pk, hm:b.hm,
              box: shuffle([b.ans, ...shuffle(pool).slice(0,3)]), text:'', key:b.ans};
   if(hint){ q.lead = b.ans.charAt(0); q.mask = maskOf(b.ans); }
   return q;
@@ -872,6 +884,7 @@ function qHTML(q, i, opt){
         <input class="t4-in" id="in${i}" type="text" placeholder="${q.lead ? esc(q.lead) + '로 시작하는 단어' : '본문에 쓰인 그대로 입력'}" autocomplete="off" autocapitalize="off" spellcheck="false">
         <button class="src-link noprint" onclick="gotoSource('${q.sid}')">본문에서 보기 →</button>
       </div>
+      <div class="q-hint wordnote" id="h${i}" style="display:none"></div>
       <div class="fb" id="fb${i}"></div></div>`;
   }
   return `<div class="q" id="q${i}">${head}
@@ -882,6 +895,14 @@ function qHTML(q, i, opt){
       `<button class="ch" id="c${i}_${ci}" onclick="choose(${typeof i === 'string' ? "'" + i + "'" : i},${ci})">
         <span class="ch-n">${NUM[ci]}</span>${esc(c)}</button>`).join('')}</div>
     <div class="fb" id="fb${i}"></div></div>`;
+}
+/* 본문 빈칸: 채점 후 그 단어의 품사·뜻을 한 줄로 */
+function showWordNote(el, q){
+  if(!el) return;
+  const head = (q.head && q.head.toLowerCase() !== q.answer.toLowerCase())
+    ? `${q.answer} <span style="opacity:.6">← ${q.head}</span>` : esc(q.answer);
+  el.innerHTML = `<b>${head}</b> ${q.pk ? `<i>${esc(q.pk)}</i> ` : ''}${esc(q.hm || '')}`;
+  el.style.display = 'block';
 }
 function choose(i, ci){
   if(i === 'd') return drillPick(ci);
@@ -928,6 +949,7 @@ function grade(){
       inp.classList.add(good ? 'ok' : 'ng');
       fb.className = 'fb show ' + (good ? 'ok' : 'ng');
       fb.innerHTML = good ? '정답입니다' : `정답 <b>${esc(q.answer)}</b>${user ? ` · 내 답 ${esc(user)}` : ' · 미응답'}`;
+      showWordNote($('h'+i), q);
     } else {
       good = q.pick === q.ans;
       if(q.pick !== null) mine = q.choices[q.pick];
@@ -1102,6 +1124,7 @@ function drillCheck(){
     inp.disabled = true; inp.classList.add(good ? 'ok' : 'ng');
     fb.className = 'fb show ' + (good ? 'ok' : 'ng');
     fb.innerHTML = good ? '정답입니다' : `정답 <b>${esc(q.answer)}</b>${user ? ` · 내 답 ${esc(user)}` : ' · 미응답'}`;
+    showWordNote($('hd'), q);
   } else {
     good = q.pick === q.ans;
     q.choices.forEach((_, ci) => {
@@ -1234,20 +1257,25 @@ function renderPassage(){
   const marks = $('opt-mark').checked;
   const bySid = {};
   if(marks) for(const b of D.blanks) (bySid[b.sid] = bySid[b.sid] || []).push(b.ans);
+  let n = 0;
   $('psg').innerHTML = D.passage.paras.map(p => `<div class="para">` + p.map(s => {
+    n++;
     let en = esc(s.en);
     if(marks && bySid[s.id]) for(const w of bySid[s.id]){
       en = en.replace(new RegExp('(^|[^A-Za-z-])(' + w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')(?![A-Za-z-])'),
         '$1<span class="psg-mark">$2</span>');
     }
-    return `<span class="sent" id="p-${s.id}">${en} </span>`;
-  }).join('') + `<span class="sent-ko">` + p.map(s => esc(s.ko)).join(' ') + `</span></div>`).join('');
+    return `<div class="sline" id="p-${s.id}">
+      <div class="sent"><i class="sno">${n}</i>${en}</div>
+      <div class="sent-ko">${esc(s.ko)}</div>
+    </div>`;
+  }).join('') + `</div>`).join('');
 }
 function gotoSource(sid){
   showTab('psg');
   const el = $('p-' + sid);
   if(!el) return;
-  document.querySelectorAll('.sent.hl').forEach(e => e.classList.remove('hl'));
+  document.querySelectorAll('.hl').forEach(e => e.classList.remove('hl'));
   setTimeout(() => {
     el.scrollIntoView({behavior:'smooth', block:'center'});
     el.classList.add('hl');

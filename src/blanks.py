@@ -75,6 +75,20 @@ for TBL in (SYN, ANT):
         GRP.setdefault(w.lower(), set()).update(gset(g))
         GRP.setdefault(a.lower(), set()).update(gset(g))
 
+# 유의어/반의어표만으로는 안 걸러지는데 본문 해석 때문에 헷갈리는 짝을 직접 묶는다.
+# autonomous(s43)의 교과서 해석이 "자동화 로봇"이라 automation을 보기에 넣으면
+# 해석을 근거로 automation을 고르게 된다.
+GRP_MERGE = [
+    {"autonomous", "automation"},
+    {"delivery", "deliver"},
+    {"development", "develop"},
+    {"urban", "urbanization"},
+]
+for grp in GRP_MERGE:
+    tag = "X_PAIR_" + "_".join(sorted(grp)).upper()
+    for w in grp:
+        GRP.setdefault(w, set()).add(tag)
+
 def build():
     out, seen = [], set()
     for sid, en, ko in S:

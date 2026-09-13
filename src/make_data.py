@@ -9,6 +9,13 @@ sd = {s[0]: (s[1], s[2]) for s in P.S}
 from blanks import build as build_blanks
 blanks = build_blanks()
 
+# 빈칸 단어의 품사·뜻 (채점 후 해설용)
+POS_KO = {"n": "명사", "v": "동사", "adj": "형용사", "adv": "부사", "phr": "숙어"}
+MEAN = {w: m for w, m, _ in vocab.WORDS}
+for b in blanks:
+    b["pk"] = POS_KO.get(b["p"], "")
+    b["hm"] = MEAN.get(b["head"], "")
+
 # 단어별로 '목록 밖 오답'으로 써도 되는 EXT 인덱스 (의미 묶음 충돌 / 뜻 겹침 제외)
 XS = []
 for w, m, _ in vocab.WORDS:
