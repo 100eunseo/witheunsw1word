@@ -97,14 +97,13 @@ button{cursor:pointer;border:none;background:none}
 .diff-note{font-size:12.5px;font-weight:600;color:var(--ink3);margin-top:12px;line-height:1.5}
 /* ══ 물결 (witheun-review 히어로와 동일) ══ */
 @keyframes waveShift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.waves{position:absolute;left:0;right:0;bottom:0;height:64px;overflow:hidden;
-  pointer-events:none;border-radius:inherit}
+.waves{position:absolute;left:0;right:0;bottom:0;height:34%;
+  overflow:hidden;pointer-events:none;border-radius:inherit}
 .waves svg{position:absolute;bottom:0;width:200%;height:100%;display:block}
 .waves svg:nth-child(1){animation:waveShift 8s linear infinite}
 .waves svg:nth-child(2){animation:waveShift 6s linear infinite}
 .waves svg:nth-child(1) path{fill:rgba(255,255,255,.22)}
 .waves svg:nth-child(2) path{fill:rgba(255,255,255,.14)}
-.qbig .waves{height:70px}
 .qbig .waves svg:nth-child(1) path{fill:rgba(135,206,250,.30)}
 .qbig .waves svg:nth-child(2) path{fill:rgba(100,180,255,.18)}
 .qbig,.res{position:relative;overflow:hidden}
@@ -242,7 +241,6 @@ button{cursor:pointer;border:none;background:none}
 .res-bar i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .5s}
 .res-row span:last-child{width:52px;text-align:right;font-variant-numeric:tabular-nums;
   color:var(--blue-d)}
-.res .waves{height:70px}
 .res .waves svg:nth-child(1) path{fill:rgba(135,206,250,.30)}
 .res .waves svg:nth-child(2) path{fill:rgba(100,180,255,.18)}
 .res-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
@@ -552,7 +550,6 @@ body:not([data-tab="test"]) .dock{display:none}
         <div class="res-sub" id="rs-msg"></div>
         <div class="res-by" id="rs-by"></div>
         <div class="res-actions">
-          <button class="btn pri sm" onclick="copyResult()">결과 복사</button>
           <button class="btn sec sm" id="again-btn" onclick="retryWrong()">틀린 것만 다시</button>
           <button class="btn sec sm" onclick="generate()">새 시험지</button>
         </div>
@@ -1205,29 +1202,6 @@ function checkResume(){
   const on = !!(saved && saved.q && saved.i < saved.q.length && saved.seen > 0);
   $('drill-resume').style.display = on ? 'inline-flex' : 'none';
   if(on) $('drill-resume').textContent = `이어서 하기 (${saved.mastered.length}/${saved.total})`;
-}
-
-/* ══════════ 결과 복사 ══════════ */
-function copyResult(){
-  if(!submitted){ toast('먼저 채점해주세요'); return; }
-  const by = window._by, w = window._wrong || [];
-  const d = new Date();
-  const pad = n => String(n).padStart(2,'0');
-  let txt = `Witheun. Lesson 2 단어 시험\n`;
-  txt += `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}\n`;
-  txt += `점수 ${window._ok} / ${QS.length} (${window._rate}%) · 걸린 시간 ${fmtKo(TM.ms)}\n`;
-  txt += [1,2,3,4].filter(t => by[t][1]).map(t => `· ${TYPE_NAME[t]} ${by[t][0]}/${by[t][1]}`).join('\n') + '\n';
-  if(w.length) txt += `\n틀린 단어 (${w.length})\n` + w.map(x => `- [${TYPE_NAME[x.type]}] ${x.disp} → ${x.ans}`).join('\n');
-  const done = () => toast('결과를 복사했습니다');
-  if(navigator.clipboard?.writeText) navigator.clipboard.writeText(txt).then(done).catch(() => fallbackCopy(txt, done));
-  else fallbackCopy(txt, done);
-}
-function fallbackCopy(txt, cb){
-  const ta = document.createElement('textarea');
-  ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand('copy'); cb(); }catch(e){ toast('복사에 실패했습니다'); }
-  document.body.removeChild(ta);
 }
 
 /* ══════════ 타이머 (경과 시간) ══════════ */
