@@ -220,7 +220,9 @@ button{cursor:pointer;border:none;background:none}
 .cz-card .wbox{margin:14px 0 18px}
 .cz-body{margin-top:4px}
 .cz-p{font-size:16.5px;line-height:2.6;letter-spacing:-0.01em;color:var(--ink);font-weight:500}
-.cz-p+.cz-p{margin-top:14px}
+.cz-blk+.cz-blk{margin-top:16px}
+.cz-ko{margin-top:3px;font-size:14px;line-height:1.72;letter-spacing:-0.02em;
+  color:var(--ink2);font-weight:500;padding-left:11px;border-left:2px solid var(--line)}
 .cz{display:inline-flex;align-items:center;gap:4px;margin:0 3px;scroll-margin-top:90px}
 .cz i{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:var(--purple);
   width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;
@@ -235,6 +237,7 @@ button{cursor:pointer;border:none;background:none}
   margin-left:4px;white-space:nowrap}
 @media(max-width:640px){
   .cz-p{font-size:15.5px;line-height:2.5}
+  .cz-ko{font-size:13.5px;line-height:1.68}
   .cz-in{width:96px;font-size:14.5px}
 }
 
@@ -396,6 +399,9 @@ body:not([data-tab="test"]) .dock{display:none}
 .sh-box-w span{font-size:9.4pt;font-weight:700;padding:0 3mm;border-right:1px solid #bbb;line-height:1.35}
 .sh-box-w span:last-child{border-right:none}
 .sh-psg-body p{font-size:10.2pt;line-height:2.15;margin-bottom:2.6mm;text-align:justify}
+.sh-pb{margin-bottom:3mm}
+.sh-psg-body p.sh-ko{font-size:8.8pt;line-height:1.55;margin:0.6mm 0 0;color:#333;
+  padding-left:2.2mm;border-left:1.6px solid #c8cdd4}
 .sh-bl{white-space:nowrap}
 .sh-bl i{font-style:normal;font-size:7.4pt;font-weight:900;vertical-align:1.1mm;margin-right:0.6mm}
 .sh-bl u{display:inline-block;width:22mm;border-bottom:1.1px solid #000;text-decoration:none}
@@ -830,7 +836,7 @@ function buildCloze(n){
 function clozeHTML(start){
   const byS = {};
   QS.forEach((q,i) => { if(q.cloze) (byS[q.sid] = byS[q.sid] || []).push({q, i}); });
-  const paras = D.passage.paras.map(p => '<p class="cz-p">' + p.map(sn => {
+  const paras = D.passage.paras.map(p => '<div class="cz-blk"><p class="cz-p">' + p.map(sn => {
     const bs = (byS[sn.id] || []).slice().sort((a,b) => a.q.off - b.q.off);
     if(!bs.length) return esc(sn.en);
     let out = '', cur = 0;
@@ -843,7 +849,7 @@ function clozeHTML(start){
       cur = b.q.off + b.q.answer.length;
     }
     return out + esc(sn.en.slice(cur));
-  }).join(' ') + '</p>').join('');
+  }).join(' ') + '</p><p class="cz-ko">' + esc(p.map(sn => sn.ko).join(' ')) + '</p></div>').join('');
   return `<div class="q cz-card" id="clozecard">
     <div class="q-top"><div class="q-n">${start+1}~${QS.length}</div>
       <span class="tag t4">본문 빈칸</span>
@@ -1418,7 +1424,7 @@ function buildSheet(){
     const czNo = new Map(), byS = {};
     by[4].forEach(q => { no++; czNo.set(q, no); (byS[q.sid] = byS[q.sid] || []).push(q);
       keyBl.push(`<span><b>${no}</b> ${esc(q.answer)}</span>`); });
-    const paras = D.passage.paras.map(p => '<p>' + p.map(sn => {
+    const paras = D.passage.paras.map(p => '<div class="sh-pb"><p>' + p.map(sn => {
       const bs = (byS[sn.id] || []).slice().sort((a,b) => a.off - b.off);
       if(!bs.length) return esc(sn.en);
       let out = '', cur = 0;
@@ -1428,7 +1434,7 @@ function buildSheet(){
         cur = b.off + b.answer.length;
       }
       return out + esc(sn.en.slice(cur));
-    }).join(' ') + '</p>').join('');
+    }).join(' ') + '</p><p class="sh-ko">' + esc(p.map(sn => sn.ko).join(' ')) + '</p></div>').join('');
     secs.push(`<section class="sh-sec sh-psg">
       <h2>${ROMAN[sec]}. 본문 빈칸 <small>보기에서 골라 빈칸에 알맞은 단어를 본문에 쓰인 그대로 쓰시오.</small>
         <em>[${by[4].length}문항]</em></h2>
