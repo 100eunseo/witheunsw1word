@@ -215,6 +215,29 @@ button{cursor:pointer;border:none;background:none}
 .src-link{font-size:13px;font-weight:700;color:var(--blue);padding:8px 10px;border-radius:8px}
 .src-link:hover{background:var(--blue-bg)}
 
+/* ══ 본문 통문제 ══ */
+.cz-card .q-n{width:auto;min-width:26px;padding:0 9px;border-radius:9px}
+.cz-card .wbox{margin:14px 0 18px}
+.cz-body{margin-top:4px}
+.cz-p{font-size:16.5px;line-height:2.6;letter-spacing:-0.01em;color:var(--ink);font-weight:500}
+.cz-p+.cz-p{margin-top:14px}
+.cz{display:inline-flex;align-items:center;gap:4px;margin:0 3px;scroll-margin-top:90px}
+.cz i{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:var(--purple);
+  width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;flex-shrink:0;line-height:1}
+.cz-in{width:122px;border:none;border-bottom:2px solid var(--purple);background:transparent;
+  font-size:15.5px;font-weight:700;padding:2px 4px;text-align:center;color:var(--ink);
+  font-family:inherit}
+.cz-in:focus{outline:none;background:var(--purple-bg);border-radius:4px 4px 0 0}
+.cz-in.ok{color:#0a9e63;border-color:var(--green)}
+.cz-in.ng{color:var(--red);border-color:var(--red)}
+.cz-ans{display:none;font-style:normal;font-size:14.5px;font-weight:800;color:#0a9e63;
+  margin-left:4px;white-space:nowrap}
+@media(max-width:640px){
+  .cz-p{font-size:15.5px;line-height:2.5}
+  .cz-in{width:96px;font-size:14.5px}
+}
+
 /* ══ FEEDBACK ══ */
 .fb{display:none;margin-top:13px;padding:12px 15px;border-radius:var(--r2);
   font-size:14.5px;font-weight:700;letter-spacing:-0.02em;line-height:1.55}
@@ -341,40 +364,68 @@ body:not([data-tab="test"]) .dock{display:none}
 }
 
 /* ══ 인쇄 ══ */
+/* ══════════ 인쇄용 시험지 ══════════ */
+#sheet{display:none}
+.ans-key{display:none}
+.print-head{display:none}
+.sh-head{border-bottom:2.5px solid #000;padding-bottom:3.5mm;margin-bottom:5mm}
+.sh-h1{font-size:15pt;font-weight:900;letter-spacing:-0.03em}
+.sh-h2{display:flex;justify-content:space-between;font-size:8.6pt;color:#444;
+  font-weight:600;margin-top:1.2mm}
+.sh-name{display:flex;gap:7mm;align-items:baseline;margin-top:3mm;font-size:9.5pt;font-weight:700}
+.sh-name u{display:inline-block;width:24mm;border-bottom:1px solid #666;text-decoration:none}
+.sh-name .sh-meta{margin-left:auto;font-weight:600;color:#555;font-size:8.6pt}
+
+.sh-sec{margin-bottom:5mm}
+.sh-sec h2{font-size:11pt;font-weight:900;letter-spacing:-0.03em;margin-bottom:2.5mm;
+  padding:1.6mm 2.5mm;background:#eef1f5;border-left:3px solid #000;
+  display:flex;align-items:baseline;gap:2mm;break-after:avoid}
+.sh-sec h2 small{font-size:8.6pt;font-weight:600;color:#444}
+.sh-sec h2 em{margin-left:auto;font-style:normal;font-size:8.4pt;font-weight:700;color:#555}
+
+.sh-cols{column-count:2;column-gap:7mm}
+.sh-q{break-inside:avoid;page-break-inside:avoid;margin-bottom:2.6mm}
+.sh-qh{font-size:10pt;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.6mm}
+.sh-qh b{font-weight:900;margin-right:1mm}
+.sh-ch{font-size:9pt;font-weight:500;color:#111;line-height:1.5}
+.sh-ch span{margin-right:2.6mm;white-space:nowrap;display:inline-block}
+
+.sh-box{border:1.4px solid #000;border-radius:2mm;padding:2.6mm 3mm;margin-bottom:3.5mm}
+.sh-box-l{font-size:8.2pt;font-weight:900;letter-spacing:.05em;margin-bottom:1.4mm;color:#444}
+.sh-box-w{display:flex;flex-wrap:wrap;gap:1.4mm 0}
+.sh-box-w span{font-size:9.4pt;font-weight:700;padding:0 3mm;border-right:1px solid #bbb;line-height:1.35}
+.sh-box-w span:last-child{border-right:none}
+.sh-psg-body p{font-size:10.2pt;line-height:2.15;margin-bottom:2.6mm;text-align:justify}
+.sh-bl{white-space:nowrap}
+.sh-bl i{font-style:normal;font-size:7.4pt;font-weight:900;vertical-align:1.1mm;margin-right:0.6mm}
+.sh-bl u{display:inline-block;width:22mm;border-bottom:1.1px solid #000;text-decoration:none}
+.sh-write{display:none}
+
+body.sheetview .topbar,body.sheetview .wrap,body.sheetview .dock,body.sheetview .foot{display:none!important}
+body.sheetview #sheet{display:block!important;background:#fff;max-width:210mm;
+  margin:0 auto;padding:13mm 11mm;box-shadow:0 2px 24px rgba(0,0,0,.12);color:#000}
+body.sheetview{background:#e8ebef}
+.sh-ans{break-before:page;page-break-before:always}
+body.sheetview .sh-ans{margin-top:14mm;padding-top:10mm;border-top:2px dashed #aaa}
+.sh-ans-h{font-size:14pt;font-weight:900;letter-spacing:-0.03em;border-bottom:2.5px solid #000;
+  padding-bottom:2.5mm;margin-bottom:4mm}
+.sh-ans-h small{font-size:8.6pt;font-weight:600;color:#555;margin-left:2mm}
+.sh-ans-t{font-size:9.6pt;font-weight:900;margin:3.5mm 0 1.8mm;padding-left:1.6mm;
+  border-left:3px solid #000}
+.sh-akey{column-count:6;column-gap:4mm}
+.sh-akey.wide{column-count:3}
+.sh-akey span{display:block;break-inside:avoid;margin-bottom:1.4mm;font-size:11pt;font-weight:800}
+.sh-akey b{font-weight:700;color:#777;margin-right:1.8mm;display:inline-block;
+  min-width:6.5mm;font-size:9pt}
+
 @media print{
-  @page{size:A4;margin:12mm 10mm}
-  body{background:#fff;padding:0;font-size:11pt}
-  .topbar,.side,.dock,.noprint,.submit-row,.toast,.setup-card{display:none!important}
-  .wrap{max-width:none;padding:0}
-  .layout{display:block}
-  .card,.q{box-shadow:none;border:1px solid #ddd;border-radius:8px;padding:10px 12px;
-    margin-bottom:8px;break-inside:avoid;page-break-inside:avoid}
-  .q-word{font-size:19pt;margin:2px 0 4px}
-  .ch{padding:6px 10px;font-size:10.5pt;background:#fff;border:1px solid #e5e8eb}
-  .choices{gap:4px}
-  .t4-in{border:none;border-bottom:1.5px solid #999;border-radius:0;padding:6px 2px;
-    background:#fff!important;color:#000!important}
-  .wbox{background:#f7f7f8;padding:8px 10px}
-  .t4-ko{font-size:9.5pt}
-  .fb{display:none!important}
-  .print-head{display:block!important}
-  /* 학생용: 정답 흔적 모두 제거 */
-  body[data-print="student"] .ch.ok,body[data-print="student"] .ch.ng,
-  body[data-print="student"] .ch.sel{background:#fff!important;color:#191f28!important}
-  body[data-print="student"] .ch.ok .ch-n,body[data-print="student"] .ch.ng .ch-n,
-  body[data-print="student"] .ch.sel .ch-n{background:#fff!important;color:#8b95a1!important;
-    border-color:#8b95a1!important}
-  body[data-print="student"] .t4-in{color:#fff!important}
-  body[data-print="student"] .ans-key{display:none!important}
-  /* 교사용: 정답 표시 */
-  body[data-print="teacher"] .ans-key{display:inline-block!important}
+  @page{size:A4;margin:13mm 11mm}
+  html,body{background:#fff!important;padding:0!important;margin:0!important}
+  .topbar,.wrap,.dock,.toast,.foot,.side{display:none!important}
+  #sheet{display:block!important;color:#000;
+    font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif}
+  .sh-psg-body p{orphans:3;widows:3}
 }
-.print-head{display:none;border-bottom:2px solid #191f28;padding-bottom:8px;margin-bottom:12px}
-.print-head .ph-t{font-size:15pt;font-weight:800;letter-spacing:-0.03em}
-.print-head .ph-m{font-size:10pt;color:#4e5968;margin-top:4px;display:flex;
-  justify-content:space-between;font-weight:600}
-.ans-key{display:none;background:#191f28;color:#fff;font-size:9pt;font-weight:800;
-  padding:1px 6px;border-radius:4px;margin-left:6px}
 </style>
 </head>
 <body>
@@ -450,10 +501,6 @@ body:not([data-tab="test"]) .dock{display:none}
 
 <!-- ══════════ 실전 탭 ══════════ -->
 <section id="view-test" style="display:none">
-  <div class="print-head">
-    <div class="ph-t">2학기 Lesson 2 단어 시험 · 송우고등학교</div>
-    <div class="ph-m"><span>학번 __________ 이름 __________</span><span id="ph-date"></span></div>
-  </div>
 
   <div class="phead noprint">
     <h1>실전 테스트</h1>
@@ -490,8 +537,7 @@ body:not([data-tab="test"]) .dock{display:none}
         <div class="more-row">
           <button class="more-t" id="more-t" onclick="toggleMore()">직접 설정 <i>▾</i></button>
           <div class="more-print">
-            <button class="btn gho sm" onclick="doPrint('student')">학생용 인쇄</button>
-            <button class="btn gho sm" onclick="doPrint('teacher')">교사용 인쇄</button>
+            <button class="btn gho sm" onclick="doPrint()">시험지 인쇄 (뒷장 답지 포함)</button>
           </div>
         </div>
 
@@ -621,6 +667,9 @@ body:not([data-tab="test"]) .dock{display:none}
 
 <div class="toast" id="toast"></div>
 
+<!-- ══════════ 인쇄용 시험지 (화면에는 안 보임) ══════════ -->
+<div id="sheet"></div>
+
 <script>
 const D = __DATA__;
 
@@ -644,7 +693,7 @@ function syncHard(from){
   updateDiffNote();
 }
 const MAXN = [0, D.words.length, D.syn.length, D.ant.length, new Set(D.blanks.map(b => b.sid)).size];
-let QS = [], submitted = false, stats = loadStats();
+let QS = [], submitted = false, stats = loadStats(), CLOZE = null;
 const TM = {id:null, start:0, ms:0};
 
 /* ══════════ 유틸 ══════════ */
@@ -751,6 +800,59 @@ function buildBlank(n){
   return out;
 }
 
+/* 실전·인쇄용 본문 통문제: 본문 전체에 빈칸 N개 + 보기 상자 하나 */
+function buildCloze(n){
+  const perSent = {}, seenA = new Set(), chosen = [];
+  for(const o of pickW(D.blanks.map((b,i) => ({b,i})), D.blanks.length, o => o.b.ans, 4)){
+    if(chosen.length >= n) break;
+    if((perSent[o.b.sid] || 0) >= 2) continue;          /* 한 문장에 최대 2개 */
+    if(seenA.has(o.b.ans.toLowerCase())) continue;
+    perSent[o.b.sid] = (perSent[o.b.sid] || 0) + 1;
+    seenA.add(o.b.ans.toLowerCase());
+    chosen.push(o);
+  }
+  const ord = {}; let k = 0;
+  D.passage.paras.forEach(p => p.forEach(x => ord[x.id] = k++));
+  chosen.sort((a,b) => (ord[a.b.sid] - ord[b.b.sid]) || (a.b.pre.length - b.b.pre.length));
+
+  const answers = chosen.map(o => o.b.ans);
+  const low = new Set(answers.map(a => a.toLowerCase()));
+  const pool = [...new Set(D.blanks.map(b => b.ans))].filter(a => !low.has(a.toLowerCase()));
+  const extra = shuffle(pool).slice(0, Math.max(4, Math.round(chosen.length * 0.3)));
+  CLOZE = {box: [...answers, ...extra].sort((a,b) => a.toLowerCase().localeCompare(b.toLowerCase()))};
+
+  return chosen.map(o => ({
+    type:4, cloze:true, bi:o.i, sid:o.b.sid, off:o.b.pre.length,
+    answer:o.b.ans, head:o.b.head, pk:o.b.pk, hm:o.b.hm, text:'', key:o.b.ans
+  }));
+}
+/* 통문제를 본문 한 덩어리로 렌더 */
+function clozeHTML(start){
+  const byS = {};
+  QS.forEach((q,i) => { if(q.cloze) (byS[q.sid] = byS[q.sid] || []).push({q, i}); });
+  const paras = D.passage.paras.map(p => '<p class="cz-p">' + p.map(sn => {
+    const bs = (byS[sn.id] || []).slice().sort((a,b) => a.q.off - b.q.off);
+    if(!bs.length) return esc(sn.en);
+    let out = '', cur = 0;
+    for(const b of bs){
+      out += esc(sn.en.slice(cur, b.q.off));
+      out += `<span class="cz" id="q${b.i}"><i>${b.i+1}</i>`
+           + `<input class="cz-in" id="in${b.i}" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">`
+           + `<em class="cz-ans" id="ca${b.i}"></em>`
+           + `<span class="ans-key">${esc(b.q.answer)}</span></span>`;
+      cur = b.q.off + b.q.answer.length;
+    }
+    return out + esc(sn.en.slice(cur));
+  }).join(' ') + '</p>').join('');
+  return `<div class="q cz-card" id="clozecard">
+    <div class="q-top"><div class="q-n">${start+1}~${QS.length}</div>
+      <span class="tag t4">본문 빈칸</span>
+      <span class="q-ask">보기에서 골라 빈칸에 알맞은 단어를 <b>본문에 쓰인 그대로</b> 쓰시오.</span></div>
+    <div class="wbox"><div class="wbox-l">WORD BOX · ${CLOZE.box.length}개</div>
+      <div class="wbox-w">${CLOZE.box.map(w => `<span>${esc(w)}</span>`).join('')}</div></div>
+    <div class="cz-body">${paras}</div></div>`;
+}
+
 function bump(t, d){
   const el = $('n'+t), max = MAXN[t];
   el.value = Math.max(0, Math.min(max, (parseInt(el.value,10)||0) + d));
@@ -837,9 +939,11 @@ function generate(pool){
     if(n(1)) all = all.concat(buildMeaning(n(1)));
     if(n(2)) all = all.concat(buildPair(D.syn, 2, n(2)));
     if(n(3)) all = all.concat(buildPair(D.ant, 3, n(3)));
-    if(n(4)) all = all.concat(buildBlank(n(4)));
-    QS = $('opt-shuffle').checked ? shuffle(all) : all;
-  } else QS = pool;
+    if($('opt-shuffle').checked) all = shuffle(all);
+    CLOZE = null;
+    if(n(4)) all = all.concat(buildCloze(n(4)));   /* 본문은 한 덩어리라 늘 맨 뒤 */
+    QS = all;
+  } else { QS = pool; CLOZE = null; }
   submitted = false;
   $('rescard').style.display = 'none';
   $('progcard').style.display = 'block';
@@ -859,7 +963,11 @@ function generate(pool){
 function render(){
   $('pg-tot').textContent = QS.length;
   $('map').innerHTML = QS.map((q,i) => `<button class="dot" id="d${i}" onclick="jump(${i})">${i+1}</button>`).join('');
-  $('qbox').innerHTML = QS.map((q,i) => qHTML(q,i)).join('');
+  const czStart = QS.findIndex(q => q.cloze);
+  let html = '';
+  QS.forEach((q,i) => { if(!q.cloze) html += qHTML(q,i); });
+  if(czStart >= 0) html += clozeHTML(czStart);
+  $('qbox').innerHTML = html;
   QS.forEach((q,i) => {
     if(q.type !== 4) return;
     const inp = $('in'+i); if(!inp) return;
@@ -943,14 +1051,18 @@ function grade(){
     let good = false, mine = '(미응답)';
     if(q.type === 4){
       const inp = $('in'+i);
-      const user = (inp.value || '').trim();
+      const user = inp ? (inp.value || '').trim() : '';
       /* 수행평가 기준: 철자 완전 일치만 정답 (앞뒤 공백·대소문자만 허용) */
       good = user.toLowerCase() === q.answer.toLowerCase();
       if(user) mine = user;
-      inp.disabled = true;
-      inp.classList.add(good ? 'ok' : 'ng');
-      fb.className = 'fb show ' + (good ? 'ok' : 'ng');
-      fb.innerHTML = good ? '정답입니다' : `정답 <b>${esc(q.answer)}</b>${user ? ` · 내 답 ${esc(user)}` : ' · 미응답'}`;
+      if(inp){ inp.disabled = true; inp.classList.add(good ? 'ok' : 'ng'); }
+      if(fb){
+        fb.className = 'fb show ' + (good ? 'ok' : 'ng');
+        fb.innerHTML = good ? '정답입니다' : `정답 <b>${esc(q.answer)}</b>${user ? ` · 내 답 ${esc(user)}` : ' · 미응답'}`;
+      } else if(!good){                      /* 통문제: 빈칸 옆에 정답 표시 */
+        const ca = $('ca'+i);
+        if(ca){ ca.textContent = q.answer; ca.style.display = 'inline'; }
+      }
       showWordNote($('h'+i), q);
     } else {
       good = q.pick === q.ans;
@@ -1271,13 +1383,88 @@ function showTab(v){
     $('tab-' + k).classList.toggle('on', v === k);
   });
 }
-function doPrint(mode){
-  if(!QS.length){ toast('먼저 시험지를 만들어주세요'); return; }
-  showTab('test');
-  document.body.dataset.print = mode;
+/* ══════════ 인쇄용 시험지 ══════════ */
+const ROMAN = ['','Ⅰ','Ⅱ','Ⅲ','Ⅳ'];
+const SEC_ASK = {
+  1:'다음 단어의 뜻으로 알맞은 것을 고르시오.',
+  2:'다음 단어와 뜻이 가장 가까운 것을 고르시오.',
+  3:'다음 단어와 뜻이 반대인 것을 고르시오.'
+};
+function buildSheet(){
+  const by = {1:[],2:[],3:[],4:[]};
+  QS.forEach(q => by[q.type].push(q));
+  let no = 0, sec = 0;
+  const secs = [], keyCh = [], keyBl = [];
+
+  [1,2,3].forEach(t => {
+    if(!by[t].length) return;
+    sec++;
+    const items = by[t].map(q => {
+      no++;
+      keyCh.push(`<span><b>${no}</b> ${NUM[q.ans]}</span>`);
+      return `<div class="sh-q">
+        <div class="sh-qh"><b>${no}.</b> ${esc(q.word)}</div>
+        <div class="sh-ch">${q.choices.map((c,ci) =>
+          `<span>${NUM[ci]} ${esc(c)}</span>`).join('')}</div></div>`;
+    }).join('');
+    secs.push(`<section class="sh-sec">
+      <h2>${ROMAN[sec]}. ${TYPE_NAME[t]} <small>${SEC_ASK[t]}</small>
+        <em>[${by[t].length}문항]</em></h2>
+      <div class="sh-cols">${items}</div></section>`);
+  });
+
+  if(by[4].length){
+    sec++;
+    const czNo = new Map(), byS = {};
+    by[4].forEach(q => { no++; czNo.set(q, no); (byS[q.sid] = byS[q.sid] || []).push(q);
+      keyBl.push(`<span><b>${no}</b> ${esc(q.answer)}</span>`); });
+    const paras = D.passage.paras.map(p => '<p>' + p.map(sn => {
+      const bs = (byS[sn.id] || []).slice().sort((a,b) => a.off - b.off);
+      if(!bs.length) return esc(sn.en);
+      let out = '', cur = 0;
+      for(const b of bs){
+        out += esc(sn.en.slice(cur, b.off));
+        out += `<span class="sh-bl"><i>${czNo.get(b)}</i><u></u></span>`;
+        cur = b.off + b.answer.length;
+      }
+      return out + esc(sn.en.slice(cur));
+    }).join(' ') + '</p>').join('');
+    secs.push(`<section class="sh-sec sh-psg">
+      <h2>${ROMAN[sec]}. 본문 빈칸 <small>보기에서 골라 빈칸에 알맞은 단어를 본문에 쓰인 그대로 쓰시오.</small>
+        <em>[${by[4].length}문항]</em></h2>
+      <div class="sh-box"><div class="sh-box-l">보기</div>
+        <div class="sh-box-w">${CLOZE.box.map(w => `<span>${esc(w)}</span>`).join('')}</div></div>
+      <div class="sh-psg-body">${paras}</div>
+      <div class="sh-write">${by[4].map(q =>
+        `<span><i>${czNo.get(q)}</i><u></u></span>`).join('')}</div>
+    </section>`);
+  }
+
   const d = new Date();
-  $('ph-date').textContent = `${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}. · ${QS.length}문항`;
-  setTimeout(() => { window.print(); setTimeout(() => delete document.body.dataset.print, 400); }, 120);
+  const date = `${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}.`;
+  $('sheet').innerHTML = `
+    <div class="sh-head">
+      <div class="sh-h1">${esc(D.lesson.title)}</div>
+      <div class="sh-h2"><span>${esc(D.lesson.sub)}</span><span>Witheun. by 은서쌤</span></div>
+      <div class="sh-name">
+        <span>학번 <u></u></span><span>이름 <u></u></span>
+        <span class="sh-meta">${date} · 총 ${QS.length}문항</span></div>
+    </div>
+    ${secs.join('')}
+    <section class="sh-ans">
+      <div class="sh-ans-h">정답 <small>${esc(D.lesson.title)} · ${date}</small></div>
+      ${keyCh.length ? `<div class="sh-ans-t">객관식</div><div class="sh-akey">${keyCh.join('')}</div>` : ''}
+      ${keyBl.length ? `<div class="sh-ans-t">본문 빈칸</div><div class="sh-akey wide">${keyBl.join('')}</div>` : ''}
+    </section>`;
+}
+function doPrint(){
+  if(!QS.length){ toast('먼저 시험지를 만들어주세요'); return; }
+  buildSheet();
+  document.body.classList.add('printing');
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => document.body.classList.remove('printing'), 500);
+  }, 150);
 }
 
 /* ══════════ 시작 ══════════ */
@@ -1306,6 +1493,13 @@ checkResume();
 generate();
 showTab('drill');
 window.scrollTo({top:0});
+
+/* ?sheet=1 — 인쇄용 시험지를 바로 열어 미리 보기 (인쇄도 여기서) */
+if(/[?&]sheet=1/.test(location.search)){
+  showTab('test');
+  quickStart('full');
+  setTimeout(() => { buildSheet(); document.body.classList.add('sheetview'); }, 300);
+}
 </script>
 </body>
 </html>
