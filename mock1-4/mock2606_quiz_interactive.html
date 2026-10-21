@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Witheun. | 6월 모의고사 단어 시험 by 은서쌤</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f2f4f6; --card:#fff; --ink:#191f28; --ink2:#4e5968; --ink3:#8b95a1;
+  --line:#e5e8eb; --line2:#f2f4f6;
+  --blue:#3182f6; --blue-d:#1b64da; --blue-bg:#e8f3ff;
+  --green:#15c47e; --green-bg:#e8f8f1;
+  --red:#f04452; --red-bg:#feecee;
+  --amber:#ff9500; --amber-bg:#fff5e6;
+  --purple:#8b5cf6; --purple-bg:#f3eeff;
+  --r:20px; --r2:14px; --r3:10px;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);
+  font-size:16px;line-height:1.5;letter-spacing:-0.01em;
+  padding-bottom:96px}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+
+/* ══ TOP BAR ══ */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);
+  backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1160px;margin:0 auto;padding:0 20px;height:60px;
+  display:flex;align-items:center;gap:14px}
+.brand{font-size:20px;font-weight:800;letter-spacing:-0.04em;color:var(--ink);flex-shrink:0}
+.brand i{font-style:normal;color:var(--blue)}
+.brand-by{font-size:12px;font-weight:600;color:var(--ink3);margin-left:6px;letter-spacing:-0.02em}
+.tabs{display:flex;gap:2px;margin-left:10px}
+.tab{padding:8px 14px;border-radius:var(--r3);font-size:15px;font-weight:700;
+  color:var(--ink3);transition:.15s;letter-spacing:-0.02em}
+.tab:hover{color:var(--ink2);background:var(--line2)}
+.tab.on{color:var(--ink);background:var(--line2)}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.timer{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;
+  color:var(--ink2);padding:7px 12px;border-radius:var(--r3);background:var(--line2);
+  display:none;align-items:center;gap:6px}
+.timer.on{display:flex}
+.timer.warn{color:var(--red);background:var(--red-bg)}
+
+/* ══ BUTTONS ══ */
+.btn{padding:10px 16px;border-radius:var(--r3);font-size:15px;font-weight:700;
+  letter-spacing:-0.02em;transition:.15s;white-space:nowrap;display:inline-flex;
+  align-items:center;justify-content:center;gap:6px}
+.btn.pri{background:var(--blue);color:#fff}
+.btn.pri:hover{background:var(--blue-d)}
+.btn.sec{background:#fff;color:var(--ink2);box-shadow:inset 0 0 0 1px var(--line)}
+.btn.sec:hover{background:var(--line2)}
+.btn.gho{background:transparent;color:var(--ink3);border:1px solid var(--line)}
+.btn.gho:hover{color:var(--ink2);border-color:var(--ink3)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.lg{padding:16px 24px;font-size:17px;border-radius:var(--r2);flex:1}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:8px}
+
+/* ══ LAYOUT ══ */
+.wrap{max-width:1160px;margin:0 auto;padding:24px 20px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
+.side{position:sticky;top:84px;display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.card+.card{margin-top:16px}
+.card-t{font-size:17px;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card-t small{font-size:13px;font-weight:600;color:var(--ink3)}
+
+/* ══ PAGE HEAD ══ */
+.phead{margin-bottom:20px}
+.phead h1{font-size:28px;font-weight:800;letter-spacing:-0.04em;line-height:1.3}
+.phead p{font-size:15px;color:var(--ink3);margin-top:6px;font-weight:500}
+
+/* ══ SETUP ══ */
+.setup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.cnt{background:var(--line2);border-radius:var(--r2);padding:14px 12px;text-align:center}
+.cnt-l{font-size:12px;font-weight:700;color:var(--ink3);margin-bottom:8px;letter-spacing:-0.02em}
+.cnt-r{display:flex;align-items:center;justify-content:center;gap:6px}
+.cnt-b{width:26px;height:26px;border-radius:8px;background:#fff;color:var(--ink2);
+  font-size:16px;font-weight:800;line-height:1;display:flex;align-items:center;justify-content:center}
+.cnt-b:hover{background:var(--blue);color:#fff}
+.cnt-v{width:34px;text-align:center;font-size:18px;font-weight:800;
+  font-variant-numeric:tabular-nums;border:none;background:transparent;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{padding:9px 14px;border-radius:999px;font-size:14px;font-weight:700;
+  background:var(--line2);color:var(--ink3);transition:.15s;letter-spacing:-0.02em;
+  display:inline-flex;align-items:center;gap:6px}
+.chip.on{background:var(--blue-bg);color:var(--blue-d)}
+.chip input{display:none}
+.tlimit{width:52px;border:1px solid var(--line);border-radius:8px;padding:4px 6px;
+  text-align:center;font-weight:700;font-size:14px}
+
+.diff-note{font-size:12.5px;font-weight:600;color:var(--ink3);margin-top:12px;line-height:1.5}
+/* ══ 물결 (witheun-review 히어로와 동일) ══ */
+@keyframes waveShift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.waves{position:absolute;left:0;right:0;bottom:0;height:45%;
+  overflow:hidden;pointer-events:none;border-radius:inherit}
+.waves svg{position:absolute;bottom:0;width:200%;height:100%;display:block}
+.waves svg:nth-child(1){animation:waveShift 8s linear infinite}
+.waves svg:nth-child(2){animation:waveShift 6s linear infinite}
+.waves svg:nth-child(1) path{fill:rgba(255,255,255,.22)}
+.waves svg:nth-child(2) path{fill:rgba(255,255,255,.14)}
+.qbig .waves svg:nth-child(1) path{fill:rgba(135,206,250,.30)}
+.qbig .waves svg:nth-child(2) path{fill:rgba(100,180,255,.18)}
+.qbig,.res{position:relative;overflow:hidden}
+.qbig>*:not(.waves),.res>*:not(.waves){position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.waves svg{animation:none}}
+@media print{.waves{display:none!important}}
+
+/* ══ 드릴 ══ */
+.dr-badge{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;
+  background:var(--amber-bg);color:#c26a00}
+.dr-again{background:var(--amber-bg);color:#c26a00;font-size:12px;font-weight:800;
+  padding:4px 9px;border-radius:7px}
+#drill-card .q{margin-bottom:14px}
+.chip i{font-style:normal;font-size:11px;font-weight:800;opacity:.6;margin-left:2px}
+
+/* ══ 빠른 시작 ══ */
+.qbig{width:100%;background:#fff;color:var(--ink);border-radius:var(--r2);
+  padding:22px 20px;text-align:left;transition:.18s;margin-bottom:10px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04)}
+.qbig:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.10),0 0 0 1px rgba(0,0,0,.04)}
+.qbig b{display:block;font-size:18px;font-weight:800;letter-spacing:-0.03em;color:#000}
+.qbig span{display:block;font-size:13px;font-weight:700;color:#000;margin-top:4px}
+.qbig em{font-style:normal;color:var(--blue-d);font-weight:800}
+.qrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.qbtn{background:var(--line2);border-radius:var(--r2);padding:14px 16px;text-align:left;transition:.15s}
+.qbtn:hover{background:var(--blue-bg)}
+.qbtn b{display:block;font-size:16px;font-weight:800;letter-spacing:-0.03em;color:var(--ink)}
+.qbtn span{display:block;font-size:12.5px;font-weight:600;color:var(--ink3);margin-top:2px}
+.qrow4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.qmini{background:var(--line2);border-radius:var(--r3);padding:12px 6px;font-size:13.5px;
+  font-weight:700;color:var(--ink2);transition:.15s;letter-spacing:-0.02em;line-height:1.35}
+.qmini:hover{background:var(--blue-bg);color:var(--blue-d)}
+.qmini i{display:block;font-style:normal;font-size:11px;font-weight:800;color:var(--ink3);margin-top:2px}
+.more-row{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:16px;
+  border-top:1px solid var(--line2);flex-wrap:wrap}
+.more-t{font-size:14px;font-weight:700;color:var(--ink3);padding:6px 0}
+.more-t i{font-style:normal;display:inline-block;transition:.2s}
+.more-t.open i{transform:rotate(180deg)}
+.more-t:hover{color:var(--ink2)}
+.more-print{margin-left:auto;display:flex;gap:6px}
+#more{padding-top:16px}
+
+/* ══ PROGRESS ══ */
+.prog-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.prog-n{font-size:26px;font-weight:800;letter-spacing:-0.04em;font-variant-numeric:tabular-nums}
+.prog-n small{font-size:15px;color:var(--ink3);font-weight:700}
+.prog-p{font-size:14px;font-weight:700;color:var(--ink3)}
+.bar{height:8px;border-radius:999px;background:var(--line2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:999px;
+  transition:width .4s cubic-bezier(.4,0,.2,1);width:0}
+.bar.done i{background:var(--green)}
+
+/* ══ QUESTION ══ */
+.q{background:var(--card);border-radius:var(--r);padding:24px;margin-bottom:14px;
+  box-shadow:var(--shadow);scroll-margin-top:80px}
+.q-top{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.q-n{width:26px;height:26px;border-radius:8px;background:var(--ink);color:#fff;
+  font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-variant-numeric:tabular-nums}
+.tag{font-size:12px;font-weight:800;padding:4px 9px;border-radius:7px;letter-spacing:-0.02em}
+.tag.t1{background:var(--blue-bg);color:var(--blue-d)}
+.tag.t2{background:var(--green-bg);color:#0a9e63}
+.tag.t3{background:var(--amber-bg);color:#c26a00}
+.tag.t4{background:var(--purple-bg);color:#6d3ee0}
+.q-ask{font-size:13px;font-weight:600;color:var(--ink3);letter-spacing:-0.02em}
+.q-word{font-size:34px;font-weight:800;letter-spacing:-0.04em;line-height:1.25;
+  margin:4px 0 6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.q-hint{font-size:14px;color:var(--ink3);font-weight:600;margin-bottom:16px}
+.q-hint b{color:var(--ink);font-weight:800}
+.wordnote{margin:12px 0 0;background:var(--line2);border-radius:10px;
+  padding:11px 14px;color:var(--ink2);font-size:14.5px}
+.wordnote i{font-style:normal;font-size:11.5px;font-weight:800;color:var(--purple);
+  background:var(--purple-bg);padding:2px 7px;border-radius:6px;margin:0 4px}
+.choices{display:flex;flex-direction:column;gap:8px}
+.ch{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  padding:15px 16px;border-radius:var(--r2);background:var(--line2);
+  font-size:16px;font-weight:600;color:var(--ink);transition:.12s;letter-spacing:-0.02em}
+.ch:hover:not(:disabled){background:#e8ebed}
+.ch-n{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink3);
+  color:var(--ink3);font-size:12px;font-weight:800;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;transition:.12s}
+.ch.sel{background:var(--blue-bg);color:var(--blue-d)}
+.ch.sel .ch-n{background:var(--blue);border-color:var(--blue);color:#fff}
+.ch.ok{background:var(--green-bg);color:#0a9e63}
+.ch.ok .ch-n{background:var(--green);border-color:var(--green);color:#fff}
+.ch.ng{background:var(--red-bg);color:var(--red)}
+.ch.ng .ch-n{background:var(--red);border-color:var(--red);color:#fff}
+.ch:disabled{cursor:default}
+
+/* ══ TYPE 4 ══ */
+.t4-sent{font-size:19px;font-weight:600;line-height:1.7;letter-spacing:-0.02em;margin-bottom:10px}
+.blank{display:inline-block;border-bottom:2.5px solid var(--purple);color:var(--purple);
+  font-weight:800;letter-spacing:.08em;padding:0 4px;white-space:pre;margin:0 2px}
+.blank b{font-weight:800}
+.t4-ko{font-size:14px;color:var(--ink3);line-height:1.65;margin-bottom:16px;font-weight:500}
+.wbox{background:var(--purple-bg);border-radius:var(--r2);padding:13px 16px;margin-bottom:14px}
+.wbox-l{font-size:11px;font-weight:800;color:#6d3ee0;letter-spacing:.06em;margin-bottom:7px}
+.wbox-w{display:flex;flex-wrap:wrap;gap:8px}
+.wbox-w span{background:#fff;border-radius:8px;padding:6px 12px;font-size:15px;
+  font-weight:700;color:var(--ink)}
+.t4-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.t4-in{flex:1;min-width:180px;padding:14px 16px;border:2px solid var(--line);
+  border-radius:var(--r2);font-size:17px;font-weight:700;letter-spacing:-0.01em;
+  background:#fff;transition:.15s}
+.t4-in:focus{outline:none;border-color:var(--blue);background:#fff}
+.t4-in.ok{border-color:var(--green);background:var(--green-bg);color:#0a9e63}
+.t4-in.ng{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+.t4-in:disabled{opacity:1}
+.src-link{font-size:13px;font-weight:700;color:var(--blue);padding:8px 10px;border-radius:8px}
+.src-link:hover{background:var(--blue-bg)}
+
+/* ══ 본문 통문제 ══ */
+.cz-card .q-n{width:auto;min-width:26px;padding:0 9px;border-radius:9px}
+.cz-card .wbox{margin:14px 0 18px}
+.cz-body{margin-top:4px}
+.cz-p{font-size:16.5px;line-height:2.6;letter-spacing:-0.01em;color:var(--ink);font-weight:500}
+.cz-blk+.cz-blk{margin-top:16px}
+.cz-ko{margin-top:3px;font-size:14px;line-height:1.72;letter-spacing:-0.02em;
+  color:var(--ink2);font-weight:500;padding-left:11px;border-left:2px solid var(--line)}
+.cz{display:inline-flex;align-items:center;gap:4px;margin:0 3px;scroll-margin-top:90px}
+.cz i{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:var(--purple);
+  width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;flex-shrink:0;line-height:1}
+.cz-in{width:122px;border:none;border-bottom:2px solid var(--purple);background:transparent;
+  font-size:15.5px;font-weight:700;padding:2px 4px;text-align:center;color:var(--ink);
+  font-family:inherit}
+.cz-in:focus{outline:none;background:var(--purple-bg);border-radius:4px 4px 0 0}
+.cz-in.ok{color:#0a9e63;border-color:var(--green)}
+.cz-in.ng{color:var(--red);border-color:var(--red)}
+.cz-ans{display:none;font-style:normal;font-size:14.5px;font-weight:800;color:#0a9e63;
+  margin-left:4px;white-space:nowrap}
+@media(max-width:640px){
+  .cz-p{font-size:15.5px;line-height:2.5}
+  .cz-ko{font-size:13.5px;line-height:1.68}
+  .cz-in{width:96px;font-size:14.5px}
+}
+
+/* ══ FEEDBACK ══ */
+.fb{display:none;margin-top:13px;padding:12px 15px;border-radius:var(--r2);
+  font-size:14.5px;font-weight:700;letter-spacing:-0.02em;line-height:1.55}
+.fb.show{display:block}
+.fb.ok{background:var(--green-bg);color:#0a9e63}
+.fb.ng{background:var(--red-bg);color:var(--red)}
+.fb b{font-weight:800}
+
+/* ══ SUBMIT ══ */
+.submit-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+
+/* ══ RESULT ══ */
+.res{background:#fff;color:#000}
+.res .card-t{color:#000}
+.res-big{font-size:52px;font-weight:800;letter-spacing:-0.05em;line-height:1;
+  font-variant-numeric:tabular-nums;color:var(--blue-d)}
+.res-big small{font-size:20px;color:var(--ink3);font-weight:700}
+.res-sub{font-size:15px;font-weight:700;color:#000;margin-top:8px}
+.res-by{display:flex;flex-direction:column;gap:9px;margin-top:20px;
+  padding-top:18px;border-top:1px solid var(--line)}
+.res-row{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#000}
+.res-row span:first-child{width:74px;color:#000;flex-shrink:0}
+.res-bar{flex:1;height:6px;border-radius:999px;background:var(--line2);overflow:hidden}
+.res-bar i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .5s}
+.res-row span:last-child{width:52px;text-align:right;font-variant-numeric:tabular-nums;
+  color:var(--blue-d)}
+.res .waves svg:nth-child(1) path{fill:rgba(135,206,250,.30)}
+.res .waves svg:nth-child(2) path{fill:rgba(100,180,255,.18)}
+.res-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+
+/* ══ SIDEBAR ══ */
+.score-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sc{background:var(--line2);border-radius:var(--r2);padding:14px;text-align:center}
+.sc-n{font-size:24px;font-weight:800;letter-spacing:-0.04em;font-variant-numeric:tabular-nums;
+  display:block;line-height:1.2}
+.sc-l{font-size:12px;font-weight:700;color:var(--ink3);margin-top:2px;display:block}
+.sc.ok{background:var(--green-bg)} .sc.ok .sc-n{color:#0a9e63}
+.sc.ng{background:var(--red-bg)} .sc.ng .sc-n{color:var(--red)}
+.sc.rate{background:var(--blue-bg)} .sc.rate .sc-n{color:var(--blue-d)}
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(30px,1fr));gap:5px}
+.dot{aspect-ratio:1;border-radius:8px;background:var(--line2);color:var(--ink3);
+  font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;
+  transition:.12s;font-variant-numeric:tabular-nums}
+.dot:hover{transform:scale(1.1)}
+.dot.did{background:var(--blue-bg);color:var(--blue-d)}
+.dot.ok{background:var(--green);color:#fff}
+.dot.ng{background:var(--red);color:#fff}
+.wlist{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto}
+.wi{background:var(--line2);border-radius:var(--r2);padding:12px 14px}
+.wi-t{font-size:11px;font-weight:800;color:var(--ink3);margin-bottom:3px}
+.wi-w{font-size:16px;font-weight:800;letter-spacing:-0.03em;margin-bottom:5px;
+  display:flex;align-items:center;gap:6px}
+.wi-d{font-size:13px;color:var(--ink2);font-weight:600;line-height:1.5}
+.wi-d .mine{color:var(--red);text-decoration:line-through}
+.wi-d .ans{color:var(--green);font-weight:800}
+.empty{font-size:14px;color:var(--ink3);text-align:center;padding:26px 12px;font-weight:600}
+
+/* ══ 본문 TAB ══ */
+.psg h2{font-size:26px;font-weight:800;letter-spacing:-0.04em;margin-bottom:4px}
+.psg .psg-ko{font-size:15px;color:var(--ink3);font-weight:600;margin-bottom:22px}
+.pno{display:inline-block;font-size:12px;font-weight:800;color:var(--blue-d);background:var(--blue-bg);
+  border-radius:6px;padding:3px 8px;margin-bottom:8px}
+.sh-pno{font-weight:800;font-size:10pt;margin-bottom:1mm}
+.para{margin-bottom:20px;padding-bottom:20px;border-bottom:2px solid var(--line)}
+.para:last-child{border:none;margin-bottom:0;padding-bottom:0}
+.sline{padding:12px 0;border-bottom:1px dashed var(--line2);scroll-margin-top:90px;
+  border-radius:6px;transition:background .3s}
+.sline:last-child{border-bottom:none}
+.sline.hl{background:#fff8db;box-shadow:0 0 0 8px #fff8db}
+.sent{display:block;font-size:17px;line-height:1.75;letter-spacing:-0.01em;font-weight:500}
+.sno{font-style:normal;display:inline-block;min-width:24px;font-size:12px;font-weight:800;
+  color:var(--ink3);vertical-align:2px}
+.sent-ko{display:block;font-size:14.5px;color:var(--ink2);line-height:1.65;
+  margin-top:7px;font-weight:500;padding-left:24px}
+body.hide-ko .sent-ko{display:none}
+body.hide-ko .sline{padding:7px 0}
+.psg-mark{background:var(--purple-bg);color:#6d3ee0;font-weight:800;
+  padding:1px 4px;border-radius:4px}
+
+/* ══ 하단 고정 바 ══ */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:12px 20px;
+  display:none}
+.dock.on{display:block}
+body:not([data-tab="test"]) .dock{display:none}
+.dock-in{max-width:1160px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.dock-txt{font-size:14px;font-weight:700;color:var(--ink2);flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.foot{text-align:center;padding:32px 20px;font-size:13px;color:var(--ink3);font-weight:600}
+.foot b{color:var(--ink2);font-weight:800}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(12px);
+  background:var(--ink);color:#fff;padding:13px 20px;border-radius:999px;font-size:14px;
+  font-weight:700;z-index:300;opacity:0;pointer-events:none;transition:.25s;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ══ 모바일 ══ */
+@media(max-width:960px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static}
+}
+@media(max-width:640px){
+  body{font-size:15px;padding-bottom:88px}
+  .topbar-in{padding:0 14px;height:56px;gap:8px}
+  .brand{font-size:17px} .brand-by{display:none}
+  .tabs{margin-left:4px} .tab{padding:7px 10px;font-size:14px}
+  .wrap{padding:16px 14px}
+  .card,.q{padding:18px 16px;border-radius:16px}
+  .phead h1{font-size:23px}
+  .setup-grid{grid-template-columns:repeat(2,1fr)}
+  .qbig{padding:16px 18px} .qbig b{font-size:17px}
+  .qrow4{grid-template-columns:repeat(2,1fr)}
+  .qmini{padding:13px 8px;font-size:14px}
+  .more-print{margin-left:0;width:100%}
+  .more-print .btn{flex:1}
+  .dock-txt{font-size:13px}
+  .q-word{font-size:27px}
+  .t4-sent{font-size:17px}
+  .t4-row{flex-direction:column;align-items:stretch}
+  .t4-in{min-width:0;width:100%}
+  .src-link{align-self:flex-start;padding:6px 0}
+  .sent{font-size:16px}
+  .sent-ko{font-size:13.5px;padding-left:24px}
+  .res-big{font-size:44px}
+  .btn.lg{padding:15px 18px;font-size:16px}
+  .map{grid-template-columns:repeat(auto-fill,minmax(28px,1fr))}
+}
+
+/* ══ 인쇄 ══ */
+/* ══════════ 인쇄용 시험지 ══════════ */
+#sheet{display:none}
+.ans-key{display:none}
+.print-head{display:none}
+.sh-head{border-bottom:2.5px solid #000;padding-bottom:3.5mm;margin-bottom:5mm}
+.sh-h1{font-size:15pt;font-weight:900;letter-spacing:-0.03em}
+.sh-h2{display:flex;justify-content:space-between;font-size:8.6pt;color:#444;
+  font-weight:600;margin-top:1.2mm}
+.sh-name{display:flex;gap:7mm;align-items:baseline;margin-top:3mm;font-size:9.5pt;font-weight:700}
+.sh-name u{display:inline-block;width:24mm;border-bottom:1px solid #666;text-decoration:none}
+.sh-name .sh-meta{margin-left:auto;font-weight:600;color:#555;font-size:8.6pt}
+
+.sh-sec{margin-bottom:5mm}
+.sh-sec h2{font-size:11pt;font-weight:900;letter-spacing:-0.03em;margin-bottom:2.5mm;
+  padding:1.6mm 2.5mm;background:#eef1f5;border-left:3px solid #000;
+  display:flex;align-items:baseline;gap:2mm;break-after:avoid}
+.sh-sec h2 small{font-size:8.6pt;font-weight:600;color:#444}
+.sh-sec h2 em{margin-left:auto;font-style:normal;font-size:8.4pt;font-weight:700;color:#555}
+
+.sh-cols{column-count:2;column-gap:7mm}
+.sh-q{break-inside:avoid;page-break-inside:avoid;margin-bottom:2.6mm}
+.sh-qh{font-size:10pt;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.6mm}
+.sh-qh b{font-weight:900;margin-right:1mm}
+.sh-ch{font-size:9pt;font-weight:500;color:#111;line-height:1.5}
+.sh-ch span{margin-right:2.6mm;white-space:nowrap;display:inline-block}
+
+.sh-box{border:1.4px solid #000;border-radius:2mm;padding:2.6mm 3mm;margin-bottom:3.5mm}
+.sh-box-l{font-size:8.2pt;font-weight:900;letter-spacing:.05em;margin-bottom:1.4mm;color:#444}
+.sh-box-w{display:flex;flex-wrap:wrap;gap:1.4mm 0}
+.sh-box-w span{font-size:9.4pt;font-weight:700;padding:0 3mm;border-right:1px solid #bbb;line-height:1.35}
+.sh-box-w span:last-child{border-right:none}
+.sh-psg-body p{font-size:10.2pt;line-height:2.15;margin-bottom:2.6mm;text-align:justify}
+.sh-pb{margin-bottom:3mm}
+.sh-psg-body p.sh-ko{font-size:8.8pt;line-height:1.55;margin:0.6mm 0 0;color:#333;
+  padding-left:2.2mm;border-left:1.6px solid #c8cdd4}
+.sh-bl{white-space:nowrap}
+.sh-bl i{font-style:normal;font-size:7.4pt;font-weight:900;vertical-align:1.1mm;margin-right:0.6mm}
+.sh-bl u{display:inline-block;width:22mm;border-bottom:1.1px solid #000;text-decoration:none}
+.sh-write{display:none}
+
+body.sheetview .topbar,body.sheetview .wrap,body.sheetview .dock,body.sheetview .foot{display:none!important}
+body.sheetview #sheet{display:block!important;background:#fff;max-width:210mm;
+  margin:0 auto;padding:13mm 11mm;box-shadow:0 2px 24px rgba(0,0,0,.12);color:#000}
+body.sheetview{background:#e8ebef}
+.sh-ans{break-before:page;page-break-before:always}
+body.sheetview .sh-ans{margin-top:14mm;padding-top:10mm;border-top:2px dashed #aaa}
+.sh-ans-h{font-size:14pt;font-weight:900;letter-spacing:-0.03em;border-bottom:2.5px solid #000;
+  padding-bottom:2.5mm;margin-bottom:4mm}
+.sh-ans-h small{font-size:8.6pt;font-weight:600;color:#555;margin-left:2mm}
+.sh-ans-t{font-size:9.6pt;font-weight:900;margin:3.5mm 0 1.8mm;padding-left:1.6mm;
+  border-left:3px solid #000}
+.sh-akey{column-count:6;column-gap:4mm}
+.sh-akey.wide{column-count:3}
+.sh-akey span{display:block;break-inside:avoid;margin-bottom:1.4mm;font-size:11pt;font-weight:800}
+.sh-akey b{font-weight:700;color:#777;margin-right:1.8mm;display:inline-block;
+  min-width:6.5mm;font-size:9pt}
+
+@media print{
+  @page{size:A4;margin:13mm 11mm}
+  html,body{background:#fff!important;padding:0!important;margin:0!important}
+  .topbar,.wrap,.dock,.toast,.foot,.side{display:none!important}
+  #sheet{display:block!important;color:#000;
+    font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif}
+  .sh-psg-body p{orphans:3;widows:3}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar noprint">
+  <div class="topbar-in">
+    <div class="brand">Witheun<i>.</i><span class="brand-by">by 은서쌤</span></div>
+    <nav class="tabs">
+      <button class="tab on" id="tab-drill" onclick="showTab('drill')">드릴</button>
+      <button class="tab" id="tab-test" onclick="showTab('test')">실전</button>
+      <button class="tab" id="tab-psg" onclick="showTab('psg')">본문</button>
+    </nav>
+    <div class="topbar-right">
+      <div class="timer" id="timer" title="시작 후 경과 시간">⏱ <span id="timer-v">00:00</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══════════ 드릴 탭 ══════════ -->
+<section id="view-drill">
+  <div class="phead noprint">
+    <h1>단어 드릴</h1>
+    <p>목록에 있는 단어를 전부 한 바퀴 · 틀린 건 맞힐 때까지 다시 나옵니다</p>
+  </div>
+
+  <div class="card noprint" id="drill-setup">
+    <div class="card-t">무엇을 연습할까요 <small id="drill-sum"></small></div>
+    <div class="opts" id="drill-types">
+      <label class="chip on"><input type="checkbox" data-dt="1" checked onchange="drillType()">단어 뜻</label>
+      <label class="chip on"><input type="checkbox" data-dt="2" checked onchange="drillType()">유의어</label>
+      <label class="chip on"><input type="checkbox" data-dt="3" checked onchange="drillType()">반의어</label>
+      <label class="chip on"><input type="checkbox" data-dt="4" checked onchange="drillType()">본문 빈칸</label>
+    </div>
+    <div class="opts">
+      <label class="chip on" id="chip-dweak"><input type="checkbox" id="opt-dweak" checked onchange="toggleChip(this)">🎯 틀렸던 단어 먼저</label>
+      <label class="chip" id="chip-dhard"><input type="checkbox" id="opt-dhard" onchange="syncHard(this)">🔥 어려운 선지</label>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn pri lg" onclick="drillStart(false)">드릴 시작</button>
+      <button class="btn sec lg" id="drill-resume" style="display:none" onclick="drillStart(true)">이어서 하기</button>
+    </div>
+  </div>
+
+  <div id="drill-run" style="display:none">
+    <div class="card noprint">
+      <div class="prog-top">
+        <div class="prog-n"><span id="dr-done">0</span><small> / <span id="dr-tot">0</span> 마스터</small></div>
+        <div class="prog-p"><span id="dr-streak">연속 0</span></div>
+      </div>
+      <div class="bar" id="dr-bar"><i></i></div>
+    </div>
+    <div id="drill-card"></div>
+    <div class="submit-row">
+      <button class="btn pri lg" id="dr-next" onclick="drillNext()" style="display:none">다음 문제 →</button>
+      <button class="btn sec lg" style="flex:0 0 auto" onclick="drillQuit()">그만하기</button>
+    </div>
+  </div>
+
+  <div class="card res noprint" id="drill-done" style="display:none">
+    <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
+    <div class="card-t">드릴 완료</div>
+    <div class="res-big"><span id="dd-tot">0</span><small> 단어</small></div>
+    <div class="res-sub" id="dd-msg"></div>
+    <div class="res-by" id="dd-by"></div>
+    <div class="res-actions">
+      <button class="btn pri sm" onclick="drillStart(false)">한 번 더</button>
+      <button class="btn sec sm" onclick="showTab('test')">실전 테스트 풀기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 실전 탭 ══════════ -->
+<section id="view-test" style="display:none">
+
+  <div class="phead noprint">
+    <h1>실전 테스트</h1>
+    <p>실제 시험과 같은 분량으로 한 번에 풀고 마지막에 채점합니다</p>
+  </div>
+
+  <div class="layout">
+    <div>
+      <!-- 설정 -->
+      <div class="card setup-card noprint" id="setup">
+        <div class="card-t">
+          시험지 만들기
+          <small id="setup-sum"></small>
+        </div>
+
+        <button class="qbig" onclick="quickStart('full')">
+          <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
+          <b>전체 시험지 · <em>80</em>문항</b>
+          <span>단어 뜻 <em>20</em> · 유의어 <em>20</em> · 반의어 <em>20</em> · 본문 빈칸 <em>20</em></span>
+        </button>
+
+        <div class="qrow">
+          <button class="qbtn" onclick="quickStart('fast')"><b>빠른 12문항</b><span>유형별 3개씩</span></button>
+          <button class="qbtn" onclick="quickStart('weak')"><b>약점 집중</b><span>틀렸던 단어 20개</span></button>
+        </div>
+        <div class="qrow4">
+          <button class="qmini" onclick="quickStart(1)">단어 뜻<i>20</i></button>
+          <button class="qmini" onclick="quickStart(2)">유의어<i>20</i></button>
+          <button class="qmini" onclick="quickStart(3)">반의어<i>20</i></button>
+          <button class="qmini" onclick="quickStart(4)">본문 빈칸<i>20</i></button>
+        </div>
+
+        <div class="diff-note" id="diff-note"></div>
+        <div class="more-row">
+          <button class="more-t" id="more-t" onclick="toggleMore()">직접 설정 <i>▾</i></button>
+          <div class="more-print">
+            <button class="btn gho sm" onclick="doPrint()">시험지 인쇄 (뒷장 답지 포함)</button>
+          </div>
+        </div>
+
+        <div id="more" style="display:none">
+        <div class="setup-grid">
+          <div class="cnt">
+            <div class="cnt-l">단어 뜻</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(1,-1)">−</button>
+            <input class="cnt-v" id="n1" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(1,1)">+</button></div>
+          </div>
+          <div class="cnt">
+            <div class="cnt-l">유의어</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(2,-1)">−</button>
+            <input class="cnt-v" id="n2" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(2,1)">+</button></div>
+          </div>
+          <div class="cnt">
+            <div class="cnt-l">반의어</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(3,-1)">−</button>
+            <input class="cnt-v" id="n3" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(3,1)">+</button></div>
+          </div>
+          <div class="cnt">
+            <div class="cnt-l">본문 빈칸</div>
+            <div class="cnt-r"><button class="cnt-b" onclick="bump(4,-1)">−</button>
+            <input class="cnt-v" id="n4" type="text" inputmode="numeric" value="20" onchange="syncCnt()">
+            <button class="cnt-b" onclick="bump(4,1)">+</button></div>
+          </div>
+        </div>
+        <div class="opts">
+          <label class="chip on" id="chip-weak"><input type="checkbox" id="opt-weak" checked onchange="toggleChip(this)">🎯 틀렸던 단어 먼저</label>
+          <label class="chip on" id="chip-shuffle"><input type="checkbox" id="opt-shuffle" checked onchange="toggleChip(this)">🔀 유형 섞기</label>
+          <label class="chip" id="chip-hard"><input type="checkbox" id="opt-hard" onchange="syncHard(this)">🔥 어려운 선지</label>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn pri lg" onclick="generate()">이 설정으로 만들기</button>
+        </div>
+        </div>
+      </div>
+
+      <!-- 진행 -->
+      <div class="card noprint" id="progcard" style="display:none">
+        <div class="prog-top">
+          <div class="prog-n"><span id="pg-done">0</span><small> / <span id="pg-tot">0</span>문항</small></div>
+          <div class="prog-p" id="pg-label">풀이 중</div>
+        </div>
+        <div class="bar" id="pg-bar"><i></i></div>
+      </div>
+
+      <!-- 결과 -->
+      <div class="card res noprint" id="rescard" style="display:none">
+        <span class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z"/></svg><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C360,40 540,100 720,80 C900,40 1080,100 1440,80 L1440,120 L0,120 Z"/></svg></span>
+        <div class="card-t">채점 결과</div>
+        <div class="res-big"><span id="rs-c">0</span><small> / <span id="rs-t">0</span></small></div>
+        <div class="res-sub" id="rs-msg"></div>
+        <div class="res-by" id="rs-by"></div>
+        <div class="res-actions">
+          <button class="btn sec sm" id="again-btn" onclick="retryWrong()">틀린 것만 다시</button>
+          <button class="btn sec sm" onclick="generate()">새 시험지</button>
+        </div>
+      </div>
+
+      <div id="qbox"></div>
+
+      <div class="submit-row noprint" id="submit-row" style="display:none">
+        <button class="btn pri lg" id="submit-btn" onclick="grade()">채점하기</button>
+        <button class="btn sec lg" style="flex:0 0 auto" onclick="generate()">새 시험지</button>
+      </div>
+    </div>
+
+    <!-- 사이드 -->
+    <aside class="side noprint">
+      <div class="card">
+        <div class="card-t">점수</div>
+        <div class="score-g">
+          <div class="sc rate"><span class="sc-n" id="sc-rate">—</span><span class="sc-l">정답률</span></div>
+          <div class="sc"><span class="sc-n" id="sc-tot">—</span><span class="sc-l">전체</span></div>
+          <div class="sc ok"><span class="sc-n" id="sc-ok">—</span><span class="sc-l">정답</span></div>
+          <div class="sc ng"><span class="sc-n" id="sc-ng">—</span><span class="sc-l">오답</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-t">문항 현황</div>
+        <div class="map" id="map"></div>
+      </div>
+      <div class="card">
+        <div class="card-t">오답 노트 <small id="wn-cnt"></small></div>
+        <div class="wlist" id="wlist"><div class="empty">채점하면 여기에 모입니다</div></div>
+      </div>
+      <div class="card">
+        <div class="card-t">누적 약점 <small>이 기기에 저장</small></div>
+        <div class="wlist" id="weaklist"><div class="empty">아직 기록이 없습니다</div></div>
+        <button class="btn gho sm" style="width:100%;margin-top:12px" onclick="clearStats()">기록 지우기</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ══════════ 본문 탭 ══════════ -->
+<section id="view-psg" style="display:none">
+  <div class="phead">
+    <h1 id="psg-t"></h1>
+    <p id="psg-tko"></p>
+  </div>
+  <div class="opts noprint" style="margin-bottom:16px">
+    <label class="chip on" id="chip-ko"><input type="checkbox" id="opt-ko" checked onchange="toggleChip(this);toggleKo()">해석 보기</label>
+    <label class="chip" id="chip-mark"><input type="checkbox" id="opt-mark" onchange="toggleChip(this);renderPassage()">시험 출제 단어 표시</label>
+  </div>
+  <div class="card psg" id="psg"></div>
+</section>
+
+</div>
+
+<div class="foot noprint">
+  <b>Witheun.</b> 6월 모의고사 단어 시험 · by 은서쌤<br>
+  © 2026 Witheun · 무단 복제 및 배포를 금합니다
+</div>
+
+<div class="dock noprint" id="dock">
+  <div class="dock-in">
+    <div class="dock-txt" id="dock-txt"></div>
+    <button class="btn sec" onclick="scrollTop()">↑ 설정</button>
+    <button class="btn pri" id="dock-btn" onclick="grade()">채점하기</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══════════ 인쇄용 시험지 (화면에는 안 보임) ══════════ -->
+<div id="sheet"></div>
+
+<script>
+const D = {"lesson":{"id":"mock2606","title":"6월 모의고사 단어 시험","sub":"2학기 수행 · 2026 6월 고1 학력평가 22~24 · 32 · 36번","school":"송우고등학교"},"words":[{"w":"spot","m":"장소, 지점","p":"n","s":[81,13,5,41,42,52,11,68,16,60,8,12,32,67,1,30,75,80,27,37],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"variety","m":"다양성","p":"n","s":[11,42,28,50,13,41,52,68,80,81,29,37,45,77,27,30,56,60,75,8],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"rich","m":"풍부한","p":"adj","s":[43,36,54,83,51,53,78,70,61,47,72,74,11,15,21,42,14,22,52,56],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"reinforce","m":"강화하다","p":"v","s":[6,48,58,59,63,39,34,38,31,15,21,18,22,14,46,69,56,29,49,40],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"rather than","m":"~라기보다는","p":"phr","s":[69,76,64,40,49,44,10,65,79,55,33,9,46,62,66,17,8,16,19,38],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"nook","m":"아늑한 구석","p":"n","s":[0,81,13,11,41,42,52,60,50,17,16,32,68,75,29,45,77,19,12,23],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"reflect","m":"반영하다","p":"v","s":[3,58,48,15,34,63,38,25,59,31,39,21,22,71,14,57,35,18,52,46],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"numerous","m":"수많은","p":"adj","s":[51,70,43,83,72,53,74,78,47,36,54,61,19,22,29,57,59,75,77,8],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"experiment","m":"실험","p":"n","s":[77,37,29,60,12,23,67,17,19,27,28,45,16,32,50,1,52,0,13,41],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"at least","m":"적어도","p":"phr","s":[69,46,10,66,64,4,40,49,55,62,65,44,79,33,76,6,25,77,27,29],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"be likely to","m":"~할 가능성이 있다","p":"phr","s":[64,65,40,4,46,49,69,33,9,76,55,62,79,44,66,8,19,24,61,73],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"trial","m":"시험, 시도","p":"n","s":[1,80,42,30,68,75,0,5,13,41,52,81,12,23,77,50,16,67,27,29],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"counterpart","m":"상대방, 대응 관계에 있는 사람","p":"n","s":[17,8,28,50,77,19,32,23,67,16,11,13,29,75,0,27,42,52,56,60],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"amount","m":"양","p":"n","s":[0,37,5,42,52,81,1,68,80,27,60,77,19,67,11,29,30,41,45,56],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"divide","m":"나누다","p":"v","s":[34,57,58,35,59,71,25,6,15,18,21,22,31,3,48,39,38,63,29,53],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"recall","m":"기억해 내다, 상기하다","p":"v","s":[6,22,25,31,58,21,34,59,35,3,71,38,14,18,57,63,39,48,56,2],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"association","m":"연상, 연관","p":"n","s":[50,23,60,32,67,8,19,28,12,0,13,45,1,5,11,37,41,42,52,56],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"connection","m":"연결, 관계","p":"n","s":[12,60,50,37,45,77,32,8,27,28,29,56,23,19,52,1,5,13,75,81],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"form","m":"형성되다, 만들다","p":"v","s":[22,3,14,15,21,31,35,57,6,59,25,48,63,39,34,38,58,71,5,41],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"background","m":"배경","p":"n","s":[37,45,60,23,8,27,28,29,56,77,12,16,13,17,32,50,67,1,81,5],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"consciously","m":"의식적으로","p":"adv","s":[73,24,26,82,17,63,72,47,12,16,19,32,50,3,8,28,39,48,61,70],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"occur","m":"발생하다, 일어나다","p":"v","s":[25,34,15,22,6,31,58,59,35,57,3,48,14,18,71,38,75,46,2,81],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"scroll","m":"(화면을) 스크롤하다, 넘겨보다","p":"v","s":[35,15,59,25,31,21,34,57,6,58,18,14,71,3,48,63,39,38,81,0],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"social media","m":"소셜 미디어","p":"n","s":[16,8,19,32,67,12,17,28,41,11,60,75,81,1,13,27,29,37,42,50],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"immediately","m":"즉시, 곧바로","p":"adv","s":[26,73,20,82,8,16,50,64,32,39,49,63,69,70,10,23,47,67,3,4],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"increase","m":"증가하다, 늘어나다","p":"v","s":[63,39,21,58,34,59,15,6,48,22,38,14,31,18,69,29,77,9,70,46],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"incredibly","m":"엄청나게, 믿을 수 없을 정도로","p":"adv","s":[24,20,73,82,77,40,7,29,37,51,63,74,78,23,8,9,17,19,27,39],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"pleasure","m":"쾌락, 즐거움","p":"n","s":[30,80,13,29,37,45,52,56,75,28,50,8,17,19,1,60,68,77,41,67],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"challenge","m":"문제, 난제","p":"n","s":[37,1,29,12,27,30,45,75,77,8,17,19,16,23,32,41,50,56,68,80],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"universe","m":"우주, 세상","p":"n","s":[77,28,50,8,1,27,30,37,52,56,68,75,17,19,13,45,60,80,12,23],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"physics","m":"물리학","p":"n","s":[27,45,11,41,42,52,68,29,37,56,60,77,28,1,13,50,75,80,81,32],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"seek","m":"찾다, 추구하다","p":"v","s":[15,22,6,58,21,35,3,39,34,59,48,63,25,14,18,38,57,71,0,5],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"homeostasis","m":"항상성 (체내 균형 상태)","p":"n","s":[16,17,50,23,8,12,67,19,28,56,0,5,13,27,30,41,45,52,60,75],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"with ~ in mind","m":"~을 염두에 두고","p":"phr","s":[79,55,10,64,4,49,44,9,40,46,69,76,65,66,67,23,47,61,8,2],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"achieve","m":"달성하다, 이루다","p":"v","s":[58,48,6,25,63,3,59,21,22,14,71,39,15,57,38,31,35,18,53,28],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"drop","m":"떨어지다, 급락하다","p":"v","s":[22,31,21,15,14,48,59,18,63,39,6,58,34,38,81,0,5,11,13,66],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"equal","m":"동일한, 같은","p":"adj","s":[43,83,74,2,51,54,47,7,78,70,61,72,53,11,15,71,42,13,22,52],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"baseline","m":"기준선, 기저 수준","p":"n","s":[28,8,19,13,45,56,80,17,1,27,29,30,52,60,68,75,77,50,41,81],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"rebalance","m":"다시 균형을 잡다","p":"v","s":[71,3,6,58,39,25,63,34,48,57,59,15,14,22,31,18,21,35,56,69],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"experience","m":"경험하다, 느끼다","p":"v","s":[3,48,25,58,6,38,34,31,59,71,35,15,22,14,57,18,69,49,37,78],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"in order to","m":"~하기 위해서","p":"phr","s":[10,64,4,76,49,69,62,9,46,65,79,55,66,33,44,3,26,63,47,8],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"shame","m":"수치심, 부끄러움","p":"n","s":[81,75,0,1,30,68,80,5,11,13,23,28,42,52,27,37,45,56,67,8],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"guilt","m":"죄책감","p":"n","s":[1,68,0,11,13,52,30,75,80,5,41,81,60,50,8,12,16,23,67,29],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"guilty","m":"죄책감을 느끼는","p":"adj","s":[2,36,7,53,74,78,51,83,70,54,61,72,47,1,46,0,11,6,34,58],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"hold up A against B","m":"A를 B에 견주어보다","p":"phr","s":[65,4,55,9,33,66,46,49,62,64,69,79,10,40,76,32,12,60,61,67],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"behavior","m":"행동, 태도","p":"n","s":[50,30,37,60,80,17,19,1,27,52,56,28,8,13,29,68,75,77,16,41],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"fail to","m":"~하지 못하다","p":"phr","s":[62,55,66,69,9,10,49,64,4,40,76,65,44,33,79,6,3,48,42,43],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"uncomfortable","m":"불편한","p":"adj","s":[54,61,72,74,7,51,53,70,83,36,2,43,78,32,12,20,40,73,79,16],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"apologize","m":"사과하다","p":"v","s":[3,6,58,34,59,39,63,25,57,38,71,21,35,31,22,15,14,18,46,69],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"make amends","m":"(잘못에 대해) 사죄하다, 보상하다","p":"phr","s":[69,64,4,62,55,76,10,46,40,65,9,33,44,79,66,39,8,67,3,48],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"motivator","m":"동기 부여 요소, 자극제","p":"n","s":[16,45,17,1,29,60,68,12,32,27,56,75,77,80,8,19,28,30,37,5],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"powerful","m":"강력한","p":"adj","s":[7,83,53,78,70,43,74,72,36,47,2,54,61,66,15,22,27,77,48,8],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"effect","m":"효과, 영향","p":"n","s":[56,77,0,13,42,1,30,68,80,27,29,37,45,5,11,41,60,75,81,8],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"positive","m":"긍정적인","p":"adj","s":[72,51,78,61,43,70,7,83,47,2,36,48,14,34,37,58,60,17,39,27],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"destructive","m":"파괴적인","p":"adj","s":[61,72,70,47,2,36,78,7,43,51,83,16,17,63,3,38,39,48,50,64],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"replace A with B","m":"A를 B로 대체하다","p":"phr","s":[62,65,46,33,79,69,49,44,4,10,9,64,40,66,76,6,3,48,58,15],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"research","m":"연구, 조사","p":"n","s":[80,37,52,27,29,30,45,68,77,50,17,19,1,13,28,60,75,32,41,12],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"corrode","m":"부식시키다, (마음을) 좀먹다","p":"v","s":[14,22,59,48,63,21,34,58,38,6,15,18,39,31,75,81,7,53,28,1],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"believe","m":"믿다, 생각하다","p":"v","s":[34,6,3,48,25,63,15,38,39,14,31,21,22,57,71,35,18,37,53,28],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"suppose","m":"가정하다, 생각하다","p":"v","s":[3,48,25,22,34,63,6,57,21,15,14,71,38,39,31,35,18,75,81,46],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"solution","m":"해결책","p":"n","s":[17,75,45,50,16,8,19,13,30,37,1,27,29,52,56,68,77,80,0,5],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"challenging","m":"힘든, 도전적인","p":"adj","s":[54,72,53,70,47,74,83,2,7,36,43,51,78,17,48,23,12,19,38,10],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"pay attention to","m":"~에 유의하다","p":"phr","s":[55,46,79,65,49,69,10,40,64,4,9,66,44,76,3,6,48,39,63,58],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"encounter","m":"마주치다, 접하다","p":"v","s":[3,25,34,6,48,71,58,59,38,57,31,35,15,22,14,18,12,46,20,40],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"be related to","m":"~와 관련이 있다","p":"phr","s":[10,40,4,49,76,79,33,62,9,46,65,55,69,44,66,23,24,67,32,54],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"chances are (that)","m":"~일 가능성이 크다","p":"phr","s":[10,55,62,44,4,49,64,9,40,69,79,46,76,33,66,12,25,28,56,77],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"pop up","m":"갑자기 떠오르다","p":"phr","s":[46,9,44,62,40,76,55,69,4,49,10,64,33,79,65,51,27,53,0,5],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"eureka moment","m":"유레카의 순간 (깨달음의 순간)","p":"n","s":[16,23,8,12,32,13,75,19,27,41,45,52,77,80,0,1,11,17,28,29],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"insight","m":"통찰력, 깊은 이해","p":"n","s":[77,42,50,1,11,13,30,41,52,81,29,37,56,27,28,45,60,75,80,0],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"take place","m":"일어나다, 발생하다","p":"phr","s":[49,9,4,46,55,76,10,62,40,64,65,79,44,33,66,25,39,3,48,37],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"unexpected","m":"예상치 못한","p":"adj","s":[7,78,54,51,53,74,61,47,2,36,43,83,29,8,25,77,12,17,27,28],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"enhance","m":"향상시키다, 높이다","p":"v","s":[38,63,34,6,14,15,58,59,48,39,21,22,18,31,41,56,28,36,52,27],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"spontaneous","m":"자발적인, 즉흥적인","p":"adj","s":[61,54,53,47,7,51,78,83,36,43,74,2,16,20,49,23,12,17,32,38],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"potentially","m":"잠재적으로, 어쩌면","p":"adv","s":[20,24,26,82,17,32,50,47,4,8,12,38,39,48,69,72,10,64,3,16],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"valuable","m":"가치있는, 값비싼","p":"adj","s":[83,43,70,36,7,51,78,47,61,72,2,28,38,69,1,15,27,34,37,58],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"outcome","m":"결과, 성과","p":"n","s":[81,60,41,11,42,27,29,37,77,28,50,1,13,30,45,52,56,68,80,67],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"narrow down","m":"(범위를) 좁히다","p":"phr","s":[4,40,64,49,69,10,46,66,65,33,79,55,62,44,9,67,16,17,19,48],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"interest","m":"관심, 흥미","p":"n","s":[8,29,68,52,17,1,13,30,37,56,75,80,12,28,50,19,27,45,60,11],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"specific","m":"특정한","p":"adj","s":[53,70,43,51,83,7,74,54,72,2,36,61,47,39,8,15,22,30,52,58],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"on the contrary","m":"그와는 반대로","p":"phr","s":[33,62,64,55,4,65,9,40,69,44,10,46,49,76,66,47,67,63,73,12],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"breadth","m":"폭, 넓이","p":"n","s":[56,11,27,37,45,1,13,41,42,52,77,50,28,29,30,60,68,75,81,67],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"scope","m":"범위, 영역","p":"n","s":[75,0,41,5,13,1,68,11,30,42,52,80,23,37,17,19,12,16,67,27],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"likewise","m":"마찬가지로","p":"adv","s":[26,24,20,73,14,29,37,8,39,69,25,53,58,59,77,3,48,17,7,9],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]},{"w":"harmful","m":"해로운","p":"adj","s":[51,74,36,7,78,43,53,47,61,72,2,54,70,1,11,13,22,41,28,15],"x":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]}],"ext":[{"w":"hesitate","m":"망설이다","p":"v","g":["X_DOUBT"]},{"w":"pretend","m":"~인 척하다","p":"v","g":["X_FAKE"]},{"w":"complain","m":"불평하다","p":"v","g":["X_COMPLAIN"]},{"w":"betray","m":"배신하다","p":"v","g":["X_TRUST"]},{"w":"regulate","m":"규제하다","p":"v","g":["X_LIMIT"]},{"w":"endure","m":"견디다","p":"v","g":["X_KEEP"]},{"w":"wander","m":"돌아다니다","p":"v","g":["X_MOVE"]},{"w":"imitate","m":"모방하다","p":"v","g":["X_COPY"]},{"w":"interrupt","m":"방해하다","p":"v","g":["X_BLOCK"]},{"w":"negotiate","m":"협상하다","p":"v","g":["X_DEAL"]},{"w":"convince","m":"설득하다","p":"v","g":["X_PERSUADE"]},{"w":"deliver","m":"배달하다","p":"v","g":["X_CARRY"]},{"w":"borrow","m":"빌리다","p":"v","g":["X_LEND"]},{"w":"obey","m":"복종하다","p":"v","g":["X_OBEY"]},{"w":"vanish","m":"사라지다","p":"v","g":["G10"]},{"w":"reluctant","m":"꺼리는, 주저하는","p":"adj","g":["X_UNWILLING"]},{"w":"humble","m":"겸손한","p":"adj","g":["X_HUMBLE"]},{"w":"stubborn","m":"고집 센","p":"adj","g":["X_PERSIST"]},{"w":"fragile","m":"부서지기 쉬운","p":"adj","g":["X_WEAK"]},{"w":"hollow","m":"속이 빈","p":"adj","g":["X_EMPTY"]},{"w":"shallow","m":"얕은","p":"adj","g":["X_DEPTH"]},{"w":"fierce","m":"사나운, 격렬한","p":"adj","g":["X_FIERCE"]},{"w":"durable","m":"내구성 있는","p":"adj","g":["X_PERSIST"]},{"w":"clumsy","m":"서투른","p":"adj","g":["X_SKILL"]},{"w":"greedy","m":"탐욕스러운","p":"adj","g":["X_GREED"]},{"w":"cautious","m":"조심스러운","p":"adj","g":["X_CAREFUL"]},{"w":"awkward","m":"어색한","p":"adj","g":["X_SKILL"]},{"w":"vital","m":"필수적인","p":"adj","g":["X_VITAL"]},{"w":"weary","m":"지친","p":"adj","g":["X_TIRED"]},{"w":"vivid","m":"생생한","p":"adj","g":["X_VIVID"]},{"w":"sincere","m":"진심 어린","p":"adj","g":["X_HONEST"]},{"w":"brutal","m":"잔인한","p":"adj","g":["X_FIERCE"]},{"w":"dense","m":"밀집한, 빽빽한","p":"adj","g":["X_DENSE"]},{"w":"ancient","m":"고대의","p":"adj","g":["X_OLD"]},{"w":"burden","m":"부담, 짐","p":"n","g":["X_BURDEN"]},{"w":"threat","m":"위협","p":"n","g":["X_FEAR"]},{"w":"rumor","m":"소문","p":"n","g":["X_TALK"]},{"w":"insult","m":"모욕","p":"n","g":["X_INSULT"]},{"w":"privilege","m":"특권","p":"n","g":["X_RIGHT"]},{"w":"obstacle","m":"장애물","p":"n","g":["X_BLOCK"]},{"w":"sacrifice","m":"희생","p":"n","g":["X_GIVE"]},{"w":"dispute","m":"분쟁, 논쟁","p":"n","g":["X_CONFLICT"]},{"w":"shortage","m":"부족","p":"n","g":["G02"]},{"w":"virtue","m":"미덕","p":"n","g":["X_MORAL"]},{"w":"famine","m":"기근","p":"n","g":["X_HUNGER"]},{"w":"tradition","m":"전통","p":"n","g":["X_CUSTOM"]},{"w":"harvest","m":"수확","p":"n","g":["X_FARM"]},{"w":"debt","m":"빚, 부채","p":"n","g":["X_DEBT"]},{"w":"rival","m":"경쟁자","p":"n","g":["X_RIVAL"]},{"w":"ceremony","m":"의식, 식","p":"n","g":["X_EVENT"]},{"w":"barely","m":"간신히, 겨우","p":"adv","g":["X_BARELY"]},{"w":"frequently","m":"자주","p":"adv","g":["X_OFTEN"]},{"w":"thoroughly","m":"철저히","p":"adv","g":["X_CAREFUL"]},{"w":"sincerely","m":"진심으로","p":"adv","g":["X_HONEST"]},{"w":"rarely","m":"드물게, 좀처럼 ~않는","p":"adv","g":["X_OFTEN"]},{"w":"gradually","m":"서서히","p":"adv","g":["X_SPEED"]},{"w":"nearly","m":"거의","p":"adv","g":["X_BARELY"]}],"syn":[{"w":"spot","wm":"장소, 지점","a":"place","am":"장소","g":["G00"]},{"w":"variety","wm":"다양성","a":"diversity","am":"다양성","g":["G01"]},{"w":"rich","wm":"풍부한","a":"abundant","am":"풍부한","g":["G02"]},{"w":"reinforce","wm":"강화하다","a":"strengthen","am":"강화하다","g":["G03"]},{"w":"numerous","wm":"수많은","a":"countless","am":"셀 수 없이 많은","g":["G02"]},{"w":"experiment","wm":"실험","a":"test","am":"실험, 시험","g":["G04"]},{"w":"at least","wm":"적어도","a":"at minimum","am":"최소한","g":["G02"]},{"w":"trial","wm":"시험, 시도","a":"attempt","am":"시도","g":["G04"]},{"w":"amount","wm":"양","a":"quantity","am":"양, 수량","g":["G02"]},{"w":"divide","wm":"나누다","a":"separate","am":"분리하다","g":["G05"]},{"w":"recall","wm":"기억해 내다, 상기하다","a":"remember","am":"기억하다","g":["G06"]},{"w":"association","wm":"연상, 연관","a":"connection","am":"연결, 연관","g":["G07"]},{"w":"connection","wm":"연결, 관계","a":"link","am":"연결, 관계","g":["G07"]},{"w":"form","wm":"형성되다, 만들다","a":"create","am":"만들다","g":["G08"]},{"w":"background","wm":"배경","a":"setting","am":"배경, 환경","g":["G00"]},{"w":"consciously","wm":"의식적으로","a":"deliberately","am":"의도적으로","g":["G09"]},{"w":"occur","wm":"발생하다, 일어나다","a":"happen","am":"발생하다","g":["G10"]},{"w":"immediately","wm":"즉시, 곧바로","a":"instantly","am":"즉시","g":["G11"]},{"w":"increase","wm":"증가하다, 늘어나다","a":"rise","am":"증가하다","g":["G03"]},{"w":"pleasure","wm":"쾌락, 즐거움","a":"enjoyment","am":"즐거움","g":["G12"]},{"w":"challenge","wm":"문제, 난제","a":"difficulty","am":"어려움, 난제","g":["G13"]},{"w":"universe","wm":"우주, 세상","a":"cosmos","am":"우주","g":["G14"]},{"w":"seek","wm":"찾다, 추구하다","a":"pursue","am":"추구하다","g":["G15"]},{"w":"homeostasis","wm":"항상성","a":"balance","am":"균형","g":["G16"]},{"w":"achieve","wm":"달성하다, 이루다","a":"accomplish","am":"성취하다","g":["G17"]},{"w":"drop","wm":"떨어지다, 급락하다","a":"decrease","am":"감소하다","g":["G03"]},{"w":"equal","wm":"동일한, 같은","a":"equivalent","am":"동등한","g":["G16"]},{"w":"experience","wm":"경험하다, 느끼다","a":"undergo","am":"경험하다, 겪다","g":["G10"]},{"w":"in order to","wm":"~하기 위해서","a":"so as to","am":"~하기 위해서","g":["G18"]},{"w":"guilt","wm":"죄책감","a":"remorse","am":"후회, 죄책감","g":["G19"]},{"w":"behavior","wm":"행동, 태도","a":"conduct","am":"행동","g":["G20"]},{"w":"uncomfortable","wm":"불편한","a":"uneasy","am":"불안한, 불편한","g":["G21"]},{"w":"motivator","wm":"동기 부여 요소, 자극제","a":"incentive","am":"동기, 자극","g":["G22"]},{"w":"powerful","wm":"강력한","a":"strong","am":"강력한","g":["G03"]},{"w":"effect","wm":"효과, 영향","a":"impact","am":"영향","g":["G22"]},{"w":"positive","wm":"긍정적인","a":"optimistic","am":"낙관적인","g":["G08"]},{"w":"replace A with B","wm":"A를 B로 대체하다","a":"substitute B for A","am":"A를 B로 바꾸다","g":["G23"]},{"w":"in fact","wm":"사실은, 실제로는","a":"actually","am":"실제로","g":["G24"]},{"w":"research","wm":"연구, 조사","a":"investigation","am":"조사, 연구","g":["G04"]},{"w":"suppose","wm":"가정하다, 생각하다","a":"assume","am":"가정하다","g":["G25"]},{"w":"solution","wm":"해결책","a":"answer","am":"해결책, 답","g":["G13"]},{"w":"challenging","wm":"힘든, 도전적인","a":"difficult","am":"어려운","g":["G13"]},{"w":"encounter","wm":"마주치다, 접하다","a":"come across","am":"우연히 만나다, 접하다","g":["G10"]},{"w":"pop up","wm":"갑자기 떠오르다","a":"appear","am":"나타나다","g":["G10"]},{"w":"unexpected","wm":"예상치 못한","a":"unforeseen","am":"예측하지 못한","g":["G10"]},{"w":"enhance","wm":"향상시키다, 높이다","a":"improve","am":"향상시키다","g":["G03"]},{"w":"potentially","wm":"잠재적으로, 어쩌면","a":"possibly","am":"아마, 가능성 있게","g":["G26"]},{"w":"specific","wm":"특정한","a":"particular","am":"특정한","g":["G27"]},{"w":"spontaneous","wm":"자발적인, 즉흥적인","a":"impulsive","am":"충동적인, 즉흥적인","g":["G10"]}],"ant":[{"w":"variety","wm":"다양성","a":"uniformity","am":"획일성","g":["G01"]},{"w":"rich","wm":"풍부한","a":"poor","am":"빈약한","g":["G02"]},{"w":"reinforce","wm":"강화하다","a":"weaken","am":"약화시키다","g":["G03"]},{"w":"numerous","wm":"수많은","a":"few","am":"소수의","g":["G02"]},{"w":"likely to","wm":"~할 가능성이 있다","a":"unlikely to","am":"~할 가능성이 없다","g":["G26"]},{"w":"divide","wm":"나누다","a":"unite","am":"합치다","g":["G05"]},{"w":"recall","wm":"기억해 내다","a":"forget","am":"잊다","g":["G06"]},{"w":"association","wm":"연상, 연관","a":"disconnection","am":"단절, 무관","g":["G07"]},{"w":"form","wm":"형성하다","a":"destroy","am":"파괴하다","g":["G08"]},{"w":"consciously","wm":"의식적으로","a":"unconsciously","am":"무의식적으로","g":["G09"]},{"w":"occur","wm":"발생하다","a":"disappear","am":"사라지다","g":["G10"]},{"w":"immediately","wm":"즉시","a":"eventually","am":"결국, 마침내","g":["G11"]},{"w":"increase","wm":"증가하다","a":"decrease","am":"감소하다","g":["G03"]},{"w":"pleasure","wm":"즐거움","a":"pain","am":"고통","g":["G12"]},{"w":"challenge","wm":"난제, 도전","a":"ease","am":"용이함","g":["G13"]},{"w":"seek","wm":"찾다, 추구하다","a":"avoid","am":"피하다","g":["G15"]},{"w":"homeostasis","wm":"항상성","a":"imbalance","am":"불균형","g":["G16"]},{"w":"with ~ in mind","wm":"~을 염두에 두고","a":"without considering ~","am":"~을 고려하지 않고","g":["G15"]},{"w":"achieve","wm":"달성하다","a":"fail","am":"실패하다","g":["G17"]},{"w":"drop","wm":"떨어지다, 감소하다","a":"rise","am":"상승하다","g":["G03"]},{"w":"equal","wm":"동일한","a":"unequal","am":"동일하지 않은","g":["G16"]},{"w":"guilty","wm":"죄책감을 느끼는","a":"innocent","am":"무죄의, 결백한","g":["G19"]},{"w":"fail to","wm":"~하지 못하다","a":"succeed in","am":"~에 성공하다","g":["G17"]},{"w":"uncomfortable","wm":"불편한","a":"comfortable","am":"편안한","g":["G21"]},{"w":"apologize","wm":"사과하다","a":"blame","am":"비난하다","g":["G19"]},{"w":"motivator","wm":"동기 부여 요소","a":"discouragement","am":"의욕 저하","g":["G22"]},{"w":"powerful","wm":"강력한","a":"powerless","am":"무력한","g":["G03"]},{"w":"effect","wm":"효과, 영향","a":"cause","am":"원인","g":["G22"]},{"w":"positive","wm":"긍정적인","a":"negative","am":"부정적인","g":["G08"]},{"w":"destructive","wm":"파괴적인","a":"constructive","am":"건설적인","g":["G08"]},{"w":"negative","wm":"부정적인","a":"positive","am":"긍정적인","g":["G08"]},{"w":"corrode","wm":"약화시키다, 좀먹다","a":"strengthen","am":"강화하다","g":["G03"]},{"w":"believe","wm":"믿다","a":"doubt","am":"의심하다","g":["G25"]},{"w":"suppose","wm":"가정하다","a":"know for certain","am":"확실히 알다","g":["G25"]},{"w":"solution","wm":"해결책","a":"problem","am":"문제","g":["G13"]},{"w":"challenging","wm":"힘든, 도전적인","a":"easy","am":"쉬운","g":["G13"]},{"w":"pay attention to","wm":"~에 주의를 기울이다","a":"ignore","am":"무시하다","g":["G15"]},{"w":"be related to","wm":"~와 관련이 있다","a":"be unrelated to","am":"~와 관련이 없다","g":["G07"]},{"w":"chances are (that)","wm":"~일 가능성이 크다","a":"it is unlikely that","am":"~일 가능성이 낮다","g":["G26"]},{"w":"unexpected","wm":"예상치 못한","a":"expected","am":"예상된","g":["G10"]},{"w":"enhance","wm":"향상시키다","a":"diminish","am":"감소시키다","g":["G03"]},{"w":"spontaneous","wm":"자발적인, 즉흥적인","a":"planned","am":"계획된","g":["G10"]},{"w":"potentially","wm":"잠재적으로","a":"definitely","am":"확실히","g":["G26"]},{"w":"valuable","wm":"가치 있는","a":"worthless","am":"가치 없는","g":["G08"]},{"w":"narrow down","wm":"범위를 좁히다","a":"broaden","am":"범위를 넓히다","g":["G28"]},{"w":"interest","wm":"관심, 흥미","a":"indifference","am":"무관심","g":["G15"]}],"passage":{"titleEn":"2026 6월 고1 학력평가","titleKo":"22 · 23 · 24 · 32 · 36번","paras":[[{"id":"s1","en":"Suppose you have been working on the solution to a challenging technological problem for many years.","ko":"당신이 수년간 어려운 기술 문제에 대한 해결책을 연구해 왔다고 가정해 보라."},{"id":"s2","en":"Let’s also suppose that you have been paying attention to whatever else you have encountered that might be related to the problem.","ko":"또한 그 문제와 관련이 있을지도 모르는, 당신이 마주해 온 다른 모든 것에도 주의를 기울여 왔다고 가정해 보자."},{"id":"s3","en":"In that case, chances are that creative solutions to the problem could suddenly pop up in your mind when you are relaxed.","ko":"그런 경우, 당신이 편안할 때, 아마도 그 문제에 대한 창의적인 해결책이 갑자기 떠오를 것이다."},{"id":"s4","en":"Such “eureka moments” (when great insights lead to discovery or invention) often take place at unexpected times.","ko":"그러한 ‘유레카 순간’(훌륭한 통찰력이 발견이나 발명으로 이어질 때)은 종종 예상치 못한 때 일어난다."},{"id":"s5","en":"To enhance spontaneous creativity, therefore, one must pay attention to the things that could potentially lead to valuable outcomes.","ko":"따라서, 자연 발생적인 창의성을 키우려면, 잠재적으로 가치 있는 결과로 이어질 수 있는 것들에 주의를 기울여야 한다."},{"id":"s6","en":"This does not mean that you must narrow down your interest to one specific topic.","ko":"이는 당신의 관심을 특정 주제에 국한해야 한다는 것을 의미하지 않는다."},{"id":"s7","en":"On the contrary, breadth of experience is the key to creativity.","ko":"반대로, 경험의 폭이 창의성의 핵심이다."},{"id":"s8","en":"If your experience is limited to a narrow range of topics, then the scope of your imagination will likewise be narrow, which would be harmful to creativity.","ko":"경험이 좁은 범위의 주제로 국한된다면, 상상력의 범위가 마찬가지로 좁아질 것이고, 이는 창의성에 해로울 것이다."}],[{"id":"s9","en":"Shame is about who we are, and guilt is about our behaviors.","ko":"수치심은 우리가 누구인가에 관한 것이고, 죄책감은 우리의 행동들에 관한 것이다."},{"id":"s10","en":"We feel guilty when we hold up something we’ve done or failed to do against the kind of person we want to be.","ko":"우리가 했거나 하지 못한 것을 우리가 되고자 하는 유형의 사람에 견줄 때 우리는 죄책감을 느낀다."},{"id":"s11","en":"It’s an uncomfortable feeling, but one that’s helpful.","ko":"그것은 불편한 감정이지만, 도움이 되는 것이다."},{"id":"s12","en":"When we apologize for something we’ve done, make amends to others, or change a behavior that we don’t feel good about, guilt is most often the motivator.","ko":"우리가 한 것에 대해 사과하거나, 다른 이에게 보상하거나, 좋다고 느끼지 않는 행동을 바꿀 때, 죄책감이 대체로 동기 요인이다."},{"id":"s13","en":"Guilt is just as powerful as shame, but its effect is often positive while shame often is destructive.","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다."},{"id":"s14","en":"When we see people apologize, make amends, or replace negative behaviors with more positive ones, guilt is often the motivator, not shame.","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다."},{"id":"s15","en":"In fact, in my research, I found that shame corrodes the part of us that believes we can change and do better.","ko":"실제로, 나의 연구에서, 수치심은 우리가 변하고 더 나아질 수 있다고 믿는 우리의 일부를 좀먹는다는 것을 발견했다."}],[{"id":"s16","en":"Let’s look at what is occurring in your brain when scrolling on social media, a quick dopamine activity.","ko":"소셜 미디어상에서 스크롤 할 때 당신의 뇌에서 일어나고 있는 일, 즉 빠른 도파민 활동을 살펴보자."},{"id":"s17","en":"You open your social media apps and immediately you notice you feel really good, your dopamine levels increase incredibly fast and pleasure is experienced in your brain.","ko":"당신은 소셜 미디어 앱을 열고 당신이 정말 기분이 좋다는 것을 즉시 알아차리게 되며, 당신의 도파민 수치는 믿을 수 없이 빠르게 증가하여 쾌락이 뇌에서 경험된다."},{"id":"s18","en":"The challenge this creates is as with everything in our universe: as the laws of physics explain, ‘what goes up, must come down’.","ko":"이것(도파민 급증)이 만들어 내는 난제는 우리 우주의 모든 것들과 마찬가지이다. 즉, 물리학 법칙이 설명하듯이, ‘올라가는 것은, 반드시 내려와야 한다.’"},{"id":"s19","en":"Your brain and body are always seeking something called ‘homeostasis’, which simply means balance.","ko":"당신의 뇌와 몸은 ‘항상성’이라고 불리는 어떤 것을 항상 추구하고 있는데, 그것은 단순히 균형을 의미한다."},{"id":"s20","en":"With this in mind, when dopamine levels increase incredibly fast when scrolling social media, the brain then thinks, ‘Wow, how are my dopamine levels so high?’","ko":"이것을 염두에 두고, 소셜 미디어를 스크롤 할 때 도파민 수치가 믿을 수 없이 빠르게 증가하면, 뇌는 그때 ‘와, 내 도파민 수치가 어떻게 이렇게 높지?’라고 생각한다."},{"id":"s21","en":"In order to achieve homeostasis, or balance, the dopamine then has to quickly drop an equal amount below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다."}],[{"id":"s22","en":"Do you always study in the same spot? Don’t.","ko":"항상 같은 장소에서 공부하는가? 그러지 마라."},{"id":"s23","en":"If you study in different places, that helps create variety, and that rich experience can reinforce what you are learning.","ko":"여러 장소에서 공부하면, 그것은 다양성을 만들도록 돕고, 그러한 풍부한 경험은 당신이 학습하고 있는 것을 강화할 수 있다."},{"id":"s24","en":"When several college students told us they did school work in different places rather than in some favorite nook, that habit reflected the research on learning.","ko":"몇몇 대학생들이 좋아하는 어떤 구석진 곳에서보다는 여러 장소에서 학교 과제를 한다고 우리에게 말했을 때, 그 습관은 학습에 관한 연구를 반영했다."},{"id":"s25","en":"Numerous experiments have found that if learners simply study in at least two different places, they are more likely to recall the material.","ko":"수많은 실험은 학습자가 최소 두 곳 이상의 다른 장소에서 단지 공부하기만 해도, 학습 자료를 기억할 가능성이 더 높다는 것을 발견했다."},{"id":"s26","en":"In one of the first such trials, two different groups studied a list of words.","ko":"그러한 초기 실험들 중 하나에서 두 개의 다른 집단이 하나의 단어 목록을 공부하였다."},{"id":"s27","en":"Some students returned to the same room twice while their counterparts spent the same amount of time divided between two locations.","ko":"일부 학생들은 같은 방으로 두 번 돌아왔지만, 상대 집단은 두 장소에서 동일하게 나뉜 시간을 보냈다."},{"id":"s28","en":"When asked to recall as many words on the list as possible, those who had moved around did far better.","ko":"목록에 있는 가능한 한 많은 단어를 기억해 보라고 요청받았을 때, 장소를 옮겨 다닌 학생들이 훨씬 더 잘했다."},{"id":"s29","en":"Variety creates rich association, even when those connections form in the background, totally outside of what we are consciously thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다)."}],[{"id":"s30","en":"During the Ice Age, not only was the planet much colder, with ice sheets covering much of what we call the northern hemisphere today, but, crucially, it was much drier.","ko":"빙하기 동안, 지구는, 오늘날 우리가 북반구라고 부르는 지역의 대부분을 얼음층이 뒤덮은 채로, 훨씬 더 추웠을 뿐만 아니라, 결정적으로, 훨씬 더 건조했다."},{"id":"s31","en":"In Ireland, we often associate the cold with the wet but if it is really cold, there is far less evaporation, fewer clouds, and less rain.","ko":"아일랜드에서, 우리는 종종 추위를 습함과 연관 짓지만, 정말 춥다면, 증발 작용이 훨씬 더 적고, 구름도 더 적으며, 비도 더 적다."},{"id":"s32","en":"Our world in the Ice Age was cold and dry, meaning it was difficult for plants to grow.","ko":"빙하기의 우리 지구는 춥고 건조했는데, 이는 식물이 자라기 어렵다는 것을 의미했다."},{"id":"s33","en":"In this type of climate, farming isn’t an option: it’s too risky to depend on any one piece of land to produce the energy you need.","ko":"이런 유형의 기후에서, 농사는 선택지가 아니다. 즉, 당신이 필요한 에너지를 생산하려고 어느 한 조각의 땅에 의존하는 것은 너무 위험하다."},{"id":"s34","en":"As the temperature rose and the ice caps melted, we experienced a sudden explosion of life.","ko":"온도가 상승하고 만년설이 녹으면서, 우리는 갑작스러운 생명의 폭발을 경험했다."},{"id":"s35","en":"The world got warmer and wetter, and people started to live around places where they could make food grow most intensively.","ko":"지구는 더 따뜻하고 습해졌고, 그리고 사람들은 식량이 가장 집약적으로 자라게 할 수 있는 장소 주변에 살기 시작했다."},{"id":"s36","en":"This didn’t happen overnight; it probably took thousands of years, with hunter-gatherers foraging and hunting, while doing a little side hustle in farming.","ko":"이것은 하룻밤 사이에 일어나지 않았고, 수렵채집인들이, 농사로 부업을 조금씩 하는 동안, 채집과 사냥을 하면서, 그것은 아마도 수천 년이 걸렸을 것이다."}]],"labels":["22","23","24","32","36"]},"blanks":[{"sid":"s1","ans":"Suppose","head":"suppose","p":"v","g":["G25"],"pre":"","post":" you have been working on the solution to a challenging technological problem for many years.","ko":"당신이 수년간 어려운 기술 문제에 대한 해결책을 연구해 왔다고 가정해 보라.","pk":"동사","hm":"가정하다, 생각하다"},{"sid":"s1","ans":"solution","head":"solution","p":"n","g":["G13"],"pre":"Suppose you have been working on the ","post":" to a challenging technological problem for many years.","ko":"당신이 수년간 어려운 기술 문제에 대한 해결책을 연구해 왔다고 가정해 보라.","pk":"명사","hm":"해결책"},{"sid":"s1","ans":"challenging","head":"challenging","p":"adj","g":["G13"],"pre":"Suppose you have been working on the solution to a ","post":" technological problem for many years.","ko":"당신이 수년간 어려운 기술 문제에 대한 해결책을 연구해 왔다고 가정해 보라.","pk":"형용사","hm":"힘든, 도전적인"},{"sid":"s2","ans":"suppose","head":"suppose","p":"v","g":["G25"],"pre":"Let’s also ","post":" that you have been paying attention to whatever else you have encountered that might be related to the problem.","ko":"또한 그 문제와 관련이 있을지도 모르는, 당신이 마주해 온 다른 모든 것에도 주의를 기울여 왔다고 가정해 보자.","pk":"동사","hm":"가정하다, 생각하다"},{"sid":"s2","ans":"paying attention to","head":"pay attention to","p":"phr","g":["G15"],"pre":"Let’s also suppose that you have been ","post":" whatever else you have encountered that might be related to the problem.","ko":"또한 그 문제와 관련이 있을지도 모르는, 당신이 마주해 온 다른 모든 것에도 주의를 기울여 왔다고 가정해 보자.","pk":"숙어","hm":"~에 유의하다"},{"sid":"s2","ans":"encountered","head":"encounter","p":"v","g":["G10"],"pre":"Let’s also suppose that you have been paying attention to whatever else you have ","post":" that might be related to the problem.","ko":"또한 그 문제와 관련이 있을지도 모르는, 당신이 마주해 온 다른 모든 것에도 주의를 기울여 왔다고 가정해 보자.","pk":"동사","hm":"마주치다, 접하다"},{"sid":"s2","ans":"be related to","head":"be related to","p":"phr","g":["G07"],"pre":"Let’s also suppose that you have been paying attention to whatever else you have encountered that might ","post":" the problem.","ko":"또한 그 문제와 관련이 있을지도 모르는, 당신이 마주해 온 다른 모든 것에도 주의를 기울여 왔다고 가정해 보자.","pk":"숙어","hm":"~와 관련이 있다"},{"sid":"s3","ans":"chances are","head":"chances are (that)","p":"phr","g":["G26"],"pre":"In that case, ","post":" that creative solutions to the problem could suddenly pop up in your mind when you are relaxed.","ko":"그런 경우, 당신이 편안할 때, 아마도 그 문제에 대한 창의적인 해결책이 갑자기 떠오를 것이다.","pk":"숙어","hm":"~일 가능성이 크다"},{"sid":"s3","ans":"solutions","head":"solution","p":"n","g":["G13"],"pre":"In that case, chances are that creative ","post":" to the problem could suddenly pop up in your mind when you are relaxed.","ko":"그런 경우, 당신이 편안할 때, 아마도 그 문제에 대한 창의적인 해결책이 갑자기 떠오를 것이다.","pk":"명사","hm":"해결책"},{"sid":"s3","ans":"pop up","head":"pop up","p":"phr","g":["G10"],"pre":"In that case, chances are that creative solutions to the problem could suddenly ","post":" in your mind when you are relaxed.","ko":"그런 경우, 당신이 편안할 때, 아마도 그 문제에 대한 창의적인 해결책이 갑자기 떠오를 것이다.","pk":"숙어","hm":"갑자기 떠오르다"},{"sid":"s4","ans":"eureka moments","head":"eureka moment","p":"n","g":["G29"],"pre":"Such “","post":"” (when great insights lead to discovery or invention) often take place at unexpected times.","ko":"그러한 ‘유레카 순간’(훌륭한 통찰력이 발견이나 발명으로 이어질 때)은 종종 예상치 못한 때 일어난다.","pk":"명사","hm":"유레카의 순간 (깨달음의 순간)"},{"sid":"s4","ans":"insights","head":"insight","p":"n","g":["G29"],"pre":"Such “eureka moments” (when great ","post":" lead to discovery or invention) often take place at unexpected times.","ko":"그러한 ‘유레카 순간’(훌륭한 통찰력이 발견이나 발명으로 이어질 때)은 종종 예상치 못한 때 일어난다.","pk":"명사","hm":"통찰력, 깊은 이해"},{"sid":"s4","ans":"take place","head":"take place","p":"phr","g":["G10"],"pre":"Such “eureka moments” (when great insights lead to discovery or invention) often ","post":" at unexpected times.","ko":"그러한 ‘유레카 순간’(훌륭한 통찰력이 발견이나 발명으로 이어질 때)은 종종 예상치 못한 때 일어난다.","pk":"숙어","hm":"일어나다, 발생하다"},{"sid":"s4","ans":"unexpected","head":"unexpected","p":"adj","g":["G10"],"pre":"Such “eureka moments” (when great insights lead to discovery or invention) often take place at ","post":" times.","ko":"그러한 ‘유레카 순간’(훌륭한 통찰력이 발견이나 발명으로 이어질 때)은 종종 예상치 못한 때 일어난다.","pk":"형용사","hm":"예상치 못한"},{"sid":"s5","ans":"enhance","head":"enhance","p":"v","g":["G03"],"pre":"To ","post":" spontaneous creativity, therefore, one must pay attention to the things that could potentially lead to valuable outcomes.","ko":"따라서, 자연 발생적인 창의성을 키우려면, 잠재적으로 가치 있는 결과로 이어질 수 있는 것들에 주의를 기울여야 한다.","pk":"동사","hm":"향상시키다, 높이다"},{"sid":"s5","ans":"spontaneous","head":"spontaneous","p":"adj","g":["G10"],"pre":"To enhance ","post":" creativity, therefore, one must pay attention to the things that could potentially lead to valuable outcomes.","ko":"따라서, 자연 발생적인 창의성을 키우려면, 잠재적으로 가치 있는 결과로 이어질 수 있는 것들에 주의를 기울여야 한다.","pk":"형용사","hm":"자발적인, 즉흥적인"},{"sid":"s5","ans":"pay attention to","head":"pay attention to","p":"phr","g":["G15"],"pre":"To enhance spontaneous creativity, therefore, one must ","post":" the things that could potentially lead to valuable outcomes.","ko":"따라서, 자연 발생적인 창의성을 키우려면, 잠재적으로 가치 있는 결과로 이어질 수 있는 것들에 주의를 기울여야 한다.","pk":"숙어","hm":"~에 유의하다"},{"sid":"s5","ans":"potentially","head":"potentially","p":"adv","g":["G26"],"pre":"To enhance spontaneous creativity, therefore, one must pay attention to the things that could ","post":" lead to valuable outcomes.","ko":"따라서, 자연 발생적인 창의성을 키우려면, 잠재적으로 가치 있는 결과로 이어질 수 있는 것들에 주의를 기울여야 한다.","pk":"부사","hm":"잠재적으로, 어쩌면"},{"sid":"s5","ans":"valuable","head":"valuable","p":"adj","g":["G08"],"pre":"To enhance spontaneous creativity, therefore, one must pay attention to the things that could potentially lead to ","post":" outcomes.","ko":"따라서, 자연 발생적인 창의성을 키우려면, 잠재적으로 가치 있는 결과로 이어질 수 있는 것들에 주의를 기울여야 한다.","pk":"형용사","hm":"가치있는, 값비싼"},{"sid":"s5","ans":"outcomes","head":"outcome","p":"n","g":["G22"],"pre":"To enhance spontaneous creativity, therefore, one must pay attention to the things that could potentially lead to valuable ","post":".","ko":"따라서, 자연 발생적인 창의성을 키우려면, 잠재적으로 가치 있는 결과로 이어질 수 있는 것들에 주의를 기울여야 한다.","pk":"명사","hm":"결과, 성과"},{"sid":"s6","ans":"narrow down","head":"narrow down","p":"phr","g":["G28"],"pre":"This does not mean that you must ","post":" your interest to one specific topic.","ko":"이는 당신의 관심을 특정 주제에 국한해야 한다는 것을 의미하지 않는다.","pk":"숙어","hm":"(범위를) 좁히다"},{"sid":"s6","ans":"interest","head":"interest","p":"n","g":["G15"],"pre":"This does not mean that you must narrow down your ","post":" to one specific topic.","ko":"이는 당신의 관심을 특정 주제에 국한해야 한다는 것을 의미하지 않는다.","pk":"명사","hm":"관심, 흥미"},{"sid":"s6","ans":"specific","head":"specific","p":"adj","g":["G27"],"pre":"This does not mean that you must narrow down your interest to one ","post":" topic.","ko":"이는 당신의 관심을 특정 주제에 국한해야 한다는 것을 의미하지 않는다.","pk":"형용사","hm":"특정한"},{"sid":"s7","ans":"On the contrary","head":"on the contrary","p":"phr","g":["G30"],"pre":"","post":", breadth of experience is the key to creativity.","ko":"반대로, 경험의 폭이 창의성의 핵심이다.","pk":"숙어","hm":"그와는 반대로"},{"sid":"s7","ans":"breadth","head":"breadth","p":"n","g":["G28"],"pre":"On the contrary, ","post":" of experience is the key to creativity.","ko":"반대로, 경험의 폭이 창의성의 핵심이다.","pk":"명사","hm":"폭, 넓이"},{"sid":"s7","ans":"experience","head":"experience","p":"v","g":["G10"],"pre":"On the contrary, breadth of ","post":" is the key to creativity.","ko":"반대로, 경험의 폭이 창의성의 핵심이다.","pk":"동사","hm":"경험하다, 느끼다"},{"sid":"s8","ans":"experience","head":"experience","p":"v","g":["G10"],"pre":"If your ","post":" is limited to a narrow range of topics, then the scope of your imagination will likewise be narrow, which would be harmful to creativity.","ko":"경험이 좁은 범위의 주제로 국한된다면, 상상력의 범위가 마찬가지로 좁아질 것이고, 이는 창의성에 해로울 것이다.","pk":"동사","hm":"경험하다, 느끼다"},{"sid":"s8","ans":"scope","head":"scope","p":"n","g":["G28"],"pre":"If your experience is limited to a narrow range of topics, then the ","post":" of your imagination will likewise be narrow, which would be harmful to creativity.","ko":"경험이 좁은 범위의 주제로 국한된다면, 상상력의 범위가 마찬가지로 좁아질 것이고, 이는 창의성에 해로울 것이다.","pk":"명사","hm":"범위, 영역"},{"sid":"s8","ans":"likewise","head":"likewise","p":"adv","g":["G30"],"pre":"If your experience is limited to a narrow range of topics, then the scope of your imagination will ","post":" be narrow, which would be harmful to creativity.","ko":"경험이 좁은 범위의 주제로 국한된다면, 상상력의 범위가 마찬가지로 좁아질 것이고, 이는 창의성에 해로울 것이다.","pk":"부사","hm":"마찬가지로"},{"sid":"s8","ans":"harmful","head":"harmful","p":"adj","g":["G08"],"pre":"If your experience is limited to a narrow range of topics, then the scope of your imagination will likewise be narrow, which would be ","post":" to creativity.","ko":"경험이 좁은 범위의 주제로 국한된다면, 상상력의 범위가 마찬가지로 좁아질 것이고, 이는 창의성에 해로울 것이다.","pk":"형용사","hm":"해로운"},{"sid":"s9","ans":"Shame","head":"shame","p":"n","g":["G19"],"pre":"","post":" is about who we are, and guilt is about our behaviors.","ko":"수치심은 우리가 누구인가에 관한 것이고, 죄책감은 우리의 행동들에 관한 것이다.","pk":"명사","hm":"수치심, 부끄러움"},{"sid":"s9","ans":"guilt","head":"guilt","p":"n","g":["G19"],"pre":"Shame is about who we are, and ","post":" is about our behaviors.","ko":"수치심은 우리가 누구인가에 관한 것이고, 죄책감은 우리의 행동들에 관한 것이다.","pk":"명사","hm":"죄책감"},{"sid":"s9","ans":"behaviors","head":"behavior","p":"n","g":["G20"],"pre":"Shame is about who we are, and guilt is about our ","post":".","ko":"수치심은 우리가 누구인가에 관한 것이고, 죄책감은 우리의 행동들에 관한 것이다.","pk":"명사","hm":"행동, 태도"},{"sid":"s10","ans":"guilty","head":"guilty","p":"adj","g":["G19"],"pre":"We feel ","post":" when we hold up something we’ve done or failed to do against the kind of person we want to be.","ko":"우리가 했거나 하지 못한 것을 우리가 되고자 하는 유형의 사람에 견줄 때 우리는 죄책감을 느낀다.","pk":"형용사","hm":"죄책감을 느끼는"},{"sid":"s10","ans":"failed to","head":"fail to","p":"phr","g":["G17"],"pre":"We feel guilty when we hold up something we’ve done or ","post":" do against the kind of person we want to be.","ko":"우리가 했거나 하지 못한 것을 우리가 되고자 하는 유형의 사람에 견줄 때 우리는 죄책감을 느낀다.","pk":"숙어","hm":"~하지 못하다"},{"sid":"s11","ans":"uncomfortable","head":"uncomfortable","p":"adj","g":["G21"],"pre":"It’s an ","post":" feeling, but one that’s helpful.","ko":"그것은 불편한 감정이지만, 도움이 되는 것이다.","pk":"형용사","hm":"불편한"},{"sid":"s12","ans":"apologize","head":"apologize","p":"v","g":["G19"],"pre":"When we ","post":" for something we’ve done, make amends to others, or change a behavior that we don’t feel good about, guilt is most often the motivator.","ko":"우리가 한 것에 대해 사과하거나, 다른 이에게 보상하거나, 좋다고 느끼지 않는 행동을 바꿀 때, 죄책감이 대체로 동기 요인이다.","pk":"동사","hm":"사과하다"},{"sid":"s12","ans":"make amends","head":"make amends","p":"phr","g":["G19"],"pre":"When we apologize for something we’ve done, ","post":" to others, or change a behavior that we don’t feel good about, guilt is most often the motivator.","ko":"우리가 한 것에 대해 사과하거나, 다른 이에게 보상하거나, 좋다고 느끼지 않는 행동을 바꿀 때, 죄책감이 대체로 동기 요인이다.","pk":"숙어","hm":"(잘못에 대해) 사죄하다, 보상하다"},{"sid":"s12","ans":"behavior","head":"behavior","p":"n","g":["G20"],"pre":"When we apologize for something we’ve done, make amends to others, or change a ","post":" that we don’t feel good about, guilt is most often the motivator.","ko":"우리가 한 것에 대해 사과하거나, 다른 이에게 보상하거나, 좋다고 느끼지 않는 행동을 바꿀 때, 죄책감이 대체로 동기 요인이다.","pk":"명사","hm":"행동, 태도"},{"sid":"s12","ans":"guilt","head":"guilt","p":"n","g":["G19"],"pre":"When we apologize for something we’ve done, make amends to others, or change a behavior that we don’t feel good about, ","post":" is most often the motivator.","ko":"우리가 한 것에 대해 사과하거나, 다른 이에게 보상하거나, 좋다고 느끼지 않는 행동을 바꿀 때, 죄책감이 대체로 동기 요인이다.","pk":"명사","hm":"죄책감"},{"sid":"s12","ans":"motivator","head":"motivator","p":"n","g":["G22"],"pre":"When we apologize for something we’ve done, make amends to others, or change a behavior that we don’t feel good about, guilt is most often the ","post":".","ko":"우리가 한 것에 대해 사과하거나, 다른 이에게 보상하거나, 좋다고 느끼지 않는 행동을 바꿀 때, 죄책감이 대체로 동기 요인이다.","pk":"명사","hm":"동기 부여 요소, 자극제"},{"sid":"s13","ans":"Guilt","head":"guilt","p":"n","g":["G19"],"pre":"","post":" is just as powerful as shame, but its effect is often positive while shame often is destructive.","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다.","pk":"명사","hm":"죄책감"},{"sid":"s13","ans":"powerful","head":"powerful","p":"adj","g":["G03"],"pre":"Guilt is just as ","post":" as shame, but its effect is often positive while shame often is destructive.","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다.","pk":"형용사","hm":"강력한"},{"sid":"s13","ans":"shame","head":"shame","p":"n","g":["G19"],"pre":"Guilt is just as powerful as ","post":", but its effect is often positive while shame often is destructive.","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다.","pk":"명사","hm":"수치심, 부끄러움"},{"sid":"s13","ans":"effect","head":"effect","p":"n","g":["G22"],"pre":"Guilt is just as powerful as shame, but its ","post":" is often positive while shame often is destructive.","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다.","pk":"명사","hm":"효과, 영향"},{"sid":"s13","ans":"positive","head":"positive","p":"adj","g":["G08"],"pre":"Guilt is just as powerful as shame, but its effect is often ","post":" while shame often is destructive.","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다.","pk":"형용사","hm":"긍정적인"},{"sid":"s13","ans":"shame","head":"shame","p":"n","g":["G19"],"pre":"Guilt is just as powerful as shame, but its effect is often positive while ","post":" often is destructive.","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다.","pk":"명사","hm":"수치심, 부끄러움"},{"sid":"s13","ans":"destructive","head":"destructive","p":"adj","g":["G08"],"pre":"Guilt is just as powerful as shame, but its effect is often positive while shame often is ","post":".","ko":"죄책감은 수치심만큼이나 강력하지만, 수치심은 종종 파괴적인 데 반해 그것(죄책감)의 효과는 종종 긍정적이다.","pk":"형용사","hm":"파괴적인"},{"sid":"s14","ans":"apologize","head":"apologize","p":"v","g":["G19"],"pre":"When we see people ","post":", make amends, or replace negative behaviors with more positive ones, guilt is often the motivator, not shame.","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다.","pk":"동사","hm":"사과하다"},{"sid":"s14","ans":"make amends","head":"make amends","p":"phr","g":["G19"],"pre":"When we see people apologize, ","post":", or replace negative behaviors with more positive ones, guilt is often the motivator, not shame.","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다.","pk":"숙어","hm":"(잘못에 대해) 사죄하다, 보상하다"},{"sid":"s14","ans":"behaviors","head":"behavior","p":"n","g":["G20"],"pre":"When we see people apologize, make amends, or replace negative ","post":" with more positive ones, guilt is often the motivator, not shame.","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다.","pk":"명사","hm":"행동, 태도"},{"sid":"s14","ans":"positive","head":"positive","p":"adj","g":["G08"],"pre":"When we see people apologize, make amends, or replace negative behaviors with more ","post":" ones, guilt is often the motivator, not shame.","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다.","pk":"형용사","hm":"긍정적인"},{"sid":"s14","ans":"guilt","head":"guilt","p":"n","g":["G19"],"pre":"When we see people apologize, make amends, or replace negative behaviors with more positive ones, ","post":" is often the motivator, not shame.","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다.","pk":"명사","hm":"죄책감"},{"sid":"s14","ans":"motivator","head":"motivator","p":"n","g":["G22"],"pre":"When we see people apologize, make amends, or replace negative behaviors with more positive ones, guilt is often the ","post":", not shame.","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다.","pk":"명사","hm":"동기 부여 요소, 자극제"},{"sid":"s14","ans":"shame","head":"shame","p":"n","g":["G19"],"pre":"When we see people apologize, make amends, or replace negative behaviors with more positive ones, guilt is often the motivator, not ","post":".","ko":"우리는 누군가가 사과하거나, 보상하거나, 부정적 행동을 더 긍정적인 행동으로 바꾸는 것을 볼 때, 죄책감은 종종 동기 요인이 되지만, 수치심은 아니다.","pk":"명사","hm":"수치심, 부끄러움"},{"sid":"s15","ans":"research","head":"research","p":"n","g":["G04"],"pre":"In fact, in my ","post":", I found that shame corrodes the part of us that believes we can change and do better.","ko":"실제로, 나의 연구에서, 수치심은 우리가 변하고 더 나아질 수 있다고 믿는 우리의 일부를 좀먹는다는 것을 발견했다.","pk":"명사","hm":"연구, 조사"},{"sid":"s15","ans":"shame","head":"shame","p":"n","g":["G19"],"pre":"In fact, in my research, I found that ","post":" corrodes the part of us that believes we can change and do better.","ko":"실제로, 나의 연구에서, 수치심은 우리가 변하고 더 나아질 수 있다고 믿는 우리의 일부를 좀먹는다는 것을 발견했다.","pk":"명사","hm":"수치심, 부끄러움"},{"sid":"s15","ans":"corrodes","head":"corrode","p":"v","g":["G03"],"pre":"In fact, in my research, I found that shame ","post":" the part of us that believes we can change and do better.","ko":"실제로, 나의 연구에서, 수치심은 우리가 변하고 더 나아질 수 있다고 믿는 우리의 일부를 좀먹는다는 것을 발견했다.","pk":"동사","hm":"부식시키다, (마음을) 좀먹다"},{"sid":"s15","ans":"believes","head":"believe","p":"v","g":["G25"],"pre":"In fact, in my research, I found that shame corrodes the part of us that ","post":" we can change and do better.","ko":"실제로, 나의 연구에서, 수치심은 우리가 변하고 더 나아질 수 있다고 믿는 우리의 일부를 좀먹는다는 것을 발견했다.","pk":"동사","hm":"믿다, 생각하다"},{"sid":"s16","ans":"occurring","head":"occur","p":"v","g":["G10"],"pre":"Let’s look at what is ","post":" in your brain when scrolling on social media, a quick dopamine activity.","ko":"소셜 미디어상에서 스크롤 할 때 당신의 뇌에서 일어나고 있는 일, 즉 빠른 도파민 활동을 살펴보자.","pk":"동사","hm":"발생하다, 일어나다"},{"sid":"s16","ans":"scrolling","head":"scroll","p":"v","g":["G31"],"pre":"Let’s look at what is occurring in your brain when ","post":" on social media, a quick dopamine activity.","ko":"소셜 미디어상에서 스크롤 할 때 당신의 뇌에서 일어나고 있는 일, 즉 빠른 도파민 활동을 살펴보자.","pk":"동사","hm":"(화면을) 스크롤하다, 넘겨보다"},{"sid":"s16","ans":"social media","head":"social media","p":"n","g":["G32"],"pre":"Let’s look at what is occurring in your brain when scrolling on ","post":", a quick dopamine activity.","ko":"소셜 미디어상에서 스크롤 할 때 당신의 뇌에서 일어나고 있는 일, 즉 빠른 도파민 활동을 살펴보자.","pk":"명사","hm":"소셜 미디어"},{"sid":"s17","ans":"social media","head":"social media","p":"n","g":["G32"],"pre":"You open your ","post":" apps and immediately you notice you feel really good, your dopamine levels increase incredibly fast and pleasure is experienced in your brain.","ko":"당신은 소셜 미디어 앱을 열고 당신이 정말 기분이 좋다는 것을 즉시 알아차리게 되며, 당신의 도파민 수치는 믿을 수 없이 빠르게 증가하여 쾌락이 뇌에서 경험된다.","pk":"명사","hm":"소셜 미디어"},{"sid":"s17","ans":"immediately","head":"immediately","p":"adv","g":["G11"],"pre":"You open your social media apps and ","post":" you notice you feel really good, your dopamine levels increase incredibly fast and pleasure is experienced in your brain.","ko":"당신은 소셜 미디어 앱을 열고 당신이 정말 기분이 좋다는 것을 즉시 알아차리게 되며, 당신의 도파민 수치는 믿을 수 없이 빠르게 증가하여 쾌락이 뇌에서 경험된다.","pk":"부사","hm":"즉시, 곧바로"},{"sid":"s17","ans":"increase","head":"increase","p":"v","g":["G03"],"pre":"You open your social media apps and immediately you notice you feel really good, your dopamine levels ","post":" incredibly fast and pleasure is experienced in your brain.","ko":"당신은 소셜 미디어 앱을 열고 당신이 정말 기분이 좋다는 것을 즉시 알아차리게 되며, 당신의 도파민 수치는 믿을 수 없이 빠르게 증가하여 쾌락이 뇌에서 경험된다.","pk":"동사","hm":"증가하다, 늘어나다"},{"sid":"s17","ans":"incredibly","head":"incredibly","p":"adv","g":["G11"],"pre":"You open your social media apps and immediately you notice you feel really good, your dopamine levels increase ","post":" fast and pleasure is experienced in your brain.","ko":"당신은 소셜 미디어 앱을 열고 당신이 정말 기분이 좋다는 것을 즉시 알아차리게 되며, 당신의 도파민 수치는 믿을 수 없이 빠르게 증가하여 쾌락이 뇌에서 경험된다.","pk":"부사","hm":"엄청나게, 믿을 수 없을 정도로"},{"sid":"s17","ans":"pleasure","head":"pleasure","p":"n","g":["G12"],"pre":"You open your social media apps and immediately you notice you feel really good, your dopamine levels increase incredibly fast and ","post":" is experienced in your brain.","ko":"당신은 소셜 미디어 앱을 열고 당신이 정말 기분이 좋다는 것을 즉시 알아차리게 되며, 당신의 도파민 수치는 믿을 수 없이 빠르게 증가하여 쾌락이 뇌에서 경험된다.","pk":"명사","hm":"쾌락, 즐거움"},{"sid":"s17","ans":"experienced","head":"experience","p":"v","g":["G10"],"pre":"You open your social media apps and immediately you notice you feel really good, your dopamine levels increase incredibly fast and pleasure is ","post":" in your brain.","ko":"당신은 소셜 미디어 앱을 열고 당신이 정말 기분이 좋다는 것을 즉시 알아차리게 되며, 당신의 도파민 수치는 믿을 수 없이 빠르게 증가하여 쾌락이 뇌에서 경험된다.","pk":"동사","hm":"경험하다, 느끼다"},{"sid":"s18","ans":"challenge","head":"challenge","p":"n","g":["G13"],"pre":"The ","post":" this creates is as with everything in our universe: as the laws of physics explain, ‘what goes up, must come down’.","ko":"이것(도파민 급증)이 만들어 내는 난제는 우리 우주의 모든 것들과 마찬가지이다. 즉, 물리학 법칙이 설명하듯이, ‘올라가는 것은, 반드시 내려와야 한다.’","pk":"명사","hm":"문제, 난제"},{"sid":"s18","ans":"universe","head":"universe","p":"n","g":["G14"],"pre":"The challenge this creates is as with everything in our ","post":": as the laws of physics explain, ‘what goes up, must come down’.","ko":"이것(도파민 급증)이 만들어 내는 난제는 우리 우주의 모든 것들과 마찬가지이다. 즉, 물리학 법칙이 설명하듯이, ‘올라가는 것은, 반드시 내려와야 한다.’","pk":"명사","hm":"우주, 세상"},{"sid":"s18","ans":"physics","head":"physics","p":"n","g":["G14"],"pre":"The challenge this creates is as with everything in our universe: as the laws of ","post":" explain, ‘what goes up, must come down’.","ko":"이것(도파민 급증)이 만들어 내는 난제는 우리 우주의 모든 것들과 마찬가지이다. 즉, 물리학 법칙이 설명하듯이, ‘올라가는 것은, 반드시 내려와야 한다.’","pk":"명사","hm":"물리학"},{"sid":"s19","ans":"seeking","head":"seek","p":"v","g":["G15"],"pre":"Your brain and body are always ","post":" something called ‘homeostasis’, which simply means balance.","ko":"당신의 뇌와 몸은 ‘항상성’이라고 불리는 어떤 것을 항상 추구하고 있는데, 그것은 단순히 균형을 의미한다.","pk":"동사","hm":"찾다, 추구하다"},{"sid":"s19","ans":"homeostasis","head":"homeostasis","p":"n","g":["G16"],"pre":"Your brain and body are always seeking something called ‘","post":"’, which simply means balance.","ko":"당신의 뇌와 몸은 ‘항상성’이라고 불리는 어떤 것을 항상 추구하고 있는데, 그것은 단순히 균형을 의미한다.","pk":"명사","hm":"항상성 (체내 균형 상태)"},{"sid":"s20","ans":"increase","head":"increase","p":"v","g":["G03"],"pre":"With this in mind, when dopamine levels ","post":" incredibly fast when scrolling social media, the brain then thinks, ‘Wow, how are my dopamine levels so high?’","ko":"이것을 염두에 두고, 소셜 미디어를 스크롤 할 때 도파민 수치가 믿을 수 없이 빠르게 증가하면, 뇌는 그때 ‘와, 내 도파민 수치가 어떻게 이렇게 높지?’라고 생각한다.","pk":"동사","hm":"증가하다, 늘어나다"},{"sid":"s20","ans":"incredibly","head":"incredibly","p":"adv","g":["G11"],"pre":"With this in mind, when dopamine levels increase ","post":" fast when scrolling social media, the brain then thinks, ‘Wow, how are my dopamine levels so high?’","ko":"이것을 염두에 두고, 소셜 미디어를 스크롤 할 때 도파민 수치가 믿을 수 없이 빠르게 증가하면, 뇌는 그때 ‘와, 내 도파민 수치가 어떻게 이렇게 높지?’라고 생각한다.","pk":"부사","hm":"엄청나게, 믿을 수 없을 정도로"},{"sid":"s20","ans":"scrolling","head":"scroll","p":"v","g":["G31"],"pre":"With this in mind, when dopamine levels increase incredibly fast when ","post":" social media, the brain then thinks, ‘Wow, how are my dopamine levels so high?’","ko":"이것을 염두에 두고, 소셜 미디어를 스크롤 할 때 도파민 수치가 믿을 수 없이 빠르게 증가하면, 뇌는 그때 ‘와, 내 도파민 수치가 어떻게 이렇게 높지?’라고 생각한다.","pk":"동사","hm":"(화면을) 스크롤하다, 넘겨보다"},{"sid":"s20","ans":"social media","head":"social media","p":"n","g":["G32"],"pre":"With this in mind, when dopamine levels increase incredibly fast when scrolling ","post":", the brain then thinks, ‘Wow, how are my dopamine levels so high?’","ko":"이것을 염두에 두고, 소셜 미디어를 스크롤 할 때 도파민 수치가 믿을 수 없이 빠르게 증가하면, 뇌는 그때 ‘와, 내 도파민 수치가 어떻게 이렇게 높지?’라고 생각한다.","pk":"명사","hm":"소셜 미디어"},{"sid":"s21","ans":"In order to","head":"in order to","p":"phr","g":["G18"],"pre":"","post":" achieve homeostasis, or balance, the dopamine then has to quickly drop an equal amount below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"숙어","hm":"~하기 위해서"},{"sid":"s21","ans":"achieve","head":"achieve","p":"v","g":["G17"],"pre":"In order to ","post":" homeostasis, or balance, the dopamine then has to quickly drop an equal amount below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"동사","hm":"달성하다, 이루다"},{"sid":"s21","ans":"homeostasis","head":"homeostasis","p":"n","g":["G16"],"pre":"In order to achieve ","post":", or balance, the dopamine then has to quickly drop an equal amount below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"명사","hm":"항상성 (체내 균형 상태)"},{"sid":"s21","ans":"drop","head":"drop","p":"v","g":["G03"],"pre":"In order to achieve homeostasis, or balance, the dopamine then has to quickly ","post":" an equal amount below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"동사","hm":"떨어지다, 급락하다"},{"sid":"s21","ans":"equal","head":"equal","p":"adj","g":["G16"],"pre":"In order to achieve homeostasis, or balance, the dopamine then has to quickly drop an ","post":" amount below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"형용사","hm":"동일한, 같은"},{"sid":"s21","ans":"amount","head":"amount","p":"n","g":["G02"],"pre":"In order to achieve homeostasis, or balance, the dopamine then has to quickly drop an equal ","post":" below your baseline level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"명사","hm":"양"},{"sid":"s21","ans":"baseline","head":"baseline","p":"n","g":["G16"],"pre":"In order to achieve homeostasis, or balance, the dopamine then has to quickly drop an equal amount below your ","post":" level in order to rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"명사","hm":"기준선, 기저 수준"},{"sid":"s21","ans":"in order to","head":"in order to","p":"phr","g":["G18"],"pre":"In order to achieve homeostasis, or balance, the dopamine then has to quickly drop an equal amount below your baseline level ","post":" rebalance, making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"숙어","hm":"~하기 위해서"},{"sid":"s21","ans":"rebalance","head":"rebalance","p":"v","g":["G16"],"pre":"In order to achieve homeostasis, or balance, the dopamine then has to quickly drop an equal amount below your baseline level in order to ","post":", making you feel even worse than before you started scrolling.","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"동사","hm":"다시 균형을 잡다"},{"sid":"s21","ans":"scrolling","head":"scroll","p":"v","g":["G31"],"pre":"In order to achieve homeostasis, or balance, the dopamine then has to quickly drop an equal amount below your baseline level in order to rebalance, making you feel even worse than before you started ","post":".","ko":"항상성, 즉 균형을 이루기 위해서, 그때 도파민은 다시 균형을 맞추기 위해 당신의 기준선 수치 아래로 동일한 양만큼 빠르게 떨어져야 하고, 스크롤을 시작하기 전보다 당신을 훨씬 더 기분이 나쁘게 만든다.","pk":"동사","hm":"(화면을) 스크롤하다, 넘겨보다"},{"sid":"s22","ans":"spot","head":"spot","p":"n","g":["G00"],"pre":"Do you always study in the same ","post":"? Don’t.","ko":"항상 같은 장소에서 공부하는가? 그러지 마라.","pk":"명사","hm":"장소, 지점"},{"sid":"s23","ans":"variety","head":"variety","p":"n","g":["G01"],"pre":"If you study in different places, that helps create ","post":", and that rich experience can reinforce what you are learning.","ko":"여러 장소에서 공부하면, 그것은 다양성을 만들도록 돕고, 그러한 풍부한 경험은 당신이 학습하고 있는 것을 강화할 수 있다.","pk":"명사","hm":"다양성"},{"sid":"s23","ans":"rich","head":"rich","p":"adj","g":["G02"],"pre":"If you study in different places, that helps create variety, and that ","post":" experience can reinforce what you are learning.","ko":"여러 장소에서 공부하면, 그것은 다양성을 만들도록 돕고, 그러한 풍부한 경험은 당신이 학습하고 있는 것을 강화할 수 있다.","pk":"형용사","hm":"풍부한"},{"sid":"s23","ans":"experience","head":"experience","p":"v","g":["G10"],"pre":"If you study in different places, that helps create variety, and that rich ","post":" can reinforce what you are learning.","ko":"여러 장소에서 공부하면, 그것은 다양성을 만들도록 돕고, 그러한 풍부한 경험은 당신이 학습하고 있는 것을 강화할 수 있다.","pk":"동사","hm":"경험하다, 느끼다"},{"sid":"s23","ans":"reinforce","head":"reinforce","p":"v","g":["G03"],"pre":"If you study in different places, that helps create variety, and that rich experience can ","post":" what you are learning.","ko":"여러 장소에서 공부하면, 그것은 다양성을 만들도록 돕고, 그러한 풍부한 경험은 당신이 학습하고 있는 것을 강화할 수 있다.","pk":"동사","hm":"강화하다"},{"sid":"s24","ans":"rather than","head":"rather than","p":"phr","g":["G30"],"pre":"When several college students told us they did school work in different places ","post":" in some favorite nook, that habit reflected the research on learning.","ko":"몇몇 대학생들이 좋아하는 어떤 구석진 곳에서보다는 여러 장소에서 학교 과제를 한다고 우리에게 말했을 때, 그 습관은 학습에 관한 연구를 반영했다.","pk":"숙어","hm":"~라기보다는"},{"sid":"s24","ans":"nook","head":"nook","p":"n","g":["G00"],"pre":"When several college students told us they did school work in different places rather than in some favorite ","post":", that habit reflected the research on learning.","ko":"몇몇 대학생들이 좋아하는 어떤 구석진 곳에서보다는 여러 장소에서 학교 과제를 한다고 우리에게 말했을 때, 그 습관은 학습에 관한 연구를 반영했다.","pk":"명사","hm":"아늑한 구석"},{"sid":"s24","ans":"reflected","head":"reflect","p":"v","g":["G33"],"pre":"When several college students told us they did school work in different places rather than in some favorite nook, that habit ","post":" the research on learning.","ko":"몇몇 대학생들이 좋아하는 어떤 구석진 곳에서보다는 여러 장소에서 학교 과제를 한다고 우리에게 말했을 때, 그 습관은 학습에 관한 연구를 반영했다.","pk":"동사","hm":"반영하다"},{"sid":"s24","ans":"research","head":"research","p":"n","g":["G04"],"pre":"When several college students told us they did school work in different places rather than in some favorite nook, that habit reflected the ","post":" on learning.","ko":"몇몇 대학생들이 좋아하는 어떤 구석진 곳에서보다는 여러 장소에서 학교 과제를 한다고 우리에게 말했을 때, 그 습관은 학습에 관한 연구를 반영했다.","pk":"명사","hm":"연구, 조사"},{"sid":"s25","ans":"Numerous","head":"numerous","p":"adj","g":["G02"],"pre":"","post":" experiments have found that if learners simply study in at least two different places, they are more likely to recall the material.","ko":"수많은 실험은 학습자가 최소 두 곳 이상의 다른 장소에서 단지 공부하기만 해도, 학습 자료를 기억할 가능성이 더 높다는 것을 발견했다.","pk":"형용사","hm":"수많은"},{"sid":"s25","ans":"experiments","head":"experiment","p":"n","g":["G04"],"pre":"Numerous ","post":" have found that if learners simply study in at least two different places, they are more likely to recall the material.","ko":"수많은 실험은 학습자가 최소 두 곳 이상의 다른 장소에서 단지 공부하기만 해도, 학습 자료를 기억할 가능성이 더 높다는 것을 발견했다.","pk":"명사","hm":"실험"},{"sid":"s25","ans":"at least","head":"at least","p":"phr","g":["G02"],"pre":"Numerous experiments have found that if learners simply study in ","post":" two different places, they are more likely to recall the material.","ko":"수많은 실험은 학습자가 최소 두 곳 이상의 다른 장소에서 단지 공부하기만 해도, 학습 자료를 기억할 가능성이 더 높다는 것을 발견했다.","pk":"숙어","hm":"적어도"},{"sid":"s25","ans":"likely to","head":"be likely to","p":"phr","g":["G26"],"pre":"Numerous experiments have found that if learners simply study in at least two different places, they are more ","post":" recall the material.","ko":"수많은 실험은 학습자가 최소 두 곳 이상의 다른 장소에서 단지 공부하기만 해도, 학습 자료를 기억할 가능성이 더 높다는 것을 발견했다.","pk":"숙어","hm":"~할 가능성이 있다"},{"sid":"s25","ans":"recall","head":"recall","p":"v","g":["G06"],"pre":"Numerous experiments have found that if learners simply study in at least two different places, they are more likely to ","post":" the material.","ko":"수많은 실험은 학습자가 최소 두 곳 이상의 다른 장소에서 단지 공부하기만 해도, 학습 자료를 기억할 가능성이 더 높다는 것을 발견했다.","pk":"동사","hm":"기억해 내다, 상기하다"},{"sid":"s26","ans":"trials","head":"trial","p":"n","g":["G04"],"pre":"In one of the first such ","post":", two different groups studied a list of words.","ko":"그러한 초기 실험들 중 하나에서 두 개의 다른 집단이 하나의 단어 목록을 공부하였다.","pk":"명사","hm":"시험, 시도"},{"sid":"s27","ans":"counterparts","head":"counterpart","p":"n","g":["G34"],"pre":"Some students returned to the same room twice while their ","post":" spent the same amount of time divided between two locations.","ko":"일부 학생들은 같은 방으로 두 번 돌아왔지만, 상대 집단은 두 장소에서 동일하게 나뉜 시간을 보냈다.","pk":"명사","hm":"상대방, 대응 관계에 있는 사람"},{"sid":"s27","ans":"amount","head":"amount","p":"n","g":["G02"],"pre":"Some students returned to the same room twice while their counterparts spent the same ","post":" of time divided between two locations.","ko":"일부 학생들은 같은 방으로 두 번 돌아왔지만, 상대 집단은 두 장소에서 동일하게 나뉜 시간을 보냈다.","pk":"명사","hm":"양"},{"sid":"s27","ans":"divided","head":"divide","p":"v","g":["G05"],"pre":"Some students returned to the same room twice while their counterparts spent the same amount of time ","post":" between two locations.","ko":"일부 학생들은 같은 방으로 두 번 돌아왔지만, 상대 집단은 두 장소에서 동일하게 나뉜 시간을 보냈다.","pk":"동사","hm":"나누다"},{"sid":"s28","ans":"recall","head":"recall","p":"v","g":["G06"],"pre":"When asked to ","post":" as many words on the list as possible, those who had moved around did far better.","ko":"목록에 있는 가능한 한 많은 단어를 기억해 보라고 요청받았을 때, 장소를 옮겨 다닌 학생들이 훨씬 더 잘했다.","pk":"동사","hm":"기억해 내다, 상기하다"},{"sid":"s29","ans":"Variety","head":"variety","p":"n","g":["G01"],"pre":"","post":" creates rich association, even when those connections form in the background, totally outside of what we are consciously thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).","pk":"명사","hm":"다양성"},{"sid":"s29","ans":"rich","head":"rich","p":"adj","g":["G02"],"pre":"Variety creates ","post":" association, even when those connections form in the background, totally outside of what we are consciously thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).","pk":"형용사","hm":"풍부한"},{"sid":"s29","ans":"association","head":"association","p":"n","g":["G07"],"pre":"Variety creates rich ","post":", even when those connections form in the background, totally outside of what we are consciously thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).","pk":"명사","hm":"연상, 연관"},{"sid":"s29","ans":"connections","head":"connection","p":"n","g":["G07"],"pre":"Variety creates rich association, even when those ","post":" form in the background, totally outside of what we are consciously thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).","pk":"명사","hm":"연결, 관계"},{"sid":"s29","ans":"form","head":"form","p":"v","g":["G08"],"pre":"Variety creates rich association, even when those connections ","post":" in the background, totally outside of what we are consciously thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).","pk":"동사","hm":"형성되다, 만들다"},{"sid":"s29","ans":"background","head":"background","p":"n","g":["G00"],"pre":"Variety creates rich association, even when those connections form in the ","post":", totally outside of what we are consciously thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).","pk":"명사","hm":"배경"},{"sid":"s29","ans":"consciously","head":"consciously","p":"adv","g":["G09"],"pre":"Variety creates rich association, even when those connections form in the background, totally outside of what we are ","post":" thinking.","ko":"다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).","pk":"부사","hm":"의식적으로"},{"sid":"s34","ans":"experienced","head":"experience","p":"v","g":["G10"],"pre":"As the temperature rose and the ice caps melted, we ","post":" a sudden explosion of life.","ko":"온도가 상승하고 만년설이 녹으면서, 우리는 갑작스러운 생명의 폭발을 경험했다.","pk":"동사","hm":"경험하다, 느끼다"}]};
+
+/* ══════════ 상태 ══════════ */
+const NUM = ['①','②','③','④','⑤'];
+const TYPE_NAME = {1:'단어 뜻', 2:'유의어', 3:'반의어', 4:'본문 빈칸'};
+const TYPE_ASK = {
+  1:'다음 단어의 뜻으로 알맞은 것은?',
+  2:'다음 단어와 뜻이 가장 가까운 것은?',
+  3:'다음 단어와 뜻이 반대인 것은?',
+  4:'본문의 빈칸에 들어갈 단어를 보기에서 골라 쓰시오. 본문에 쓰인 그대로여야 정답입니다.'
+};
+const SKEY = 'witheun.mock2606.stats.v1';
+const HKEY = 'witheun.mock2606.hard.v1';
+function isHard(){ return !!$('opt-hard')?.checked; }
+function syncHard(from){
+  const v = from.checked;
+  ['opt-hard','opt-dhard'].forEach(id => { const e = $(id); if(e && e !== from){ e.checked = v; toggleChip(e); } });
+  toggleChip(from);
+  try{ localStorage.setItem(HKEY, v ? '1' : '0'); }catch(e){}
+  updateDiffNote();
+}
+const MAXN = [0, D.words.length, D.syn.length, D.ant.length, new Set(D.blanks.map(b => b.sid)).size];
+let QS = [], submitted = false, stats = loadStats(), CLOZE = null;
+const TM = {id:null, start:0, ms:0};
+
+/* ══════════ 유틸 ══════════ */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const GA = g => Array.isArray(g) ? g : [g];
+const clash = (a, b) => GA(a).some(x => GA(b).includes(x));
+const first1 = w => w.trim().charAt(0).toLowerCase();
+function maskOf(w){ return w.slice(1).replace(/[^ ]/g, '_'); }
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1900);}
+
+function loadStats(){ try{ return JSON.parse(localStorage.getItem(SKEY)) || {}; }catch(e){ return {}; } }
+function saveStats(){ try{ localStorage.setItem(SKEY, JSON.stringify(stats)); }catch(e){} }
+function rec(type, word, ok){
+  const k = type + '|' + word;
+  const s = stats[k] || (stats[k] = {r:0, w:0});
+  ok ? s.r++ : s.w++;
+}
+function weightOf(type, word){
+  const s = stats[type + '|' + word];
+  if(!s) return 1;
+  return Math.max(0.35, 1 + s.w * 2.5 - s.r * 0.7);
+}
+/* 가중치 기반 비복원 추출 */
+function pickW(list, n, keyFn, typeNo){
+  const useW = $('opt-weak').checked;
+  const pool = list.map(it => ({it, w: useW ? weightOf(typeNo, keyFn(it)) : 1}));
+  const out = [];
+  n = Math.min(n, pool.length);
+  for(let k=0; k<n; k++){
+    let tot = 0; for(const p of pool) tot += p.w;
+    let r = Math.random() * tot, i = 0;
+    for(; i<pool.length; i++){ r -= pool[i].w; if(r <= 0) break; }
+    out.push(pool.splice(Math.min(i, pool.length-1), 1)[0].it);
+  }
+  return out;
+}
+function makeChoices(correct, wrongPool, n){
+  const picks = shuffle([...new Set(wrongPool)].filter(x => x !== correct)).slice(0, n-1);
+  const all = shuffle([correct, ...picks]);
+  return {choices: all, ans: all.indexOf(correct)};
+}
+
+/* ══════════ 문항 생성 ══════════ */
+function buildMeaning(n){
+  return pickW(D.words, n, x => x.w, 1).map(buildMeaningOne);
+}
+/* 오답 선지 = 철자·의미가 헷갈리는 단어의 뜻 (뜻이 겹치는 후보는 빌드 단계에서 제외됨) */
+function buildMeaningOne(it){
+  const sim = it.s || [];
+  const need = isHard() ? 2 : 4;
+  let picks = shuffle(sim.slice(0,5)).slice(0,Math.min(2,need))
+    .concat(shuffle(sim.slice(5)).slice(0,need-Math.min(2,need)));
+  picks = [...new Set(picks)];
+  for(const j of shuffle(sim)){ if(picks.length >= need) break; if(!picks.includes(j)) picks.push(j); }
+  let pool = picks.map(j => D.words[j].m);
+  if(isHard()){
+    const xs = it.x || [];
+    const same = xs.filter(j => D.ext[j].p === it.p);
+    const ext = [...new Set(shuffle(same).slice(0,2).concat(shuffle(xs)))].slice(0,2);
+    pool = pool.concat(ext.map(j => D.ext[j].m));
+  }
+  const c = makeChoices(it.m, pool, 5);
+  return {type:1, word:it.w, choices:c.choices, ans:c.ans, pick:null, key:it.w};
+}
+function pairPool(src, it){
+  let pool = shuffle(src.filter(x => !clash(x.g, it.g)).map(x => x.a));
+  if(isHard()) pool = pool.slice(0,2).concat(shuffle(D.ext.filter(e => !clash(e.g, it.g)).map(e => e.w)).slice(0,2));
+  return pool;
+}
+function buildPair(src, typeNo, n){
+  return pickW(src, n, x => x.w, typeNo).map(it => {
+    const pool = pairPool(src, it);
+    const c = makeChoices(it.a, pool, 5);
+    return {type:typeNo, word:it.w, hint:it.wm, ansM:it.am, choices:c.choices, ans:c.ans, pick:null, key:it.w};
+  });
+}
+/* WORD BOX 오답: 정답과 첫 글자가 다르고 의미 묶음도 겹치지 않는 단어만.
+   빈칸에 첫 글자를 보여주므로, 박스 안에서 답이 하나로 확정된다. */
+function blankQ(i, hint){
+  const b = D.blanks[i], f = first1(b.ans);
+  /* 힌트를 주는 드릴에서는 첫 글자가 다른 단어만 보기로 (힌트가 힌트 구실을 하게).
+     힌트 없는 실전에서는 품사가 다른 단어를 우선해 엉뚱한 자리에 안 들어가게 한다. */
+  const pool = [...new Set(D.blanks
+    .filter(x => x.ans.toLowerCase() !== b.ans.toLowerCase() && !clash(x.g, b.g)
+                 && (hint ? first1(x.ans) !== f : x.p !== b.p))
+    .map(x => x.ans))];
+  const q = {type:4, bi:i, sid:b.sid, pre:b.pre, post:b.post, ko:b.ko, answer:b.ans,
+             head:b.head, pk:b.pk, hm:b.hm,
+             box: shuffle([b.ans, ...shuffle(pool).slice(0,3)]), text:'', key:b.ans};
+  if(hint){ q.lead = b.ans.charAt(0); q.mask = maskOf(b.ans); }
+  return q;
+}
+function buildBlank(n){
+  const seenS = new Set(), seenA = new Set(), out = [];
+  const order = pickW(D.blanks.map((b, i) => ({b, i})), D.blanks.length, o => o.b.ans, 4);
+  for(const o of order){
+    if(out.length >= n) break;
+    if(seenS.has(o.b.sid) || seenA.has(o.b.ans.toLowerCase())) continue;
+    seenS.add(o.b.sid); seenA.add(o.b.ans.toLowerCase());
+    out.push(blankQ(o.i, false));
+  }
+  return out;
+}
+
+/* 실전·인쇄용 본문 통문제: 본문 전체에 빈칸 N개 + 보기 상자 하나 */
+function buildCloze(n){
+  const perSent = {}, seenA = new Set(), chosen = [];
+  for(const o of pickW(D.blanks.map((b,i) => ({b,i})), D.blanks.length, o => o.b.ans, 4)){
+    if(chosen.length >= n) break;
+    if((perSent[o.b.sid] || 0) >= 2) continue;          /* 한 문장에 최대 2개 */
+    if(seenA.has(o.b.ans.toLowerCase())) continue;
+    perSent[o.b.sid] = (perSent[o.b.sid] || 0) + 1;
+    seenA.add(o.b.ans.toLowerCase());
+    chosen.push(o);
+  }
+  const ord = {}; let k = 0;
+  D.passage.paras.forEach(p => p.forEach(x => ord[x.id] = k++));
+  chosen.sort((a,b) => (ord[a.b.sid] - ord[b.b.sid]) || (a.b.pre.length - b.b.pre.length));
+
+  const answers = chosen.map(o => o.b.ans);
+  const low = new Set(answers.map(a => a.toLowerCase()));
+  const pool = [...new Set(D.blanks.map(b => b.ans))].filter(a => !low.has(a.toLowerCase()));
+  const extra = shuffle(pool).slice(0, Math.max(4, Math.round(chosen.length * 0.3)));
+  CLOZE = {box: [...answers, ...extra].sort((a,b) => a.toLowerCase().localeCompare(b.toLowerCase()))};
+
+  return chosen.map(o => ({
+    type:4, cloze:true, bi:o.i, sid:o.b.sid, off:o.b.pre.length,
+    answer:o.b.ans, head:o.b.head, pk:o.b.pk, hm:o.b.hm, text:'', key:o.b.ans
+  }));
+}
+/* 통문제를 본문 한 덩어리로 렌더 */
+function clozeHTML(start){
+  const byS = {};
+  QS.forEach((q,i) => { if(q.cloze) (byS[q.sid] = byS[q.sid] || []).push({q, i}); });
+  const paras = D.passage.paras.map((p, pi) => '<div class="cz-blk">' + pnoHTML(pi) + '<p class="cz-p">' + p.map(sn => {
+    const bs = (byS[sn.id] || []).slice().sort((a,b) => a.q.off - b.q.off);
+    if(!bs.length) return esc(sn.en);
+    let out = '', cur = 0;
+    for(const b of bs){
+      out += esc(sn.en.slice(cur, b.q.off));
+      out += `<span class="cz" id="q${b.i}"><i>${b.i+1}</i>`
+           + `<input class="cz-in" id="in${b.i}" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">`
+           + `<em class="cz-ans" id="ca${b.i}"></em>`
+           + `<span class="ans-key">${esc(b.q.answer)}</span></span>`;
+      cur = b.q.off + b.q.answer.length;
+    }
+    return out + esc(sn.en.slice(cur));
+  }).join(' ') + '</p><p class="cz-ko">' + esc(p.map(sn => sn.ko).join(' ')) + '</p></div>').join('');
+  return `<div class="q cz-card" id="clozecard">
+    <div class="q-top"><div class="q-n">${start+1}~${QS.length}</div>
+      <span class="tag t4">본문 빈칸</span>
+      <span class="q-ask">보기에서 골라 빈칸에 알맞은 단어를 <b>본문에 쓰인 그대로</b> 쓰시오.</span></div>
+    <div class="wbox"><div class="wbox-l">WORD BOX · ${CLOZE.box.length}개</div>
+      <div class="wbox-w">${CLOZE.box.map(w => `<span>${esc(w)}</span>`).join('')}</div></div>
+    <div class="cz-body">${paras}</div></div>`;
+}
+
+function bump(t, d){
+  const el = $('n'+t), max = MAXN[t];
+  el.value = Math.max(0, Math.min(max, (parseInt(el.value,10)||0) + d));
+  syncCnt();
+}
+function syncCnt(){
+  const max = MAXN;
+  let tot = 0;
+  for(let t=1; t<=4; t++){
+    const el = $('n'+t);
+    let v = parseInt(el.value, 10); if(isNaN(v) || v < 0) v = 0;
+    v = Math.min(v, max[t]); el.value = v; tot += v;
+  }
+  $('setup-sum').textContent = tot > 0 ? '총 ' + tot + '문항' : '문항 수를 정해주세요';
+  return tot;
+}
+function toggleChip(inp){ inp.closest('.chip').classList.toggle('on', inp.checked); }
+function updateDiffNote(){
+  const n = $('diff-note'); if(!n) return;
+  n.textContent = isHard()
+    ? '🔥 어려운 선지 — 오답에 시험 범위 밖 단어를 섞습니다. 정답은 항상 은서쌤 자료 안에서만 나옵니다.'
+    : '오답 선지도 시험 범위 안에서만 나옵니다. 실전처럼 풀려면 아래 [직접 설정]에서 🔥 어려운 선지를 켜세요.';
+}
+function toggleMore(){
+  const m = $('more'), open = m.style.display === 'none';
+  m.style.display = open ? 'block' : 'none';
+  $('more-t').classList.toggle('open', open);
+}
+function scrollTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+/* 빠른 시작 — 'full' | 'fast' | 'weak' | 1~4 */
+function quickStart(mode){
+  const set = (a,b,c,d) => { $('n1').value=a; $('n2').value=b; $('n3').value=c; $('n4').value=d; syncCnt(); };
+  if(mode === 'full'){ set(20,20,20,20); generate(); return; }
+  if(mode === 'fast'){ set(3,3,3,3); generate(); return; }
+  if(mode === 'weak'){ startWeak(); return; }
+  const v = [0,0,0,0]; v[mode-1] = 20; set(...v); generate();
+}
+function startWeak(){
+  const rows = Object.entries(stats)
+    .map(([k,v]) => ({t:+k.slice(0,1), word:k.slice(2), r:v.r, w:v.w}))
+    .filter(r => r.w > 0)
+    .sort((a,b) => (b.w - b.r) - (a.w - a.r)).slice(0, 20);
+  if(rows.length < 5){
+    $('opt-weak').checked = true; toggleChip($('opt-weak'));
+    $('n1').value=5; $('n2').value=5; $('n3').value=5; $('n4').value=5; syncCnt();
+    generate();
+    toast(rows.length ? '기록이 적어 일반 20문항으로 출제했어요' : '아직 오답 기록이 없어 일반 20문항으로 출제했어요');
+    return;
+  }
+  const pool = [];
+  for(const r of rows){
+    const q = rebuild(r.t, r.word);
+    if(q) pool.push(q);
+  }
+  if(!pool.length){ toast('다시 낼 문항을 찾지 못했습니다'); return; }
+  generate(shuffle(pool));
+  toast('약점 ' + pool.length + '문항으로 출제했어요');
+}
+/* 유형 + 원본 배열 인덱스로 문항 1개 생성 */
+function srcOf(t){ return t === 1 ? D.words : t === 2 ? D.syn : t === 3 ? D.ant : D.blanks; }
+function makeQ(t, i, hint){
+  if(t === 1) return buildMeaningOne(D.words[i]);
+  if(t === 2 || t === 3){
+    const src = srcOf(t), x = src[i];
+    const c = makeChoices(x.a, pairPool(src, x), 5);
+    return {type:t, word:x.w, hint:x.wm, ansM:x.am, choices:c.choices, ans:c.ans, pick:null, key:x.w};
+  }
+  return blankQ(i, !!hint);
+}
+/* 유형+단어로 문항 1개 복원 */
+function rebuild(type, word, hint){
+  const src = srcOf(type);
+  const i = type === 4 ? src.findIndex(v => v.ans.toLowerCase() === String(word).toLowerCase())
+                       : src.findIndex(v => v.w === word);
+  return i < 0 ? null : makeQ(type, i, hint);
+}
+
+function generate(pool){
+  if(!pool){
+    if(syncCnt() === 0){ toast('문항 수를 1개 이상으로 정해주세요'); return; }
+    let all = [];
+    const n = t => parseInt($('n'+t).value,10) || 0;
+    if(n(1)) all = all.concat(buildMeaning(n(1)));
+    if(n(2)) all = all.concat(buildPair(D.syn, 2, n(2)));
+    if(n(3)) all = all.concat(buildPair(D.ant, 3, n(3)));
+    if($('opt-shuffle').checked) all = shuffle(all);
+    CLOZE = null;
+    if(n(4)) all = all.concat(buildCloze(n(4)));   /* 본문은 한 덩어리라 늘 맨 뒤 */
+    QS = all;
+  } else { QS = pool; CLOZE = null; }
+  submitted = false;
+  $('rescard').style.display = 'none';
+  $('progcard').style.display = 'block';
+  $('submit-row').style.display = 'flex';
+  $('submit-btn').disabled = false;
+  ['sc-rate','sc-tot','sc-ok','sc-ng'].forEach(i => $(i).textContent = '—');
+  $('wlist').innerHTML = '<div class="empty">채점하면 여기에 모입니다</div>';
+  $('wn-cnt').textContent = '';
+  $('pg-bar').classList.remove('done');
+  render(); startTimer(); showTab('test');
+  const first = $('q0');
+  if(first) first.scrollIntoView({behavior:'smooth', block:'start'});
+  else window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ══════════ 렌더 ══════════ */
+function render(){
+  $('pg-tot').textContent = QS.length;
+  $('map').innerHTML = QS.map((q,i) => `<button class="dot" id="d${i}" onclick="jump(${i})">${i+1}</button>`).join('');
+  const czStart = QS.findIndex(q => q.cloze);
+  let html = '';
+  QS.forEach((q,i) => { if(!q.cloze) html += qHTML(q,i); });
+  if(czStart >= 0) html += clozeHTML(czStart);
+  $('qbox').innerHTML = html;
+  QS.forEach((q,i) => {
+    if(q.type !== 4) return;
+    const inp = $('in'+i); if(!inp) return;
+    inp.addEventListener('input', () => { q.text = inp.value; mark(i); });
+    inp.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); const nx = $('in'+(i+1)); nx ? nx.focus() : $('submit-btn').focus(); }
+    });
+  });
+  progress();
+}
+function qHTML(q, i, opt){
+  const no = (i === 'd') ? (DR.seen + 1) : (i + 1);
+  const again = opt && opt.again ? '<span class="dr-again">다시 도전</span>' : '';
+  const head = `<div class="q-top"><div class="q-n">${no}</div>
+    <span class="tag t${q.type}">${TYPE_NAME[q.type]}</span>${again}
+    <span class="q-ask">${TYPE_ASK[q.type]}</span></div>`;
+  if(q.type === 4){
+    return `<div class="q" id="q${i}">${head}
+      <div class="t4-sent">${esc(q.pre)}<span class="blank">${q.lead ? `<b>${esc(q.lead)}</b>${esc(q.mask)}` : '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'}</span>${esc(q.post)}<span class="ans-key">${esc(q.answer)}</span></div>
+      <div class="t4-ko">${esc(q.ko)}</div>
+      <div class="wbox"><div class="wbox-l">WORD BOX</div>
+        <div class="wbox-w">${q.box.map(w => `<span>${esc(w)}</span>`).join('')}</div></div>
+      <div class="t4-row">
+        <input class="t4-in" id="in${i}" type="text" placeholder="${q.lead ? esc(q.lead) + '로 시작하는 단어' : '본문에 쓰인 그대로 입력'}" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <button class="src-link noprint" onclick="gotoSource('${q.sid}')">본문에서 보기 →</button>
+      </div>
+      <div class="q-hint wordnote" id="h${i}" style="display:none"></div>
+      <div class="fb" id="fb${i}"></div></div>`;
+  }
+  return `<div class="q" id="q${i}">${head}
+    <div class="q-word">${esc(q.word)}
+      <span class="ans-key">정답 ${NUM[q.ans]}</span></div>
+    <div class="q-hint" id="h${i}" style="display:none"></div>
+    <div class="choices">${q.choices.map((c,ci) =>
+      `<button class="ch" id="c${i}_${ci}" onclick="choose(${typeof i === 'string' ? "'" + i + "'" : i},${ci})">
+        <span class="ch-n">${NUM[ci]}</span>${esc(c)}</button>`).join('')}</div>
+    <div class="fb" id="fb${i}"></div></div>`;
+}
+/* 본문 빈칸: 채점 후 그 단어의 품사·뜻을 한 줄로 */
+function showWordNote(el, q){
+  if(!el) return;
+  const head = (q.head && q.head.toLowerCase() !== q.answer.toLowerCase())
+    ? `${q.answer} <span style="opacity:.6">← ${q.head}</span>` : esc(q.answer);
+  el.innerHTML = `<b>${head}</b> ${q.pk ? `<i>${esc(q.pk)}</i> ` : ''}${esc(q.hm || '')}`;
+  el.style.display = 'block';
+}
+function choose(i, ci){
+  if(i === 'd') return drillPick(ci);
+  if(submitted) return;
+  QS[i].pick = ci;
+  QS[i].choices.forEach((_,k) => $(`c${i}_${k}`).classList.toggle('sel', k === ci));
+  mark(i);
+}
+function mark(i){
+  const q = QS[i], did = q.type === 4 ? q.text.trim().length > 0 : q.pick !== null;
+  $('d'+i).classList.toggle('did', did);
+  progress();
+}
+function progress(){
+  if(submitted) return;
+  const done = QS.filter(q => q.type === 4 ? q.text.trim().length > 0 : q.pick !== null).length;
+  $('pg-done').textContent = done;
+  $('pg-bar').firstElementChild.style.width = (QS.length ? done/QS.length*100 : 0) + '%';
+  $('pg-label').textContent = done === QS.length && QS.length ? '모두 풀었어요' : '풀이 중';
+  $('dock').classList.toggle('on', QS.length > 0);
+  $('dock-txt').textContent = `${done} / ${QS.length}문항 작성`;
+}
+function jump(i){ showTab('test'); $('q'+i)?.scrollIntoView({behavior:'smooth', block:'center'}); }
+
+/* ══════════ 채점 ══════════ */
+function grade(){
+  if(!QS.length){ toast('먼저 시험지를 만들어주세요'); return; }
+  submitted = true; stopTimer();
+  $('submit-btn').disabled = true;
+  $('dock').classList.remove('on');
+  const wrong = [], by = {1:[0,0],2:[0,0],3:[0,0],4:[0,0]};
+  let ok = 0;
+
+  QS.forEach((q,i) => {
+    const fb = $('fb'+i);
+    let good = false, mine = '(미응답)';
+    if(q.type === 4){
+      const inp = $('in'+i);
+      const user = inp ? (inp.value || '').trim() : '';
+      /* 수행평가 기준: 철자 완전 일치만 정답 (앞뒤 공백·대소문자만 허용) */
+      good = user.toLowerCase() === q.answer.toLowerCase();
+      if(user) mine = user;
+      if(inp){ inp.disabled = true; inp.classList.add(good ? 'ok' : 'ng'); }
+      if(fb){
+        fb.className = 'fb show ' + (good ? 'ok' : 'ng');
+        fb.innerHTML = good ? '정답입니다' : `정답 <b>${esc(q.answer)}</b>${user ? ` · 내 답 ${esc(user)}` : ' · 미응답'}`;
+      } else if(!good){                      /* 통문제: 빈칸 옆에 정답 표시 */
+        const ca = $('ca'+i);
+        if(ca){ ca.textContent = q.answer; ca.style.display = 'inline'; }
+      }
+      showWordNote($('h'+i), q);
+    } else {
+      good = q.pick === q.ans;
+      if(q.pick !== null) mine = q.choices[q.pick];
+      q.choices.forEach((_,ci) => {
+        const b = $(`c${i}_${ci}`); b.disabled = true; b.classList.remove('sel');
+        if(ci === q.ans) b.classList.add('ok');
+        else if(ci === q.pick) b.classList.add('ng');
+      });
+      const h = $('h'+i);
+      if(h && q.hint){ h.textContent = q.word + ' : ' + q.hint; h.style.display = 'block'; }
+      const am = q.ansM ? ` <span style="opacity:.75">${esc(q.ansM)}</span>` : '';
+      fb.className = 'fb show ' + (good ? 'ok' : 'ng');
+      fb.innerHTML = good
+        ? `정답입니다 · <b>${esc(q.choices[q.ans])}</b>${am}`
+        : `정답 <b>${NUM[q.ans]} ${esc(q.choices[q.ans])}</b>${am}`;
+    }
+    by[q.type][1]++; if(good){ ok++; by[q.type][0]++; }
+    $('d'+i).className = 'dot ' + (good ? 'ok' : 'ng');
+    rec(q.type, q.key, good);
+    if(!good) wrong.push({type:q.type, word:q.key, disp:q.type===4?q.answer:q.word, mine, ans:q.type===4?q.answer:q.choices[q.ans]});
+  });
+
+  saveStats();
+  const rate = Math.round(ok / QS.length * 100);
+  $('sc-rate').textContent = rate + '%';
+  $('sc-tot').textContent = QS.length;
+  $('sc-ok').textContent = ok;
+  $('sc-ng').textContent = QS.length - ok;
+  $('pg-done').textContent = QS.length;
+  $('pg-bar').firstElementChild.style.width = '100%';
+  $('pg-bar').classList.add('done');
+  $('pg-label').textContent = '채점 완료';
+
+  $('rs-c').textContent = ok; $('rs-t').textContent = QS.length;
+  $('rs-msg').textContent = rate === 100 ? '전부 맞았습니다. 완벽해요!' :
+    rate >= 90 ? '아주 좋아요. 틀린 것만 한 번 더!' :
+    rate >= 70 ? '조금만 더 다듬으면 됩니다.' : '틀린 단어부터 다시 외워봅시다.';
+  $('rs-by').innerHTML = [1,2,3,4].filter(t => by[t][1]).map(t => {
+    const p = Math.round(by[t][0]/by[t][1]*100);
+    return `<div class="res-row"><span>${TYPE_NAME[t]}</span>
+      <span class="res-bar"><i style="width:${p}%"></i></span>
+      <span>${by[t][0]}/${by[t][1]}</span></div>`;
+  }).join('') + `<div class="res-row" style="margin-top:4px"><span>걸린 시간</span>
+      <span class="res-bar"><i style="width:100%"></i></span>
+      <span>${fmtMs(TM.ms)}</span></div>`;
+  $('rescard').style.display = 'block';
+  $('again-btn').style.display = wrong.length ? 'inline-flex' : 'none';
+
+  $('wn-cnt').textContent = wrong.length ? wrong.length + '개' : '';
+  $('wlist').innerHTML = wrong.length ? wrong.map(w => `
+    <div class="wi"><div class="wi-t">${TYPE_NAME[w.type]}</div>
+      <div class="wi-w">${esc(w.disp)}</div>
+      <div class="wi-d"><span class="mine">${esc(w.mine)}</span> → <span class="ans">${esc(w.ans)}</span></div>
+    </div>`).join('') : '<div class="empty">틀린 문항이 없습니다</div>';
+
+  window._wrong = wrong; window._rate = rate; window._ok = ok; window._by = by;
+  renderWeak();
+  $('rescard').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function retryWrong(){
+  const w = window._wrong || [];
+  if(!w.length){ toast('틀린 문항이 없습니다'); return; }
+  const pool = w.map(it => rebuild(it.type, it.word)).filter(Boolean);
+  if(!pool.length){ toast('다시 낼 문항을 찾지 못했습니다'); return; }
+  generate(shuffle(pool));
+  toast('틀린 ' + pool.length + '문항으로 다시 출제했어요');
+}
+
+/* ══════════ 누적 약점 ══════════ */
+function renderWeak(){
+  const rows = Object.entries(stats)
+    .map(([k,v]) => ({t:+k.slice(0,1), word:k.slice(2), r:v.r, w:v.w}))
+    .filter(r => r.w > 0 && r.w > r.r * 0.5)
+    .sort((a,b) => (b.w - b.r) - (a.w - a.r)).slice(0, 12);
+  $('weaklist').innerHTML = rows.length ? rows.map(r => `
+    <div class="wi"><div class="wi-t">${TYPE_NAME[r.t]} · 틀림 ${r.w} / 맞음 ${r.r}</div>
+      <div class="wi-w">${esc(r.word)}</div>
+    </div>`).join('')
+    : '<div class="empty">아직 기록이 없습니다</div>';
+}
+function clearStats(){
+  if(!confirm('이 기기에 저장된 오답 기록을 모두 지울까요?')) return;
+  stats = {}; saveStats(); renderWeak(); toast('기록을 지웠습니다');
+}
+
+/* ══════════ 드릴 ══════════ */
+const DKEY = 'witheun.mock2606.drill.v1';
+const DR = {q:[], i:0, cur:null, total:0, mastered:new Set(), missed:new Set(),
+            streak:0, best:0, started:0, locked:false, seen:0};
+
+function drillType(){
+  document.querySelectorAll('#drill-types input').forEach(x => toggleChip(x));
+  const n = drillItems().length;
+  $('drill-sum').textContent = n ? '총 ' + n + '개' : '유형을 하나 이상 골라주세요';
+}
+function drillTypes(){
+  return [...document.querySelectorAll('#drill-types input')].filter(x => x.checked).map(x => +x.dataset.dt);
+}
+function drillItems(){
+  const out = [];
+  for(const t of drillTypes()) srcOf(t).forEach((_, i) => out.push(t + ':' + i));
+  return out;
+}
+function dKey(ref){ const [t, i] = ref.split(':'); const x = srcOf(+t)[+i]; return +t === 4 ? x.ans : x.w; }
+
+function drillStart(resume){
+  let saved = null;
+  try{ saved = JSON.parse(localStorage.getItem(DKEY)); }catch(e){}
+  if(resume && saved && saved.q?.length){
+    DR.q = saved.q; DR.i = saved.i || 0;
+    DR.mastered = new Set(saved.mastered || []);
+    DR.missed = new Set(saved.missed || []);
+    DR.total = saved.total || DR.q.length; DR.seen = saved.seen || 0;
+    document.querySelectorAll('#drill-types input').forEach(x => {
+      x.checked = (saved.types || [1,2,3,4]).includes(+x.dataset.dt); toggleChip(x);
+    });
+  } else {
+    const items = drillItems();
+    if(!items.length){ toast('연습할 유형을 하나 이상 골라주세요'); return; }
+    let q = shuffle(items);
+    if($('opt-dweak').checked){
+      /* 틀렸던 단어일수록 앞쪽에 오되, 한 유형이 통째로 몰리지 않게
+         '무작위 키 ÷ 가중치'로 흩뿌린다. */
+      q = q.map(r => {
+        const st = stats[r.split(':')[0] + '|' + dKey(r)];
+        const w = 1 + (st ? st.w * 2 : 0) - (st ? Math.min(st.r, 2) * 0.3 : 0);
+        return {r, k: Math.random() / Math.max(0.5, w)};
+      }).sort((a, b) => a.k - b.k).map(o => o.r);
+    }
+    DR.q = q; DR.i = 0; DR.total = items.length; DR.seen = 0;
+    DR.mastered = new Set(); DR.missed = new Set();
+  }
+  DR.streak = 0; DR.best = 0; DR.started = Date.now(); DR.locked = false;
+  startTimer();
+  $('drill-setup').style.display = 'none';
+  $('drill-done').style.display = 'none';
+  $('drill-run').style.display = 'block';
+  $('dr-tot').textContent = DR.total;
+  showTab('drill'); drillShow();
+}
+function drillShow(){
+  if(DR.i >= DR.q.length){ drillFinish(); return; }
+  const ref = DR.q[DR.i], [t, i] = ref.split(':');
+  DR.cur = makeQ(+t, +i, true); DR.cur.ref = ref;
+  DR.locked = false;
+  $('drill-card').innerHTML = qHTML(DR.cur, 'd', {again: DR.missed.has(ref)});
+  $('dr-next').style.display = 'none';
+  if(DR.cur.type === 4){
+    const inp = $('ind');
+    inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); drillCheck(); } });
+    const row = inp.closest('.t4-row');
+    row.insertAdjacentHTML('beforeend', '<button class="btn pri" onclick="drillCheck()">확인</button>');
+    setTimeout(() => inp.focus({preventScroll:true}), 50);
+  }
+  drillProgress();
+}
+function drillPick(ci){
+  if(DR.locked) return;
+  DR.cur.pick = ci;
+  DR.cur.choices.forEach((_, k) => $('cd_' + k).classList.toggle('sel', k === ci));
+  drillCheck();
+}
+function drillCheck(){
+  if(DR.locked) return;
+  DR.locked = true;
+  const q = DR.cur, fb = $('fbd');
+  let good;
+  if(q.type === 4){
+    const inp = $('ind'), user = (inp.value || '').trim();
+    good = user.toLowerCase() === q.answer.toLowerCase();
+    inp.disabled = true; inp.classList.add(good ? 'ok' : 'ng');
+    fb.className = 'fb show ' + (good ? 'ok' : 'ng');
+    fb.innerHTML = good ? '정답입니다' : `정답 <b>${esc(q.answer)}</b>${user ? ` · 내 답 ${esc(user)}` : ' · 미응답'}`;
+    showWordNote($('hd'), q);
+  } else {
+    good = q.pick === q.ans;
+    q.choices.forEach((_, ci) => {
+      const b = $('cd_' + ci); b.disabled = true; b.classList.remove('sel');
+      if(ci === q.ans) b.classList.add('ok'); else if(ci === q.pick) b.classList.add('ng');
+    });
+    const h = $('hd');
+    if(h && q.hint){ h.textContent = q.word + ' : ' + q.hint; h.style.display = 'block'; }
+    const am = q.ansM ? ` <span style="opacity:.75">${esc(q.ansM)}</span>` : '';
+    fb.className = 'fb show ' + (good ? 'ok' : 'ng');
+    fb.innerHTML = good ? `정답입니다 · <b>${esc(q.choices[q.ans])}</b>${am}`
+                        : `정답 <b>${NUM[q.ans]} ${esc(q.choices[q.ans])}</b>${am}`;
+  }
+  DR.seen++;
+  rec(q.type, q.key, good); saveStats();
+  const ref = DR.cur.ref;
+  if(good){
+    DR.mastered.add(ref);
+    DR.streak++; DR.best = Math.max(DR.best, DR.streak);
+  } else {
+    DR.mastered.delete(ref); DR.missed.add(ref); DR.streak = 0;
+    DR.q.push(ref);                       /* 맞힐 때까지 뒤에 다시 */
+  }
+  drillProgress(); drillSave();
+  if(good && q.type !== 4) setTimeout(() => { if(DR.locked) drillNext(); }, 750);
+  else $('dr-next').style.display = 'inline-flex';
+}
+function drillNext(){
+  DR.i++; $('dr-next').style.display = 'none'; drillShow();
+}
+function drillProgress(){
+  const m = DR.mastered.size;
+  $('dr-done').textContent = m;
+  $('dr-bar').firstElementChild.style.width = (DR.total ? m / DR.total * 100 : 0) + '%';
+  $('dr-streak').textContent = DR.streak > 1 ? '🔥 연속 ' + DR.streak : '연속 ' + DR.streak;
+}
+function drillSave(){
+  try{
+    localStorage.setItem(DKEY, JSON.stringify({
+      q: DR.q, i: DR.i, total: DR.total, seen: DR.seen, types: drillTypes(),
+      mastered: [...DR.mastered], missed: [...DR.missed],
+    }));
+  }catch(e){}
+}
+function drillFinish(){
+  try{ localStorage.removeItem(DKEY); }catch(e){}
+  stopTimer();
+  const spent = fmtKo(TM.ms);
+  $('drill-run').style.display = 'none';
+  $('drill-setup').style.display = 'block';
+  $('drill-done').style.display = 'block';
+  $('dd-tot').textContent = DR.total;
+  $('dd-msg').textContent = DR.missed.size === 0
+    ? '한 번도 안 틀리고 전부 끝냈습니다.'
+    : `한 바퀴 완료 · 도중에 틀렸던 단어 ${DR.missed.size}개는 다시 맞혀서 넘겼습니다.`;
+  $('dd-by').innerHTML = `
+    <div class="res-row"><span>푼 문항</span><span class="res-bar"><i style="width:100%"></i></span><span>${DR.seen}</span></div>
+    <div class="res-row"><span>최고 연속</span><span class="res-bar"><i style="width:${Math.min(100, DR.best/DR.total*300)}%"></i></span><span>${DR.best}</span></div>
+    <div class="res-row"><span>걸린 시간</span><span class="res-bar"><i style="width:100%"></i></span><span>${spent}</span></div>`;
+  renderWeak(); checkResume();
+  $('drill-done').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function drillQuit(){
+  drillSave(); stopTimer(); $('timer').classList.remove('on');
+  $('drill-run').style.display = 'none';
+  $('drill-setup').style.display = 'block';
+  checkResume();
+  toast('진행 상황을 저장했습니다');
+}
+function checkResume(){
+  let saved = null;
+  try{ saved = JSON.parse(localStorage.getItem(DKEY)); }catch(e){}
+  const on = !!(saved && saved.q && saved.i < saved.q.length && saved.seen > 0);
+  $('drill-resume').style.display = on ? 'inline-flex' : 'none';
+  if(on) $('drill-resume').textContent = `이어서 하기 (${saved.mastered.length}/${saved.total})`;
+}
+
+/* ══════════ 타이머 (경과 시간) ══════════ */
+function fmtMs(ms){
+  const s = Math.max(0, Math.floor(ms/1000));
+  return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+}
+function fmtKo(ms){
+  const s = Math.max(0, Math.floor(ms/1000)), m = Math.floor(s/60);
+  return m ? `${m}분 ${s%60}초` : `${s}초`;
+}
+function startTimer(){
+  stopTimer();
+  TM.start = Date.now(); TM.ms = 0;
+  $('timer').classList.add('on');
+  $('timer').classList.remove('warn');
+  tick(); TM.id = setInterval(tick, 500);
+}
+function stopTimer(){
+  if(TM.id){ clearInterval(TM.id); TM.id = null; }
+  if(TM.start) TM.ms = Date.now() - TM.start;
+}
+function tick(){
+  TM.ms = Date.now() - TM.start;
+  $('timer-v').textContent = fmtMs(TM.ms);
+}
+
+/* ══════════ 본문 ══════════ */
+/* 지문이 여러 개라 문단 앞에 문항 번호를 붙인다 */
+function pnoHTML(pi, cls){
+  const L = D.passage.labels || [];
+  return L[pi] ? `<div class="${cls || 'pno'}">${esc(L[pi])}번</div>` : '';
+}
+function renderPassage(){
+  $('psg-t').textContent = D.passage.titleEn;
+  $('psg-tko').textContent = D.passage.titleKo;
+  const marks = $('opt-mark').checked;
+  const bySid = {};
+  if(marks) for(const b of D.blanks) (bySid[b.sid] = bySid[b.sid] || []).push(b.ans);
+  let n = 0;
+  $('psg').innerHTML = D.passage.paras.map((p, pi) => `<div class="para">` + pnoHTML(pi) + p.map(s => {
+    n++;
+    let en = esc(s.en);
+    if(marks && bySid[s.id]) for(const w of bySid[s.id]){
+      en = en.replace(new RegExp('(^|[^A-Za-z-])(' + w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')(?![A-Za-z-])'),
+        '$1<span class="psg-mark">$2</span>');
+    }
+    return `<div class="sline" id="p-${s.id}">
+      <div class="sent"><i class="sno">${n}</i>${en}</div>
+      <div class="sent-ko">${esc(s.ko)}</div>
+    </div>`;
+  }).join('') + `</div>`).join('');
+}
+function gotoSource(sid){
+  showTab('psg');
+  const el = $('p-' + sid);
+  if(!el) return;
+  document.querySelectorAll('.hl').forEach(e => e.classList.remove('hl'));
+  setTimeout(() => {
+    el.scrollIntoView({behavior:'smooth', block:'center'});
+    el.classList.add('hl');
+    setTimeout(() => el.classList.remove('hl'), 3000);
+  }, 60);
+}
+function toggleKo(){ document.body.classList.toggle('hide-ko', !$('opt-ko').checked); }
+
+/* ══════════ 탭 / 인쇄 / TTS ══════════ */
+function showTab(v){
+  document.body.dataset.tab = v;
+  ['drill','test','psg'].forEach(k => {
+    $('view-' + k).style.display = v === k ? 'block' : 'none';
+    $('tab-' + k).classList.toggle('on', v === k);
+  });
+}
+/* ══════════ 인쇄용 시험지 ══════════ */
+const ROMAN = ['','Ⅰ','Ⅱ','Ⅲ','Ⅳ'];
+const SEC_ASK = {
+  1:'다음 단어의 뜻으로 알맞은 것을 고르시오.',
+  2:'다음 단어와 뜻이 가장 가까운 것을 고르시오.',
+  3:'다음 단어와 뜻이 반대인 것을 고르시오.'
+};
+function buildSheet(){
+  const by = {1:[],2:[],3:[],4:[]};
+  QS.forEach(q => by[q.type].push(q));
+  let no = 0, sec = 0;
+  const secs = [], keyCh = [], keyBl = [];
+
+  [1,2,3].forEach(t => {
+    if(!by[t].length) return;
+    sec++;
+    const items = by[t].map(q => {
+      no++;
+      keyCh.push(`<span><b>${no}</b> ${NUM[q.ans]}</span>`);
+      return `<div class="sh-q">
+        <div class="sh-qh"><b>${no}.</b> ${esc(q.word)}</div>
+        <div class="sh-ch">${q.choices.map((c,ci) =>
+          `<span>${NUM[ci]} ${esc(c)}</span>`).join('')}</div></div>`;
+    }).join('');
+    secs.push(`<section class="sh-sec">
+      <h2>${ROMAN[sec]}. ${TYPE_NAME[t]} <small>${SEC_ASK[t]}</small>
+        <em>[${by[t].length}문항]</em></h2>
+      <div class="sh-cols">${items}</div></section>`);
+  });
+
+  if(by[4].length){
+    sec++;
+    const czNo = new Map(), byS = {};
+    by[4].forEach(q => { no++; czNo.set(q, no); (byS[q.sid] = byS[q.sid] || []).push(q);
+      keyBl.push(`<span><b>${no}</b> ${esc(q.answer)}</span>`); });
+    const paras = D.passage.paras.map((p, pi) => '<div class="sh-pb">' + pnoHTML(pi, 'sh-pno') + '<p>' + p.map(sn => {
+      const bs = (byS[sn.id] || []).slice().sort((a,b) => a.off - b.off);
+      if(!bs.length) return esc(sn.en);
+      let out = '', cur = 0;
+      for(const b of bs){
+        out += esc(sn.en.slice(cur, b.off));
+        out += `<span class="sh-bl"><i>${czNo.get(b)}</i><u></u></span>`;
+        cur = b.off + b.answer.length;
+      }
+      return out + esc(sn.en.slice(cur));
+    }).join(' ') + '</p><p class="sh-ko">' + esc(p.map(sn => sn.ko).join(' ')) + '</p></div>').join('');
+    secs.push(`<section class="sh-sec sh-psg">
+      <h2>${ROMAN[sec]}. 본문 빈칸 <small>보기에서 골라 빈칸에 알맞은 단어를 본문에 쓰인 그대로 쓰시오.</small>
+        <em>[${by[4].length}문항]</em></h2>
+      <div class="sh-box"><div class="sh-box-l">보기</div>
+        <div class="sh-box-w">${CLOZE.box.map(w => `<span>${esc(w)}</span>`).join('')}</div></div>
+      <div class="sh-psg-body">${paras}</div>
+      <div class="sh-write">${by[4].map(q =>
+        `<span><i>${czNo.get(q)}</i><u></u></span>`).join('')}</div>
+    </section>`);
+  }
+
+  const d = new Date();
+  const date = `${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}.`;
+  $('sheet').innerHTML = `
+    <div class="sh-head">
+      <div class="sh-h1">${esc(D.lesson.title)}</div>
+      <div class="sh-h2"><span>${esc(D.lesson.sub)}</span><span>Witheun. by 은서쌤</span></div>
+      <div class="sh-name">
+        <span>학번 <u></u></span><span>이름 <u></u></span>
+        <span class="sh-meta">${date} · 총 ${QS.length}문항</span></div>
+    </div>
+    ${secs.join('')}
+    <section class="sh-ans">
+      <div class="sh-ans-h">정답 <small>${esc(D.lesson.title)} · ${date}</small></div>
+      ${keyCh.length ? `<div class="sh-ans-t">객관식</div><div class="sh-akey">${keyCh.join('')}</div>` : ''}
+      ${keyBl.length ? `<div class="sh-ans-t">본문 빈칸</div><div class="sh-akey wide">${keyBl.join('')}</div>` : ''}
+    </section>`;
+}
+function doPrint(){
+  if(!QS.length){ toast('먼저 시험지를 만들어주세요'); return; }
+  buildSheet();
+  document.body.classList.add('printing');
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => document.body.classList.remove('printing'), 500);
+  }, 150);
+}
+
+/* ══════════ 시작 ══════════ */
+document.addEventListener('keydown', e => {
+  if(submitted || e.target.tagName === 'INPUT') return;
+  if(e.key >= '1' && e.key <= '5'){
+    const vis = [...document.querySelectorAll('.q')].find(q => {
+      const r = q.getBoundingClientRect();
+      return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.2;
+    });
+    if(!vis) return;
+    const i = +vis.id.slice(1);
+    if(QS[i] && QS[i].type !== 4) choose(i, +e.key - 1);
+  }
+});
+(function restoreHard(){
+  let v = '0'; try{ v = localStorage.getItem(HKEY) || '0'; }catch(e){}
+  if(v === '1'){ $('opt-hard').checked = true; syncHard($('opt-hard')); }
+  updateDiffNote();
+})();
+renderPassage();
+renderWeak();
+syncCnt();
+drillType();
+checkResume();
+generate();
+showTab('drill');
+window.scrollTo({top:0});
+
+/* ?sheet=1 — 인쇄용 시험지를 바로 열어 미리 보기 (인쇄도 여기서) */
+if(/[?&]sheet=1/.test(location.search)){
+  showTab('test');
+  quickStart('full');
+  setTimeout(() => { buildSheet(); document.body.classList.add('sheetview'); }, 300);
+}
+</script>
+</body>
+</html>
