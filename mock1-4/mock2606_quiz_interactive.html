@@ -330,6 +330,18 @@ body.hide-ko .sline{padding:7px 0}
   padding:1px 4px;border-radius:4px}
 
 /* ══ 하단 고정 바 ══ */
+/* 고2 단어앱과 같은 사용 제한 문구 (상단·푸터) */
+.notice{background:transparent;color:var(--ink3);font-size:11px;font-weight:500;
+  text-align:center;padding:10px 16px 0;letter-spacing:-0.02em;line-height:1.45;
+  word-break:keep-all;opacity:.85}
+.foot .notice{padding:8px 0 0;font-size:11px}
+body.sheetview .notice{display:none}
+/* 사용 제한 안내 (플로팅) — 클릭을 가로채지 않게 pointer-events:none */
+.guard{position:fixed;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:95;pointer-events:none;
+  font-size:12px;font-weight:700;color:#fff;background:rgba(25,31,40,.78);padding:7px 12px;border-radius:999px;
+  box-shadow:0 4px 14px rgba(0,0,0,.12);letter-spacing:-0.01em;white-space:nowrap}
+body[data-tab="test"]:has(.dock.on) .guard{bottom:calc(var(--dock-h, 76px) + 10px + env(safe-area-inset-bottom))}
+body.sheetview .guard{display:none}
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(255,255,255,.94);
   backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:12px 20px;
   display:none}
@@ -439,7 +451,7 @@ body.sheetview .sh-ans{margin-top:14mm;padding-top:10mm;border-top:2px dashed #a
 @media print{
   @page{size:A4;margin:13mm 11mm}
   html,body{background:#fff!important;padding:0!important;margin:0!important}
-  .topbar,.wrap,.dock,.toast,.foot,.side{display:none!important}
+  .topbar,.wrap,.dock,.toast,.foot,.side,.guard,.notice{display:none!important}
   #sheet{display:block!important;color:#000;
     font-family:'GmarketSansKo','Pretendard Variable',Pretendard,-apple-system,sans-serif}
   .sh-psg-body p{orphans:3;widows:3}
@@ -461,6 +473,7 @@ body.sheetview .sh-ans{margin-top:14mm;padding-top:10mm;border-top:2px dashed #a
     </div>
   </div>
 </header>
+<div class="notice noprint">위든학원 재원생 외 학생 사용, 배포 금지</div>
 
 <div class="wrap">
 
@@ -673,6 +686,7 @@ body.sheetview .sh-ans{margin-top:14mm;padding-top:10mm;border-top:2px dashed #a
 <div class="foot noprint">
   <b>Witheun.</b> 6월 모의고사 단어 시험 · by 은서쌤<br>
   © 2026 Witheun · 무단 복제 및 배포를 금합니다
+  <div class="notice">위든학원 재원생 외 학생 사용, 배포 금지</div>
 </div>
 
 <div class="dock noprint" id="dock">
@@ -684,6 +698,7 @@ body.sheetview .sh-ans{margin-top:14mm;padding-top:10mm;border-top:2px dashed #a
 </div>
 
 <div class="toast" id="toast"></div>
+<div class="guard noprint">위든학원 재원생 외 학생 사용, 배포 금지</div>
 
 <!-- ══════════ 인쇄용 시험지 (화면에는 안 보임) ══════════ -->
 <div id="sheet"></div>
