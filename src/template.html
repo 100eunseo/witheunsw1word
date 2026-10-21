@@ -319,15 +319,15 @@ body.hide-ko .sline{padding:7px 0}
 
 /* ══ 하단 고정 바 ══ */
 /* 고2 단어앱과 같은 사용 제한 문구 (상단·푸터) */
-.notice{background:transparent;color:var(--ink3);font-size:11px;font-weight:500;
-  text-align:center;padding:10px 16px 0;letter-spacing:-0.02em;line-height:1.45;
-  word-break:keep-all;opacity:.85}
-.foot .notice{padding:8px 0 0;font-size:11px}
+.notice{background:#ffeef0;color:#e42939;font-size:14px;font-weight:800;
+  text-align:center;padding:9px 16px;letter-spacing:-0.02em;line-height:1.45;
+  word-break:keep-all;border-bottom:1px solid #ffd6db}
+.foot .notice{display:inline-block;margin-top:10px;padding:6px 12px;font-size:13px;border:none;border-radius:8px}
 body.sheetview .notice{display:none}
 /* 사용 제한 안내 (플로팅) — 클릭을 가로채지 않게 pointer-events:none */
 .guard{position:fixed;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:95;pointer-events:none;
-  font-size:12px;font-weight:700;color:#fff;background:rgba(25,31,40,.78);padding:7px 12px;border-radius:999px;
-  box-shadow:0 4px 14px rgba(0,0,0,.12);letter-spacing:-0.01em;white-space:nowrap}
+  font-size:14px;font-weight:800;color:#fff;background:#e42939;padding:9px 15px;border-radius:999px;
+  box-shadow:0 6px 18px rgba(228,41,57,.35);letter-spacing:-0.01em;white-space:nowrap}
 body[data-tab="test"]:has(.dock.on) .guard{bottom:calc(var(--dock-h, 76px) + 10px + env(safe-area-inset-bottom))}
 body.sheetview .guard{display:none}
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(255,255,255,.94);
