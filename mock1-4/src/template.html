@@ -6,6 +6,15 @@
 <title>Witheun. | 6월 모의고사 단어 시험 by 은서쌤</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
+/* 한글만 G마켓 산스, 영문·숫자는 Pretendard 그대로 (unicode-range로 한글 글자에만 적용) */
+@font-face{font-family:'GmarketSansKo';src:url('fonts/GmarketSansLight.woff') format('woff');font-weight:100 300;font-display:swap;
+  unicode-range:U+1100-11FF,U+3130-318F,U+A960-A97F,U+AC00-D7A3,U+D7B0-D7FF}
+@font-face{font-family:'GmarketSansKo';src:url('fonts/GmarketSansMedium.woff') format('woff');font-weight:400 600;font-display:swap;
+  unicode-range:U+1100-11FF,U+3130-318F,U+A960-A97F,U+AC00-D7A3,U+D7B0-D7FF}
+@font-face{font-family:'GmarketSansKo';src:url('fonts/GmarketSansBold.woff') format('woff');font-weight:700 900;font-display:swap;
+  unicode-range:U+1100-11FF,U+3130-318F,U+A960-A97F,U+AC00-D7A3,U+D7B0-D7FF}
+</style>
+<style>
 :root{
   --bg:#f2f4f6; --card:#fff; --ink:#191f28; --ink2:#4e5968; --ink3:#8b95a1;
   --line:#e5e8eb; --line2:#f2f4f6;
@@ -15,7 +24,7 @@
   --amber:#ff9500; --amber-bg:#fff5e6;
   --purple:#8b5cf6; --purple-bg:#f3eeff;
   --r:20px; --r2:14px; --r3:10px;
-  --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --sans:'GmarketSansKo','Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.04);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -432,7 +441,7 @@ body.sheetview .sh-ans{margin-top:14mm;padding-top:10mm;border-top:2px dashed #a
   html,body{background:#fff!important;padding:0!important;margin:0!important}
   .topbar,.wrap,.dock,.toast,.foot,.side{display:none!important}
   #sheet{display:block!important;color:#000;
-    font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif}
+    font-family:'GmarketSansKo','Pretendard Variable',Pretendard,-apple-system,sans-serif}
   .sh-psg-body p{orphans:3;widows:3}
 }
 </style>
