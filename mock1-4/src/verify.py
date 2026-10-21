@@ -61,7 +61,7 @@ chk("반의어 개수", len(src), len(app))
 for i, (s, a) in enumerate(zip(src, app), 1): chk(f"반의어 {i}", s, a)
 
 # 4) 본문 — 영문 전체를 공백만 정리해서 비교
-doc = pdf("송우고1-2 2606")
+doc = [p for p in pdf("송우고1-2 2606") if "36번" not in p.get_text()]   # 36번은 범위 밖이라 뺌
 paras = data["passage"]["paras"]
 chk("본문 지문 수", len(doc), len(paras))
 for k, (p, para) in enumerate(zip(doc, paras)):

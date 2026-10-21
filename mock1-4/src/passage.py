@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""2026년 6월 고1 학력평가(부산광역시 교육청) 22·23·24·32·36번 본문
+"""2026년 6월 고1 학력평가(부산광역시 교육청) 22·23·24·32번 본문 (36번은 단어표 범위 밖이라 뺌)
 원본: iCloud Drive/송우고1-2 2606 시험범위.pdf (WORKBOOK 문장별 영문+해석)"""
 
 TITLE_EN = "2026 6월 고1 학력평가"
-TITLE_KO = "22 · 23 · 24 · 32 · 36번"
+TITLE_KO = "22 · 23 · 24 · 32번"
 
 # (sid, 영어 문장, 한국어 해석)
 S = [
@@ -36,13 +36,6 @@ S = [
  ('s27', 'Some students returned to the same room twice while their counterparts spent the same amount of time divided between two locations.', '일부 학생들은 같은 방으로 두 번 돌아왔지만, 상대 집단은 두 장소에서 동일하게 나뉜 시간을 보냈다.'),
  ('s28', 'When asked to recall as many words on the list as possible, those who had moved around did far better.', '목록에 있는 가능한 한 많은 단어를 기억해 보라고 요청받았을 때, 장소를 옮겨 다닌 학생들이 훨씬 더 잘했다.'),
  ('s29', 'Variety creates rich association, even when those connections form in the background, totally outside of what we are consciously thinking.', '다양성은 풍부한 연상을 만들어 내는데, 이러한 연결들이 배경에서, 즉 우리가 의식적으로 생각하고 있는 것의 완전히 바깥에서, 형성될 때조차도 (그러하다).'),
- ('s30', 'During the Ice Age, not only was the planet much colder, with ice sheets covering much of what we call the northern hemisphere today, but, crucially, it was much drier.', '빙하기 동안, 지구는, 오늘날 우리가 북반구라고 부르는 지역의 대부분을 얼음층이 뒤덮은 채로, 훨씬 더 추웠을 뿐만 아니라, 결정적으로, 훨씬 더 건조했다.'),
- ('s31', 'In Ireland, we often associate the cold with the wet but if it is really cold, there is far less evaporation, fewer clouds, and less rain.', '아일랜드에서, 우리는 종종 추위를 습함과 연관 짓지만, 정말 춥다면, 증발 작용이 훨씬 더 적고, 구름도 더 적으며, 비도 더 적다.'),
- ('s32', 'Our world in the Ice Age was cold and dry, meaning it was difficult for plants to grow.', '빙하기의 우리 지구는 춥고 건조했는데, 이는 식물이 자라기 어렵다는 것을 의미했다.'),
- ('s33', 'In this type of climate, farming isn’t an option: it’s too risky to depend on any one piece of land to produce the energy you need.', '이런 유형의 기후에서, 농사는 선택지가 아니다. 즉, 당신이 필요한 에너지를 생산하려고 어느 한 조각의 땅에 의존하는 것은 너무 위험하다.'),
- ('s34', 'As the temperature rose and the ice caps melted, we experienced a sudden explosion of life.', '온도가 상승하고 만년설이 녹으면서, 우리는 갑작스러운 생명의 폭발을 경험했다.'),
- ('s35', 'The world got warmer and wetter, and people started to live around places where they could make food grow most intensively.', '지구는 더 따뜻하고 습해졌고, 그리고 사람들은 식량이 가장 집약적으로 자라게 할 수 있는 장소 주변에 살기 시작했다.'),
- ('s36', 'This didn’t happen overnight; it probably took thousands of years, with hunter-gatherers foraging and hunting, while doing a little side hustle in farming.', '이것은 하룻밤 사이에 일어나지 않았고, 수렵채집인들이, 농사로 부업을 조금씩 하는 동안, 채집과 사냥을 하면서, 그것은 아마도 수천 년이 걸렸을 것이다.'),
 ]
 
 # 문항별 문단 (본문 탭·통문제 렌더링용)
@@ -51,7 +44,6 @@ PARAS = [
     ['s9', 's10', 's11', 's12', 's13', 's14', 's15'],
     ['s16', 's17', 's18', 's19', 's20', 's21'],
     ['s22', 's23', 's24', 's25', 's26', 's27', 's28', 's29'],
-    ['s30', 's31', 's32', 's33', 's34', 's35', 's36'],
 ]
 
-LABELS = ['22', '23', '24', '32', '36']   # PARAS와 같은 순서의 문항 번호
+LABELS = ['22', '23', '24', '32']   # PARAS와 같은 순서의 문항 번호
